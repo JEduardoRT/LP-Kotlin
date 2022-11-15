@@ -1,5 +1,7 @@
 import ply.lex as lex
 
+#Ysrael Larco (inicio)
+
 # Tokens
 reserved = {
   'if':'IF',
@@ -64,6 +66,10 @@ reserved = {
   'println': 'PRINTLN'
 }
 
+#Ysrael Larco (final)
+
+#Jandry Rodriguez (inicio)
+
 tokens = [
   'VINT',
   'VFLOAT',
@@ -85,6 +91,10 @@ tokens = [
   'DOUBLEPOINTS'
 ] + list(reserved.values())
 
+#Jandry Rodriguez (final)
+
+#Luis Donoso (inicio)
+
 # Regular expression rules for simple tokens
 t_PLUS     = r'\+'
 t_MINUS   = r'-'
@@ -102,6 +112,9 @@ t_AND = r'&&'
 t_OR = r'\|\|'
 t_DOUBLEPOINTS = r':'
 
+#Luis Donoso (inicio)
+
+#Jandry Rodriguez (inicio)
 
 # A regular expression rule with some action code
 def t_VFLOAT(t):
@@ -124,6 +137,11 @@ def t_newline(t):
   r'\n+'
   t.lexer.lineno += len(t.value)
  
+#Jandry Rodriguez (final)
+
+
+#Ysrael Larco (inicio)
+
 # A string containing ignored characters (spaces and tabs)
 t_ignore  = ' \t'
 
@@ -138,6 +156,10 @@ def t_error(t):
  
  # Build the lexer
 lexer = lex.lex()
+
+#Ysrael Larco (final)
+
+#Luis Donoso (inicio)
 
 # Test it out
 instructions = '''3 + 4 * 10

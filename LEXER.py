@@ -58,12 +58,15 @@ reserved = {
   'with':'WITH',
   'do':'DO',
   'set':'SET',
-  'out':'OUT'
+  'out':'OUT',
+  'Int': 'TINT',
+  'Float': 'TFLOAT',
+  'println': 'PRINTLN'
 }
 
 tokens = [
-  'INT',
-  'FLOAT',
+  'VINT',
+  'VFLOAT',
   'MINUS',
   'PLUS',
   'TIMES',
@@ -78,7 +81,8 @@ tokens = [
   'NEQUAL',
   'AND',
   'OR',
-  'VARIABLE'
+  'VARIABLE',
+  'DOUBLEPOINTS'
 ] + list(reserved.values())
 
 # Regular expression rules for simple tokens
@@ -96,14 +100,16 @@ t_MAYOR = r'>'
 t_NEQUAL = r'<>'
 t_AND = r'&&'
 t_OR = r'\|\|'
+t_DOUBLEPOINTS = r':'
+
 
 # A regular expression rule with some action code
-def t_FLOAT(t):
+def t_VFLOAT(t):
   r'\d+\.\d+'
   t.value = float(t.value)
   return t
   
-def t_INT(t):
+def t_VINT(t):
   r'\d+'
   t.value = int(t.value)    
   return t

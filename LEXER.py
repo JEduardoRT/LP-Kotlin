@@ -5,13 +5,11 @@ reserved = {
   'if':'IF',
   'for':'FOR',
   'while':'WHILE',
-  'public':'PUBLIC',
-  'shared':'SHARED',
-  'protected':'PROTECTED'
+  'switch':'SWITCH'
 }
 
 tokens = [
-  'ENTERO',
+  'INT',
   'FLOAT',
   'MINUS',
   'PLUS',
@@ -19,13 +17,14 @@ tokens = [
   'DIVIDE',
   'LPAREN',
   'RPAREN',
+  'LKEY',
+  'RKEY',
   'IGUAL',
-  'MENOR',
+  'MINOR',
   'MAYOR',
   'NEQUAL',
   'AND',
   'OR',
-  'DATE',
   'VARIABLE'
 ] + list(reserved.values())
 
@@ -36,13 +35,14 @@ t_TIMES   = r'\*'
 t_DIVIDE  = r'/'
 t_LPAREN  = r'\('
 t_RPAREN  = r'\)'
+t_LKEY  = r'\{'
+t_RKEY  = r'\}'
 t_IGUAL = r'='
-t_MENOR = r'<'
+t_MINOR = r'<'
 t_MAYOR = r'>'
 t_NEQUAL = r'<>'
-t_AND = r'and'
-t_OR = r'or'
-t_DATE = r'\d{1,4}/(0[1-9]|1[1-2])/(0[1-9]|[1-2][0-9]|3[01])'
+t_AND = r'&&'
+t_OR = r'\|\|'
 
 # A regular expression rule with some action code
 def t_FLOAT(t):
@@ -50,7 +50,7 @@ def t_FLOAT(t):
   t.value = float(t.value)
   return t
   
-def t_ENTERO(t):
+def t_INT(t):
   r'\d+'
   t.value = int(t.value)    
   return t

@@ -63,7 +63,12 @@ reserved = {
   'out':'OUT',
   'Int': 'TINT',
   'Float': 'TFLOAT',
-  'println': 'PRINTLN'
+  'println': 'PRINTLN',
+  'list': 'LIST',
+  'listOf': 'LISTOF',
+  'mutableList': 'MUTABLELIST',
+  'mutableListOf': 'MUTABLELISTOF',
+  'pair': 'PAIR',
 }
 
 #Ysrael Larco (final)

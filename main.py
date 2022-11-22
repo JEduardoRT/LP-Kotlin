@@ -1,15 +1,21 @@
 import ply.yacc as yacc
 from LEXER import tokens
 
-
+def p_documento(p): 
+    '''documento : implementa_funcion 
+    | instrucciones'''
+    
 def p_cuerpoF(p):
   '''cuerpoF : asignacion
   | impresion
-  | declaracion
   | asigna
   | compareType
   | compareGreaterthan
   | compareSmallerthan
+  | list
+  | mutableList
+  | pair
+  | inData
   '''
 
 def p_asignacion(p):
@@ -36,7 +42,7 @@ def p_diamondtype(p):
 #Donoso Bravo Luis Alejandro
 
 def p_listAsignacion(p):
-    ''' listAsignacion : designacion  VARIABLE DOUBLEPOINT LIST diamondType
+    ''' listAsignacion : designacion  VARIABLE DOUBLEPOINTS LIST diamondType
     | designacion VARIABLE
     '''
 
@@ -97,7 +103,7 @@ def p_divide(p):
 #Donoso Bravo Luis Alejandro
 
 def p_mutListAsignacion(p):
-    ''' mutListAsignacion : designacion VARIABLE DOUBLEPOINT MUTABLELIST diamondType
+    ''' mutListAsignacion : designacion VARIABLE DOUBLEPOINTS MUTABLELIST diamondType
     | designacion VARIABLE
     '''
 
@@ -160,7 +166,7 @@ def p_implementa_funcion(p):
 
 def p_listaparametros(p):
     '''listaparametros : parametro
-    | parametro SEPARATOR listaparametros'''
+    | parametro COMA listaparametros'''
 
 def p_parametro(p):
     'parametro : VARIABLE DOUBLEPOINTS tipo'
@@ -170,7 +176,7 @@ def p_retorno(p):
 
 def p_instrucciones(p):
   '''instrucciones : cuerpoF
-      | instrucciones'''
+      | cuerpoF instrucciones'''
 
 def p_asigna(p):
   'asigna : VARIABLE IGUAL asignado'
@@ -180,7 +186,11 @@ def p_asignado(p):
 | VARIABLE
 | compareType
 | compareGreaterthan
-| compareSmallerthan'''
+| compareSmallerthan
+| add
+| subtract
+| multiply
+| divide'''
 
 def p_error(p):
     if p:
@@ -196,16 +206,16 @@ parser = yacc.yacc()
 
 def validaRegla(s):
     result = parser.parse(s)
+    print(s)
     print(result)
 
 
-while True:
-    try:
-        file = open("source.txt")
-        cadena=file.read()
-        file.close()
-        s = input(cadena)
-    except EOFError:
-        break
-    if not s: continue
+try:
+    file = open("source.txt")
+    cadena=file.read()
+    file.close()
+    s = cadena
+except EOFError:
+    print("Error: Archivo vacio")
+if s: 
     validaRegla(s)

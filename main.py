@@ -1,5 +1,5 @@
 import ply.yacc as yacc
-from sulexico import tokens
+from LEXER import tokens
 
 
 def p_cuerpoF(p):

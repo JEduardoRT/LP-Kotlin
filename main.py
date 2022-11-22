@@ -72,18 +72,21 @@ def p_add(p):
   | VINT PLUS VFLOAT
   | VFLOAT PLUS VFLOAT
   '''
-
+#ysrael larco faubla
 def p_subtract(p):
   '''subtract : VINT MINUS VINT
   | VINT MINUS VFLOAT
   | VFLOAT MINUS VFLOAT
+  
   '''
+#ysrael larco faubla
 def p_multiply(p):
   '''multiply : VINT TIMES VINT
   | VFLOAT TIMES VFLOAT
   | VFLOAT TIMES VINT
   | VINT TIMES VFLOAT
   '''
+  #ysrael larco faubla
 def p_divide(p):
   '''divide : VINT DIVIDE VINT
   | VFLOAT DIVIDE VFLOAT
@@ -129,22 +132,22 @@ def p_pair(p):
 def p_inData(p):
     '''inData : designacion VARIABLE igual READLINE LPAREN RPAREN'''
 
-
+#ysrael larco faubla
 def p_compareType(p):
     '''compareType : VINT IGUAL VINT
     | VFLOAT IGUAL VFLOAT
     '''
-
+#ysrael larco faubla
 def p_compareGreaterthan(p):
     '''compareGreaterthan : VINT MAYOR VINT
     | VFLOAT MAYOR VFLOAT
   '''
-  
+ #ysrael larco faubla 
 def p_compareSmallerthan(p):
     '''compareSmallerthan : VINT MENOR VINT
     | VFLOAT MENOR VFLOAT
   '''
-
+#ysrael larco faubla
 def p_impresion(p):
   'impresion : PRINTLN LPAREN valor RPAREN'
 

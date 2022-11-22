@@ -23,16 +23,71 @@ def p_tipo(p):
     """tipo : TINT
         | TFLOAT
         | STRING
-        | VARIABLE 
     """
 
 
 def p_diamondtype(p):
-    """diamondType : t_Minor tipo t_Mayor"""
+    """diamondType : MINOR tipo MAYOR"""
+
+def p_listAsignacion(p):
+    ''' listAsignacion : designacion  VARIABLE DOUBLEPOINT LIST diamondType
+    | designacion VARIABLE
+    '''
+
+
+def p_listOf(p):
+    '''listOf : lISTOF LPAREN elementos RPAREN '''
+
+
+def p_elementos(p):
+    '''elementos : elementos COMA valor
+    | valor
+    '''
+
+
+def p_valor(p):
+    '''valor : VINT
+    | VFLOAT
+    | STRING
+    '''
+
 
 def p_list(p):
-    ''' list : designacion diamondType t_Igual
+    '''list : listAsignacion IGUAL listof
     '''
+
+
+def p_mutListAsignacion(p):
+    ''' mutListAsignacion : designacion VARIABLE DOUBLEPOINT MUTABLELIST diamondType
+    | designacion VARIABLE
+    '''
+
+
+def mutableListOf(p):
+    '''mutableListOf : MUTABLELISTOF LPAREN elementos RPAREN'''
+
+
+def p_mutableList(p):
+    '''mutableList : mutListAsignacion IGUAL mutableListOf
+    '''
+
+
+def p_pairAsignation(p):
+    '''pairAsignation : designacion RPAREN VARIABLE COMA VARIABLE LPAREN'''
+
+
+def p_pairBody(p):
+    '''pairBody : PAIR LPAREN valor COMA valor RPAREN'''
+
+
+def p_pair(p):
+    '''pair : pairAsignation IGUAL pairBody
+    '''
+
+def p_inData(p):
+    '''inData : designacion VARIABLE igual READLINE LPAREN RPAREN'''
+
+
 def p_compareType(p):
     '''compareType : VINT IGUAL VINT
     | VFLOAT IGUAL VFLOAT

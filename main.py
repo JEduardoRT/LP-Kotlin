@@ -1,5 +1,5 @@
 import ply.yacc as yacc
-import LEXER
+from sulexico import tokens
 
 
 def p_cuerpoF(p):
@@ -103,7 +103,7 @@ def p_mutListAsignacion(p):
 
 #Donoso Bravo Luis Alejandro
 
-def mutableListOf(p):
+def p_mutableListOf(p):
     '''mutableListOf : MUTABLELISTOF LPAREN elementos RPAREN'''
 
 #Donoso Bravo Luis Alejandro
@@ -166,7 +166,7 @@ def p_parametro(p):
     'parametro : VARIABLE DOUBLEPOINTS tipo'
 
 def p_retorno(p):
-  'RETURN asignado'
+  'retorno : RETURN asignado'
 
 def p_instrucciones(p):
   '''instrucciones : cuerpoF
@@ -176,7 +176,7 @@ def p_asigna(p):
   'asigna : VARIABLE IGUAL asignado'
 
 def p_asignado(p):
-  '''valor
+  '''asignado : valor
 | VARIABLE
 | compareType
 | compareGreaterthan
@@ -201,7 +201,10 @@ def validaRegla(s):
 
 while True:
     try:
-        s = input('calc > ')
+        file = open("source.txt")
+        cadena=file.read()
+        file.close()
+        s = input(cadena)
     except EOFError:
         break
     if not s: continue

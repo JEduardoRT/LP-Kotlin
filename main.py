@@ -43,7 +43,7 @@ def p_listAsignacion(p):
 #Donoso Bravo Luis Alejandro
 
 def p_listOf(p):
-    '''listOf : lISTOF LPAREN elementos RPAREN '''
+    '''listOf : LISTOF LPAREN elementos RPAREN '''
 
 #Donoso Bravo Luis Alejandro
 
@@ -63,7 +63,7 @@ def p_valor(p):
 #Donoso Bravo Luis Alejandro
 
 def p_list(p):
-    '''list : listAsignacion IGUAL listof
+    '''list : listAsignacion IGUAL listOf
     '''
 
 #ysrael larco faubla
@@ -115,7 +115,7 @@ def p_mutableList(p):
 #Donoso Bravo Luis Alejandro
 
 def p_pairAsignation(p):
-    '''pairAsignation : designacion RPAREN VARIABLE COMA VARIABLE LPAREN'''
+    '''pairAsignation : designacion LPAREN VARIABLE COMA VARIABLE RPAREN'''
 
 #Donoso Bravo Luis Alejandro
 
@@ -130,7 +130,7 @@ def p_pair(p):
 #Donoso Bravo Luis Alejandro
 
 def p_inData(p):
-    '''inData : designacion VARIABLE igual READLINE LPAREN RPAREN'''
+    '''inData : designacion VARIABLE IGUAL READLINE LPAREN RPAREN'''
 
 #ysrael larco faubla
 def p_compareType(p):
@@ -144,8 +144,8 @@ def p_compareGreaterthan(p):
   '''
  #ysrael larco faubla 
 def p_compareSmallerthan(p):
-    '''compareSmallerthan : VINT MENOR VINT
-    | VFLOAT MENOR VFLOAT
+    '''compareSmallerthan : VINT MINOR VINT
+    | VFLOAT MINOR VFLOAT
   '''
 #ysrael larco faubla
 def p_impresion(p):

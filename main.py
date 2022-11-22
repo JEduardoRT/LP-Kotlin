@@ -33,16 +33,45 @@ def p_diamondtype(p):
 def p_list(p):
     ''' list : designacion diamondType t_Igual
     '''
+
+#ysrael larco faubla
+def p_add(p):
+  '''add : VINT PLUS VINT
+  | VINT PLUS VFLOAT
+  | VFLOAT PLUS VFLOAT
+  '''
+
+def p_subtract(p):
+  '''subtract : VINT MINUS VINT
+  | VINT MINUS VFLOAT
+  | VFLOAT MINUS VFLOAT
+  '''
+def p_multiply(p):
+  '''multiply : VINT TIMES VINT
+  | VFLOAT TIMES VFLOAT
+  | VFLOAT TIMES VINT
+  | VINT TIMES VFLOAT
+  '''
+def p_divide(p):
+  '''divide : VINT DIVIDE VINT
+  | VFLOAT DIVIDE VFLOAT
+  | VFLOAT DIVIDE VINT
+  | VINT DIVIDE VFLOAT
+  '''
+
+# Ysrael Larco
 def p_compareType(p):
     '''compareType : VINT IGUAL VINT
     | VFLOAT IGUAL VFLOAT
     '''
 
+# Ysrael Larco
 def p_compareGreaterthan(p):
     '''compareGreaterthan : VINT MAYOR VINT
     | VFLOAT MAYOR VFLOAT
   '''
-  
+
+# Ysrael Larco
 def p_compareSmallerthan(p):
     '''compareSmallerthan : VINT MENOR VINT
     | VFLOAT MENOR VFLOAT

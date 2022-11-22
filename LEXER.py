@@ -94,7 +94,8 @@ tokens = [
   'AND',
   'OR',
   'VARIABLE',
-  'DOUBLEPOINTS'
+  'DOUBLEPOINTS',
+  'DOT'
 ] + list(reserved.values())
 
 #Jandry Rodriguez (final)
@@ -117,6 +118,7 @@ t_NEQUAL = r'<>'
 t_AND = r'&&'
 t_OR = r'\|\|'
 t_DOUBLEPOINTS = r':'
+t_DOT = r'\.'
 
 #Luis Donoso (inicio)
 

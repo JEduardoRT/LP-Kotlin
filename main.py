@@ -42,6 +42,7 @@ def p_listOf(p):
 def p_elementos(p):
     '''elementos : elementos COMA valor
     | valor
+    | empty
     '''
 
 
@@ -87,6 +88,22 @@ def p_pair(p):
 def p_inData(p):
     '''inData : designacion VARIABLE igual READLINE LPAREN RPAREN'''
 
+
+def p_voidCallMethod(p):
+    '''voidCallMethod : VARIABLE DOT LPAREN parametherMethod RPAREN'''
+
+def p_callMethod(p):
+    '''callMethod : designacion VARIABLE IGUAL VARIABLE DOT LPAREN parametherMet RPAREN'''
+def p_parametherMet(p):
+    '''
+    parametherMet : VARIABLE
+    | parametherMet COMA VARIABLE
+    | empty
+    '''
+
+def p_empty(p):
+    'empty :'
+    pass
 
 def p_compareType(p):
     '''compareType : VINT IGUAL VINT

@@ -15,11 +15,13 @@ def p_cuerpoF(p):
 def p_asignacion(p):
   'asignacion : designacion VARIABLE DOUBLEPOINTS tipo IGUAL valor'
 
+#Donoso Bravo Luis Alejandro
 def p_designacion(p):
     """designacion : VAL 
         | VAR
     """
 
+#Donoso Bravo Luis Alejandro
 
 def p_tipo(p):
     """tipo : TINT
@@ -27,25 +29,30 @@ def p_tipo(p):
         | STRING
     """
 
+#Donoso Bravo Luis Alejandro
 
 def p_diamondtype(p):
     """diamondType : MINOR tipo MAYOR"""
+#Donoso Bravo Luis Alejandro
 
 def p_listAsignacion(p):
     ''' listAsignacion : designacion  VARIABLE DOUBLEPOINT LIST diamondType
     | designacion VARIABLE
     '''
 
+#Donoso Bravo Luis Alejandro
 
 def p_listOf(p):
     '''listOf : lISTOF LPAREN elementos RPAREN '''
 
+#Donoso Bravo Luis Alejandro
 
 def p_elementos(p):
     '''elementos : elementos COMA valor
     | valor
     '''
 
+#Donoso Bravo Luis Alejandro
 
 def p_valor(p):
     '''valor : VINT
@@ -53,12 +60,12 @@ def p_valor(p):
     | STRING
     '''
 
+#Donoso Bravo Luis Alejandro
 
 def p_list(p):
     '''list : listAsignacion IGUAL listof
     '''
 
-<<<<<<< HEAD
 #ysrael larco faubla
 def p_add(p):
   '''add : VINT PLUS VINT
@@ -84,34 +91,40 @@ def p_divide(p):
   | VINT DIVIDE VFLOAT
   '''
 
-=======
+#Donoso Bravo Luis Alejandro
 
 def p_mutListAsignacion(p):
     ''' mutListAsignacion : designacion VARIABLE DOUBLEPOINT MUTABLELIST diamondType
     | designacion VARIABLE
     '''
 
+#Donoso Bravo Luis Alejandro
 
 def mutableListOf(p):
     '''mutableListOf : MUTABLELISTOF LPAREN elementos RPAREN'''
 
+#Donoso Bravo Luis Alejandro
 
 def p_mutableList(p):
     '''mutableList : mutListAsignacion IGUAL mutableListOf
     '''
 
+#Donoso Bravo Luis Alejandro
 
 def p_pairAsignation(p):
     '''pairAsignation : designacion RPAREN VARIABLE COMA VARIABLE LPAREN'''
 
+#Donoso Bravo Luis Alejandro
 
 def p_pairBody(p):
     '''pairBody : PAIR LPAREN valor COMA valor RPAREN'''
 
+#Donoso Bravo Luis Alejandro
 
 def p_pair(p):
     '''pair : pairAsignation IGUAL pairBody
     '''
+#Donoso Bravo Luis Alejandro
 
 def p_inData(p):
     '''inData : designacion VARIABLE igual READLINE LPAREN RPAREN'''

@@ -118,7 +118,7 @@ def p_inData(p):
 
 
 >>>>>>> 647a12a69686edba361f008b2d494303d827c697
-# Ysrael Larco
+# Ysrael Larco faubla
 def p_compareType(p):
     '''compareType : VINT IGUAL VINT
     | VFLOAT IGUAL VFLOAT

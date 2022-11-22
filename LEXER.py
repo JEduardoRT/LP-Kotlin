@@ -69,6 +69,7 @@ reserved = {
   'mutableList': 'MUTABLELIST',
   'mutableListOf': 'MUTABLELISTOF',
   'pair': 'PAIR',
+  'readLine': 'READLINE'
 }
 
 #Ysrael Larco (final)

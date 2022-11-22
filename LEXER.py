@@ -95,7 +95,8 @@ tokens = [
   'OR',
   'VARIABLE',
   'DOUBLEPOINTS',
-  'DOT'
+  'DOT',
+  'COMA'
 ] + list(reserved.values())
 
 #Jandry Rodriguez (final)
@@ -119,6 +120,7 @@ t_AND = r'&&'
 t_OR = r'\|\|'
 t_DOUBLEPOINTS = r':'
 t_DOT = r'\.'
+t_COMA = r','
 
 #Luis Donoso (inicio)
 
@@ -164,31 +166,3 @@ def t_error(t):
  
  # Build the lexer
 lexer = lex.lex()
-
-#Ysrael Larco (final)
-
-#Luis Donoso (inicio)
-
-# Test it out
-instructions = '''3 + 4 * 10
-   + -20 *2
-'''
-
-def getTokens(lexer):
-  for tok in lexer:
-    print(tok)
-
-linea=" "
-
-file = open("source.txt")
-cadena=file.read()
-file.close()
-lexer.input(cadena)
-getTokens(lexer)
-
-while linea!="":
-    linea=input(">>")
-    lexer.input(linea)
-    getTokens(lexer)
-# Tokenize
-print("Succesfull")

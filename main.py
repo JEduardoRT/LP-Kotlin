@@ -5,6 +5,8 @@ import LEXER
 def p_cuerpoF(p):
   '''cuerpoF : asignacion
   | impresion
+  | declaracion
+  | asigna
   | compareType
   | compareGreaterthan
   | compareSmallerthan
@@ -105,6 +107,37 @@ def p_compareSmallerthan(p):
 
 def p_impresion(p):
   'impresion : PRINTLN LPAREN valor RPAREN'
+
+def p_implementa_funcion(p):
+    
+    '''implementa_funcion : FUN VARIABLE LPAREN listaparametros RPAREN DOUBLEPOINTS tipo LKEY instrucciones retorno RKEY
+    | FUN VARIABLE LPAREN RPAREN DOUBLEPOINTS tipo LKEY instrucciones retorno RKEY
+    | FUN VARIABLE LPAREN RPAREN DOUBLEPOINTS VOID LKEY instrucciones RKEY
+    | FUN VARIABLE LPAREN listaparametros RPAREN DOUBLEPOINTS VOID LKEY instrucciones RKEY'''
+
+def p_listaparametros(p):
+    '''listaparametros : parametro
+    | parametro SEPARATOR listaparametros'''
+    
+def p_parametro(p):
+    'parametro : VARIABLE DOUBLEPOINTS tipo'
+
+def p_retorno(p):
+  'RETURN asignado'
+
+def p_instrucciones(p):
+  '''instrucciones : cuerpoF
+      | instrucciones'''
+
+def p_asigna(p):
+  'asigna : VARIABLE IGUAL asignado'
+
+def p_asignado(p):
+  '''valor 
+| VARIABLE 
+| compareType 
+| compareGreaterthan 
+| compareSmallerthan'''
 
 def p_error(p):
     if p:

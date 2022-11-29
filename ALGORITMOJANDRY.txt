@@ -1,6 +1,0 @@
-numero: Float = 5
-if(numero < 1){
-	println(numero*5)
-}else {
-	println(numero/5)
-}

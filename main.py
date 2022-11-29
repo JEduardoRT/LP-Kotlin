@@ -157,6 +157,30 @@ def p_compareSmallerthan(p):
 def p_impresion(p):
   'impresion : PRINTLN LPAREN valor RPAREN'
 
+def p_condicion(p):
+    ''' condicion : p_compareType
+    | compareGreaterthan
+    | compareSmallerthan
+    '''
+def p_condicionFor(p):
+    ' condicionFor : IF LAREPN TIPO VARIABLE IGUAL VARIABLE DOUBLEPOINTS MINOR IGUAL VARIABLE DOUBLEPOINTS VARIBALE PLUS PLUS '
+
+#ysrael larco faubla
+def p_implementa_if(p):
+    'contolIf : IF LPAREN condicion RPAREN LKEY cuerpoF RKEY'
+
+#ysrael larco faubla
+def p_implementa_for(p):
+    'contolFor : FOR LPAREN condicionFor RPAREN LKEY cuerpoF RKEY'
+
+#ysrael larco faubla
+def p_implementa_while(p):
+    'contolWhile : WHILE LPAREN condicion RPAREN LKEY cuerpoF RKEY'
+
+#ysrael larco faubla
+def p_implementa_when(p):
+    'contolWhen : WHEN LPAREN VARIABLE RPAREN LKEY cuerpoF RKEY'
+
 def p_implementa_funcion(p):
 
     '''implementa_funcion : FUN VARIABLE LPAREN listaparametros RPAREN DOUBLEPOINTS tipo LKEY instrucciones retorno RKEY

@@ -1,6 +1,8 @@
 #Ysrael Larco
-var a = 15
-a < 88
+val x: INT = 1
+while(x < 5){
+    println(hola)
+}
 
 #Jandry Rodriguez
 fun numerofun(): void {

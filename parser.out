@@ -1,0 +1,3845 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    ABSTRACT
+    AND
+    AS
+    ASYNC
+    BREAK
+    CASE
+    CATCH
+    CLASS
+    CONST
+    CONSTRUCTOR
+    CONTINUE
+    DEFAULT
+    DO
+    ENUM
+    EXTENDS
+    EXTERNAL
+    FACTORY
+    FALSE
+    FINAL
+    FUNCTION
+    GET
+    HIDE
+    IMPORT
+    INFIX
+    INIT
+    INTERFACE
+    IS
+    LIBRARY
+    NEQUAL
+    NEW
+    NULL
+    OPEN
+    OPERATOR
+    OR
+    OUT
+    OVERRIDE
+    PART
+    SET
+    SETPARAM
+    STATIC
+    SUPER
+    SWITCH
+    SYNC
+    THIS
+    THROW
+    TRUE
+    TRY
+    TYPEALIAS
+    TYPEOF
+    WITH
+
+Grammar
+
+Rule 0     S' -> documento
+Rule 1     documento -> implementa_funcion
+Rule 2     documento -> instrucciones
+Rule 3     cuerpoF -> asignacion
+Rule 4     cuerpoF -> impresion
+Rule 5     cuerpoF -> asigna
+Rule 6     cuerpoF -> compareType
+Rule 7     cuerpoF -> compareGreaterthan
+Rule 8     cuerpoF -> compareSmallerthan
+Rule 9     cuerpoF -> list
+Rule 10    cuerpoF -> mutableList
+Rule 11    cuerpoF -> pair
+Rule 12    cuerpoF -> inData
+Rule 13    cuerpoF -> if
+Rule 14    cuerpoF -> for
+Rule 15    cuerpoF -> while
+Rule 16    cuerpoF -> when
+Rule 17    asignacion -> designacion VARIABLE DOUBLEPOINTS tipo IGUAL valor
+Rule 18    designacion -> VAL
+Rule 19    designacion -> VAR
+Rule 20    tipo -> TINT
+Rule 21    tipo -> TFLOAT
+Rule 22    tipo -> STRING
+Rule 23    diamondType -> MINOR tipo MAYOR
+Rule 24    listAsignacion -> designacion VARIABLE DOUBLEPOINTS LIST diamondType
+Rule 25    listAsignacion -> designacion VARIABLE
+Rule 26    listOf -> LISTOF LPAREN elementos RPAREN
+Rule 27    elementos -> elementos COMA valor
+Rule 28    elementos -> valor
+Rule 29    valor -> VINT
+Rule 30    valor -> VFLOAT
+Rule 31    valor -> STRING
+Rule 32    list -> listAsignacion IGUAL listOf
+Rule 33    add -> VINT PLUS VINT
+Rule 34    add -> VINT PLUS VFLOAT
+Rule 35    add -> VFLOAT PLUS VFLOAT
+Rule 36    subtract -> VINT MINUS VINT
+Rule 37    subtract -> VINT MINUS VFLOAT
+Rule 38    subtract -> VFLOAT MINUS VFLOAT
+Rule 39    multiply -> VINT TIMES VINT
+Rule 40    multiply -> VFLOAT TIMES VFLOAT
+Rule 41    multiply -> VFLOAT TIMES VINT
+Rule 42    multiply -> VINT TIMES VFLOAT
+Rule 43    divide -> VINT DIVIDE VINT
+Rule 44    divide -> VFLOAT DIVIDE VFLOAT
+Rule 45    divide -> VFLOAT DIVIDE VINT
+Rule 46    divide -> VINT DIVIDE VFLOAT
+Rule 47    mutListAsignacion -> designacion VARIABLE DOUBLEPOINTS MUTABLELIST diamondType
+Rule 48    mutListAsignacion -> designacion VARIABLE
+Rule 49    mutableListOf -> MUTABLELISTOF LPAREN elementos RPAREN
+Rule 50    mutableList -> mutListAsignacion IGUAL mutableListOf
+Rule 51    pairAsignation -> designacion LPAREN VARIABLE COMA VARIABLE RPAREN
+Rule 52    pairBody -> PAIR LPAREN valor COMA valor RPAREN
+Rule 53    pair -> pairAsignation IGUAL pairBody
+Rule 54    inData -> designacion VARIABLE IGUAL READLINE LPAREN RPAREN
+Rule 55    compareType -> VINT IGUAL VINT
+Rule 56    compareType -> VFLOAT IGUAL VFLOAT
+Rule 57    compareGreaterthan -> VINT MAYOR VINT
+Rule 58    compareGreaterthan -> VFLOAT MAYOR VFLOAT
+Rule 59    compareSmallerthan -> VINT MINOR VINT
+Rule 60    compareSmallerthan -> VFLOAT MINOR VFLOAT
+Rule 61    impresion -> PRINTLN LPAREN valor RPAREN
+Rule 62    condicion -> compareType
+Rule 63    condicion -> compareGreaterthan
+Rule 64    condicion -> compareSmallerthan
+Rule 65    if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY
+Rule 66    if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY else
+Rule 67    if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY elseif else
+Rule 68    elseif -> ELSE IF LPAREN condicion RPAREN LKEY cuerpoF RKEY
+Rule 69    else -> LKEY cuerpoF RKEY
+Rule 70    condicionFor -> condicionRango
+Rule 71    condicionFor -> condicionBloque
+Rule 72    condicionRango -> VARIABLE IN VINT DOT DOT VINT
+Rule 73    condicionBloque -> VARIABLE IN LISTOF
+Rule 74    for -> FOR LPAREN condicionFor RPAREN LKEY cuerpoF RKEY
+Rule 75    while -> WHILE LPAREN condicion RPAREN LKEY cuerpoF RKEY
+Rule 76    when -> WHEN LPAREN VARIABLE RPAREN LKEY cuerpoF RKEY
+Rule 77    implementa_funcion -> FUN VARIABLE LPAREN listaparametros RPAREN DOUBLEPOINTS tipo LKEY instrucciones retorno RKEY
+Rule 78    implementa_funcion -> FUN VARIABLE LPAREN RPAREN DOUBLEPOINTS tipo LKEY instrucciones retorno RKEY
+Rule 79    implementa_funcion -> FUN VARIABLE LPAREN RPAREN DOUBLEPOINTS VOID LKEY instrucciones RKEY
+Rule 80    implementa_funcion -> FUN VARIABLE LPAREN listaparametros RPAREN DOUBLEPOINTS VOID LKEY instrucciones RKEY
+Rule 81    listaparametros -> parametro
+Rule 82    listaparametros -> parametro COMA listaparametros
+Rule 83    parametro -> VARIABLE DOUBLEPOINTS tipo
+Rule 84    retorno -> RETURN asignado
+Rule 85    instrucciones -> cuerpoF
+Rule 86    instrucciones -> cuerpoF instrucciones
+Rule 87    asigna -> VARIABLE IGUAL asignado
+Rule 88    asignado -> valor
+Rule 89    asignado -> VARIABLE
+Rule 90    asignado -> compareType
+Rule 91    asignado -> compareGreaterthan
+Rule 92    asignado -> compareSmallerthan
+Rule 93    asignado -> add
+Rule 94    asignado -> subtract
+Rule 95    asignado -> multiply
+Rule 96    asignado -> divide
+
+Terminals, with rules where they appear
+
+ABSTRACT             : 
+AND                  : 
+AS                   : 
+ASYNC                : 
+BREAK                : 
+CASE                 : 
+CATCH                : 
+CLASS                : 
+COMA                 : 27 51 52 82
+CONST                : 
+CONSTRUCTOR          : 
+CONTINUE             : 
+DEFAULT              : 
+DIVIDE               : 43 44 45 46
+DO                   : 
+DOT                  : 72 72
+DOUBLEPOINTS         : 17 24 47 77 78 79 80 83
+ELSE                 : 68
+ENUM                 : 
+EXTENDS              : 
+EXTERNAL             : 
+FACTORY              : 
+FALSE                : 
+FINAL                : 
+FOR                  : 74
+FUN                  : 77 78 79 80
+FUNCTION             : 
+GET                  : 
+HIDE                 : 
+IF                   : 65 66 67 68
+IGUAL                : 17 32 50 53 54 55 56 87
+IMPORT               : 
+IN                   : 72 73
+INFIX                : 
+INIT                 : 
+INTERFACE            : 
+IS                   : 
+LIBRARY              : 
+LIST                 : 24
+LISTOF               : 26 73
+LKEY                 : 65 66 67 68 69 74 75 76 77 78 79 80
+LPAREN               : 26 49 51 52 54 61 65 66 67 68 74 75 76 77 78 79 80
+MAYOR                : 23 57 58
+MINOR                : 23 59 60
+MINUS                : 36 37 38
+MUTABLELIST          : 47
+MUTABLELISTOF        : 49
+NEQUAL               : 
+NEW                  : 
+NULL                 : 
+OPEN                 : 
+OPERATOR             : 
+OR                   : 
+OUT                  : 
+OVERRIDE             : 
+PAIR                 : 52
+PART                 : 
+PLUS                 : 33 34 35
+PRINTLN              : 61
+READLINE             : 54
+RETURN               : 84
+RKEY                 : 65 66 67 68 69 74 75 76 77 78 79 80
+RPAREN               : 26 49 51 52 54 61 65 66 67 68 74 75 76 77 78 79 80
+SET                  : 
+SETPARAM             : 
+STATIC               : 
+STRING               : 22 31
+SUPER                : 
+SWITCH               : 
+SYNC                 : 
+TFLOAT               : 21
+THIS                 : 
+THROW                : 
+TIMES                : 39 40 41 42
+TINT                 : 20
+TRUE                 : 
+TRY                  : 
+TYPEALIAS            : 
+TYPEOF               : 
+VAL                  : 18
+VAR                  : 19
+VARIABLE             : 17 24 25 47 48 51 51 54 72 73 76 77 78 79 80 83 87 89
+VFLOAT               : 30 34 35 35 37 38 38 40 40 41 42 44 44 45 46 56 56 58 58 60 60
+VINT                 : 29 33 33 34 36 36 37 39 39 41 42 43 43 45 46 55 55 57 57 59 59 72 72
+VOID                 : 79 80
+WHEN                 : 76
+WHILE                : 75
+WITH                 : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+add                  : 93
+asigna               : 5
+asignacion           : 3
+asignado             : 84 87
+compareGreaterthan   : 7 63 91
+compareSmallerthan   : 8 64 92
+compareType          : 6 62 90
+condicion            : 65 66 67 68 75
+condicionBloque      : 71
+condicionFor         : 74
+condicionRango       : 70
+cuerpoF              : 65 66 67 68 69 74 75 76 85 86
+designacion          : 17 24 25 47 48 51 54
+diamondType          : 24 47
+divide               : 96
+documento            : 0
+elementos            : 26 27 49
+else                 : 66 67
+elseif               : 67
+for                  : 14
+if                   : 13
+implementa_funcion   : 1
+impresion            : 4
+inData               : 12
+instrucciones        : 2 77 78 79 80 86
+list                 : 9
+listAsignacion       : 32
+listOf               : 32
+listaparametros      : 77 80 82
+multiply             : 95
+mutListAsignacion    : 50
+mutableList          : 10
+mutableListOf        : 50
+pair                 : 11
+pairAsignation       : 53
+pairBody             : 53
+parametro            : 81 82
+retorno              : 77 78
+subtract             : 94
+tipo                 : 17 23 77 78 83
+valor                : 17 27 28 52 52 61 88
+when                 : 16
+while                : 15
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . documento
+    (1) documento -> . implementa_funcion
+    (2) documento -> . instrucciones
+    (77) implementa_funcion -> . FUN VARIABLE LPAREN listaparametros RPAREN DOUBLEPOINTS tipo LKEY instrucciones retorno RKEY
+    (78) implementa_funcion -> . FUN VARIABLE LPAREN RPAREN DOUBLEPOINTS tipo LKEY instrucciones retorno RKEY
+    (79) implementa_funcion -> . FUN VARIABLE LPAREN RPAREN DOUBLEPOINTS VOID LKEY instrucciones RKEY
+    (80) implementa_funcion -> . FUN VARIABLE LPAREN listaparametros RPAREN DOUBLEPOINTS VOID LKEY instrucciones RKEY
+    (85) instrucciones -> . cuerpoF
+    (86) instrucciones -> . cuerpoF instrucciones
+    (3) cuerpoF -> . asignacion
+    (4) cuerpoF -> . impresion
+    (5) cuerpoF -> . asigna
+    (6) cuerpoF -> . compareType
+    (7) cuerpoF -> . compareGreaterthan
+    (8) cuerpoF -> . compareSmallerthan
+    (9) cuerpoF -> . list
+    (10) cuerpoF -> . mutableList
+    (11) cuerpoF -> . pair
+    (12) cuerpoF -> . inData
+    (13) cuerpoF -> . if
+    (14) cuerpoF -> . for
+    (15) cuerpoF -> . while
+    (16) cuerpoF -> . when
+    (17) asignacion -> . designacion VARIABLE DOUBLEPOINTS tipo IGUAL valor
+    (61) impresion -> . PRINTLN LPAREN valor RPAREN
+    (87) asigna -> . VARIABLE IGUAL asignado
+    (55) compareType -> . VINT IGUAL VINT
+    (56) compareType -> . VFLOAT IGUAL VFLOAT
+    (57) compareGreaterthan -> . VINT MAYOR VINT
+    (58) compareGreaterthan -> . VFLOAT MAYOR VFLOAT
+    (59) compareSmallerthan -> . VINT MINOR VINT
+    (60) compareSmallerthan -> . VFLOAT MINOR VFLOAT
+    (32) list -> . listAsignacion IGUAL listOf
+    (50) mutableList -> . mutListAsignacion IGUAL mutableListOf
+    (53) pair -> . pairAsignation IGUAL pairBody
+    (54) inData -> . designacion VARIABLE IGUAL READLINE LPAREN RPAREN
+    (65) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY
+    (66) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY else
+    (67) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY elseif else
+    (74) for -> . FOR LPAREN condicionFor RPAREN LKEY cuerpoF RKEY
+    (75) while -> . WHILE LPAREN condicion RPAREN LKEY cuerpoF RKEY
+    (76) when -> . WHEN LPAREN VARIABLE RPAREN LKEY cuerpoF RKEY
+    (18) designacion -> . VAL
+    (19) designacion -> . VAR
+    (24) listAsignacion -> . designacion VARIABLE DOUBLEPOINTS LIST diamondType
+    (25) listAsignacion -> . designacion VARIABLE
+    (47) mutListAsignacion -> . designacion VARIABLE DOUBLEPOINTS MUTABLELIST diamondType
+    (48) mutListAsignacion -> . designacion VARIABLE
+    (51) pairAsignation -> . designacion LPAREN VARIABLE COMA VARIABLE RPAREN
+
+    FUN             shift and go to state 4
+    PRINTLN         shift and go to state 22
+    VARIABLE        shift and go to state 5
+    VINT            shift and go to state 23
+    VFLOAT          shift and go to state 24
+    IF              shift and go to state 28
+    FOR             shift and go to state 29
+    WHILE           shift and go to state 30
+    WHEN            shift and go to state 31
+    VAL             shift and go to state 32
+    VAR             shift and go to state 33
+
+    documento                      shift and go to state 1
+    implementa_funcion             shift and go to state 2
+    instrucciones                  shift and go to state 3
+    cuerpoF                        shift and go to state 6
+    asignacion                     shift and go to state 7
+    impresion                      shift and go to state 8
+    asigna                         shift and go to state 9
+    compareType                    shift and go to state 10
+    compareGreaterthan             shift and go to state 11
+    compareSmallerthan             shift and go to state 12
+    list                           shift and go to state 13
+    mutableList                    shift and go to state 14
+    pair                           shift and go to state 15
+    inData                         shift and go to state 16
+    if                             shift and go to state 17
+    for                            shift and go to state 18
+    while                          shift and go to state 19
+    when                           shift and go to state 20
+    designacion                    shift and go to state 21
+    listAsignacion                 shift and go to state 25
+    mutListAsignacion              shift and go to state 26
+    pairAsignation                 shift and go to state 27
+
+state 1
+
+    (0) S' -> documento .
+
+
+
+state 2
+
+    (1) documento -> implementa_funcion .
+
+    $end            reduce using rule 1 (documento -> implementa_funcion .)
+
+
+state 3
+
+    (2) documento -> instrucciones .
+
+    $end            reduce using rule 2 (documento -> instrucciones .)
+
+
+state 4
+
+    (77) implementa_funcion -> FUN . VARIABLE LPAREN listaparametros RPAREN DOUBLEPOINTS tipo LKEY instrucciones retorno RKEY
+    (78) implementa_funcion -> FUN . VARIABLE LPAREN RPAREN DOUBLEPOINTS tipo LKEY instrucciones retorno RKEY
+    (79) implementa_funcion -> FUN . VARIABLE LPAREN RPAREN DOUBLEPOINTS VOID LKEY instrucciones RKEY
+    (80) implementa_funcion -> FUN . VARIABLE LPAREN listaparametros RPAREN DOUBLEPOINTS VOID LKEY instrucciones RKEY
+
+    VARIABLE        shift and go to state 34
+
+
+state 5
+
+    (87) asigna -> VARIABLE . IGUAL asignado
+
+    IGUAL           shift and go to state 35
+
+
+state 6
+
+    (85) instrucciones -> cuerpoF .
+    (86) instrucciones -> cuerpoF . instrucciones
+    (85) instrucciones -> . cuerpoF
+    (86) instrucciones -> . cuerpoF instrucciones
+    (3) cuerpoF -> . asignacion
+    (4) cuerpoF -> . impresion
+    (5) cuerpoF -> . asigna
+    (6) cuerpoF -> . compareType
+    (7) cuerpoF -> . compareGreaterthan
+    (8) cuerpoF -> . compareSmallerthan
+    (9) cuerpoF -> . list
+    (10) cuerpoF -> . mutableList
+    (11) cuerpoF -> . pair
+    (12) cuerpoF -> . inData
+    (13) cuerpoF -> . if
+    (14) cuerpoF -> . for
+    (15) cuerpoF -> . while
+    (16) cuerpoF -> . when
+    (17) asignacion -> . designacion VARIABLE DOUBLEPOINTS tipo IGUAL valor
+    (61) impresion -> . PRINTLN LPAREN valor RPAREN
+    (87) asigna -> . VARIABLE IGUAL asignado
+    (55) compareType -> . VINT IGUAL VINT
+    (56) compareType -> . VFLOAT IGUAL VFLOAT
+    (57) compareGreaterthan -> . VINT MAYOR VINT
+    (58) compareGreaterthan -> . VFLOAT MAYOR VFLOAT
+    (59) compareSmallerthan -> . VINT MINOR VINT
+    (60) compareSmallerthan -> . VFLOAT MINOR VFLOAT
+    (32) list -> . listAsignacion IGUAL listOf
+    (50) mutableList -> . mutListAsignacion IGUAL mutableListOf
+    (53) pair -> . pairAsignation IGUAL pairBody
+    (54) inData -> . designacion VARIABLE IGUAL READLINE LPAREN RPAREN
+    (65) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY
+    (66) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY else
+    (67) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY elseif else
+    (74) for -> . FOR LPAREN condicionFor RPAREN LKEY cuerpoF RKEY
+    (75) while -> . WHILE LPAREN condicion RPAREN LKEY cuerpoF RKEY
+    (76) when -> . WHEN LPAREN VARIABLE RPAREN LKEY cuerpoF RKEY
+    (18) designacion -> . VAL
+    (19) designacion -> . VAR
+    (24) listAsignacion -> . designacion VARIABLE DOUBLEPOINTS LIST diamondType
+    (25) listAsignacion -> . designacion VARIABLE
+    (47) mutListAsignacion -> . designacion VARIABLE DOUBLEPOINTS MUTABLELIST diamondType
+    (48) mutListAsignacion -> . designacion VARIABLE
+    (51) pairAsignation -> . designacion LPAREN VARIABLE COMA VARIABLE RPAREN
+
+    $end            reduce using rule 85 (instrucciones -> cuerpoF .)
+    RETURN          reduce using rule 85 (instrucciones -> cuerpoF .)
+    RKEY            reduce using rule 85 (instrucciones -> cuerpoF .)
+    PRINTLN         shift and go to state 22
+    VARIABLE        shift and go to state 5
+    VINT            shift and go to state 23
+    VFLOAT          shift and go to state 24
+    IF              shift and go to state 28
+    FOR             shift and go to state 29
+    WHILE           shift and go to state 30
+    WHEN            shift and go to state 31
+    VAL             shift and go to state 32
+    VAR             shift and go to state 33
+
+    cuerpoF                        shift and go to state 6
+    instrucciones                  shift and go to state 36
+    asignacion                     shift and go to state 7
+    impresion                      shift and go to state 8
+    asigna                         shift and go to state 9
+    compareType                    shift and go to state 10
+    compareGreaterthan             shift and go to state 11
+    compareSmallerthan             shift and go to state 12
+    list                           shift and go to state 13
+    mutableList                    shift and go to state 14
+    pair                           shift and go to state 15
+    inData                         shift and go to state 16
+    if                             shift and go to state 17
+    for                            shift and go to state 18
+    while                          shift and go to state 19
+    when                           shift and go to state 20
+    designacion                    shift and go to state 21
+    listAsignacion                 shift and go to state 25
+    mutListAsignacion              shift and go to state 26
+    pairAsignation                 shift and go to state 27
+
+state 7
+
+    (3) cuerpoF -> asignacion .
+
+    PRINTLN         reduce using rule 3 (cuerpoF -> asignacion .)
+    VARIABLE        reduce using rule 3 (cuerpoF -> asignacion .)
+    VINT            reduce using rule 3 (cuerpoF -> asignacion .)
+    VFLOAT          reduce using rule 3 (cuerpoF -> asignacion .)
+    IF              reduce using rule 3 (cuerpoF -> asignacion .)
+    FOR             reduce using rule 3 (cuerpoF -> asignacion .)
+    WHILE           reduce using rule 3 (cuerpoF -> asignacion .)
+    WHEN            reduce using rule 3 (cuerpoF -> asignacion .)
+    VAL             reduce using rule 3 (cuerpoF -> asignacion .)
+    VAR             reduce using rule 3 (cuerpoF -> asignacion .)
+    $end            reduce using rule 3 (cuerpoF -> asignacion .)
+    RETURN          reduce using rule 3 (cuerpoF -> asignacion .)
+    RKEY            reduce using rule 3 (cuerpoF -> asignacion .)
+
+
+state 8
+
+    (4) cuerpoF -> impresion .
+
+    PRINTLN         reduce using rule 4 (cuerpoF -> impresion .)
+    VARIABLE        reduce using rule 4 (cuerpoF -> impresion .)
+    VINT            reduce using rule 4 (cuerpoF -> impresion .)
+    VFLOAT          reduce using rule 4 (cuerpoF -> impresion .)
+    IF              reduce using rule 4 (cuerpoF -> impresion .)
+    FOR             reduce using rule 4 (cuerpoF -> impresion .)
+    WHILE           reduce using rule 4 (cuerpoF -> impresion .)
+    WHEN            reduce using rule 4 (cuerpoF -> impresion .)
+    VAL             reduce using rule 4 (cuerpoF -> impresion .)
+    VAR             reduce using rule 4 (cuerpoF -> impresion .)
+    $end            reduce using rule 4 (cuerpoF -> impresion .)
+    RETURN          reduce using rule 4 (cuerpoF -> impresion .)
+    RKEY            reduce using rule 4 (cuerpoF -> impresion .)
+
+
+state 9
+
+    (5) cuerpoF -> asigna .
+
+    PRINTLN         reduce using rule 5 (cuerpoF -> asigna .)
+    VARIABLE        reduce using rule 5 (cuerpoF -> asigna .)
+    VINT            reduce using rule 5 (cuerpoF -> asigna .)
+    VFLOAT          reduce using rule 5 (cuerpoF -> asigna .)
+    IF              reduce using rule 5 (cuerpoF -> asigna .)
+    FOR             reduce using rule 5 (cuerpoF -> asigna .)
+    WHILE           reduce using rule 5 (cuerpoF -> asigna .)
+    WHEN            reduce using rule 5 (cuerpoF -> asigna .)
+    VAL             reduce using rule 5 (cuerpoF -> asigna .)
+    VAR             reduce using rule 5 (cuerpoF -> asigna .)
+    $end            reduce using rule 5 (cuerpoF -> asigna .)
+    RETURN          reduce using rule 5 (cuerpoF -> asigna .)
+    RKEY            reduce using rule 5 (cuerpoF -> asigna .)
+
+
+state 10
+
+    (6) cuerpoF -> compareType .
+
+    PRINTLN         reduce using rule 6 (cuerpoF -> compareType .)
+    VARIABLE        reduce using rule 6 (cuerpoF -> compareType .)
+    VINT            reduce using rule 6 (cuerpoF -> compareType .)
+    VFLOAT          reduce using rule 6 (cuerpoF -> compareType .)
+    IF              reduce using rule 6 (cuerpoF -> compareType .)
+    FOR             reduce using rule 6 (cuerpoF -> compareType .)
+    WHILE           reduce using rule 6 (cuerpoF -> compareType .)
+    WHEN            reduce using rule 6 (cuerpoF -> compareType .)
+    VAL             reduce using rule 6 (cuerpoF -> compareType .)
+    VAR             reduce using rule 6 (cuerpoF -> compareType .)
+    $end            reduce using rule 6 (cuerpoF -> compareType .)
+    RETURN          reduce using rule 6 (cuerpoF -> compareType .)
+    RKEY            reduce using rule 6 (cuerpoF -> compareType .)
+
+
+state 11
+
+    (7) cuerpoF -> compareGreaterthan .
+
+    PRINTLN         reduce using rule 7 (cuerpoF -> compareGreaterthan .)
+    VARIABLE        reduce using rule 7 (cuerpoF -> compareGreaterthan .)
+    VINT            reduce using rule 7 (cuerpoF -> compareGreaterthan .)
+    VFLOAT          reduce using rule 7 (cuerpoF -> compareGreaterthan .)
+    IF              reduce using rule 7 (cuerpoF -> compareGreaterthan .)
+    FOR             reduce using rule 7 (cuerpoF -> compareGreaterthan .)
+    WHILE           reduce using rule 7 (cuerpoF -> compareGreaterthan .)
+    WHEN            reduce using rule 7 (cuerpoF -> compareGreaterthan .)
+    VAL             reduce using rule 7 (cuerpoF -> compareGreaterthan .)
+    VAR             reduce using rule 7 (cuerpoF -> compareGreaterthan .)
+    $end            reduce using rule 7 (cuerpoF -> compareGreaterthan .)
+    RETURN          reduce using rule 7 (cuerpoF -> compareGreaterthan .)
+    RKEY            reduce using rule 7 (cuerpoF -> compareGreaterthan .)
+
+
+state 12
+
+    (8) cuerpoF -> compareSmallerthan .
+
+    PRINTLN         reduce using rule 8 (cuerpoF -> compareSmallerthan .)
+    VARIABLE        reduce using rule 8 (cuerpoF -> compareSmallerthan .)
+    VINT            reduce using rule 8 (cuerpoF -> compareSmallerthan .)
+    VFLOAT          reduce using rule 8 (cuerpoF -> compareSmallerthan .)
+    IF              reduce using rule 8 (cuerpoF -> compareSmallerthan .)
+    FOR             reduce using rule 8 (cuerpoF -> compareSmallerthan .)
+    WHILE           reduce using rule 8 (cuerpoF -> compareSmallerthan .)
+    WHEN            reduce using rule 8 (cuerpoF -> compareSmallerthan .)
+    VAL             reduce using rule 8 (cuerpoF -> compareSmallerthan .)
+    VAR             reduce using rule 8 (cuerpoF -> compareSmallerthan .)
+    $end            reduce using rule 8 (cuerpoF -> compareSmallerthan .)
+    RETURN          reduce using rule 8 (cuerpoF -> compareSmallerthan .)
+    RKEY            reduce using rule 8 (cuerpoF -> compareSmallerthan .)
+
+
+state 13
+
+    (9) cuerpoF -> list .
+
+    PRINTLN         reduce using rule 9 (cuerpoF -> list .)
+    VARIABLE        reduce using rule 9 (cuerpoF -> list .)
+    VINT            reduce using rule 9 (cuerpoF -> list .)
+    VFLOAT          reduce using rule 9 (cuerpoF -> list .)
+    IF              reduce using rule 9 (cuerpoF -> list .)
+    FOR             reduce using rule 9 (cuerpoF -> list .)
+    WHILE           reduce using rule 9 (cuerpoF -> list .)
+    WHEN            reduce using rule 9 (cuerpoF -> list .)
+    VAL             reduce using rule 9 (cuerpoF -> list .)
+    VAR             reduce using rule 9 (cuerpoF -> list .)
+    $end            reduce using rule 9 (cuerpoF -> list .)
+    RETURN          reduce using rule 9 (cuerpoF -> list .)
+    RKEY            reduce using rule 9 (cuerpoF -> list .)
+
+
+state 14
+
+    (10) cuerpoF -> mutableList .
+
+    PRINTLN         reduce using rule 10 (cuerpoF -> mutableList .)
+    VARIABLE        reduce using rule 10 (cuerpoF -> mutableList .)
+    VINT            reduce using rule 10 (cuerpoF -> mutableList .)
+    VFLOAT          reduce using rule 10 (cuerpoF -> mutableList .)
+    IF              reduce using rule 10 (cuerpoF -> mutableList .)
+    FOR             reduce using rule 10 (cuerpoF -> mutableList .)
+    WHILE           reduce using rule 10 (cuerpoF -> mutableList .)
+    WHEN            reduce using rule 10 (cuerpoF -> mutableList .)
+    VAL             reduce using rule 10 (cuerpoF -> mutableList .)
+    VAR             reduce using rule 10 (cuerpoF -> mutableList .)
+    $end            reduce using rule 10 (cuerpoF -> mutableList .)
+    RETURN          reduce using rule 10 (cuerpoF -> mutableList .)
+    RKEY            reduce using rule 10 (cuerpoF -> mutableList .)
+
+
+state 15
+
+    (11) cuerpoF -> pair .
+
+    PRINTLN         reduce using rule 11 (cuerpoF -> pair .)
+    VARIABLE        reduce using rule 11 (cuerpoF -> pair .)
+    VINT            reduce using rule 11 (cuerpoF -> pair .)
+    VFLOAT          reduce using rule 11 (cuerpoF -> pair .)
+    IF              reduce using rule 11 (cuerpoF -> pair .)
+    FOR             reduce using rule 11 (cuerpoF -> pair .)
+    WHILE           reduce using rule 11 (cuerpoF -> pair .)
+    WHEN            reduce using rule 11 (cuerpoF -> pair .)
+    VAL             reduce using rule 11 (cuerpoF -> pair .)
+    VAR             reduce using rule 11 (cuerpoF -> pair .)
+    $end            reduce using rule 11 (cuerpoF -> pair .)
+    RETURN          reduce using rule 11 (cuerpoF -> pair .)
+    RKEY            reduce using rule 11 (cuerpoF -> pair .)
+
+
+state 16
+
+    (12) cuerpoF -> inData .
+
+    PRINTLN         reduce using rule 12 (cuerpoF -> inData .)
+    VARIABLE        reduce using rule 12 (cuerpoF -> inData .)
+    VINT            reduce using rule 12 (cuerpoF -> inData .)
+    VFLOAT          reduce using rule 12 (cuerpoF -> inData .)
+    IF              reduce using rule 12 (cuerpoF -> inData .)
+    FOR             reduce using rule 12 (cuerpoF -> inData .)
+    WHILE           reduce using rule 12 (cuerpoF -> inData .)
+    WHEN            reduce using rule 12 (cuerpoF -> inData .)
+    VAL             reduce using rule 12 (cuerpoF -> inData .)
+    VAR             reduce using rule 12 (cuerpoF -> inData .)
+    $end            reduce using rule 12 (cuerpoF -> inData .)
+    RETURN          reduce using rule 12 (cuerpoF -> inData .)
+    RKEY            reduce using rule 12 (cuerpoF -> inData .)
+
+
+state 17
+
+    (13) cuerpoF -> if .
+
+    PRINTLN         reduce using rule 13 (cuerpoF -> if .)
+    VARIABLE        reduce using rule 13 (cuerpoF -> if .)
+    VINT            reduce using rule 13 (cuerpoF -> if .)
+    VFLOAT          reduce using rule 13 (cuerpoF -> if .)
+    IF              reduce using rule 13 (cuerpoF -> if .)
+    FOR             reduce using rule 13 (cuerpoF -> if .)
+    WHILE           reduce using rule 13 (cuerpoF -> if .)
+    WHEN            reduce using rule 13 (cuerpoF -> if .)
+    VAL             reduce using rule 13 (cuerpoF -> if .)
+    VAR             reduce using rule 13 (cuerpoF -> if .)
+    $end            reduce using rule 13 (cuerpoF -> if .)
+    RETURN          reduce using rule 13 (cuerpoF -> if .)
+    RKEY            reduce using rule 13 (cuerpoF -> if .)
+
+
+state 18
+
+    (14) cuerpoF -> for .
+
+    PRINTLN         reduce using rule 14 (cuerpoF -> for .)
+    VARIABLE        reduce using rule 14 (cuerpoF -> for .)
+    VINT            reduce using rule 14 (cuerpoF -> for .)
+    VFLOAT          reduce using rule 14 (cuerpoF -> for .)
+    IF              reduce using rule 14 (cuerpoF -> for .)
+    FOR             reduce using rule 14 (cuerpoF -> for .)
+    WHILE           reduce using rule 14 (cuerpoF -> for .)
+    WHEN            reduce using rule 14 (cuerpoF -> for .)
+    VAL             reduce using rule 14 (cuerpoF -> for .)
+    VAR             reduce using rule 14 (cuerpoF -> for .)
+    $end            reduce using rule 14 (cuerpoF -> for .)
+    RETURN          reduce using rule 14 (cuerpoF -> for .)
+    RKEY            reduce using rule 14 (cuerpoF -> for .)
+
+
+state 19
+
+    (15) cuerpoF -> while .
+
+    PRINTLN         reduce using rule 15 (cuerpoF -> while .)
+    VARIABLE        reduce using rule 15 (cuerpoF -> while .)
+    VINT            reduce using rule 15 (cuerpoF -> while .)
+    VFLOAT          reduce using rule 15 (cuerpoF -> while .)
+    IF              reduce using rule 15 (cuerpoF -> while .)
+    FOR             reduce using rule 15 (cuerpoF -> while .)
+    WHILE           reduce using rule 15 (cuerpoF -> while .)
+    WHEN            reduce using rule 15 (cuerpoF -> while .)
+    VAL             reduce using rule 15 (cuerpoF -> while .)
+    VAR             reduce using rule 15 (cuerpoF -> while .)
+    $end            reduce using rule 15 (cuerpoF -> while .)
+    RETURN          reduce using rule 15 (cuerpoF -> while .)
+    RKEY            reduce using rule 15 (cuerpoF -> while .)
+
+
+state 20
+
+    (16) cuerpoF -> when .
+
+    PRINTLN         reduce using rule 16 (cuerpoF -> when .)
+    VARIABLE        reduce using rule 16 (cuerpoF -> when .)
+    VINT            reduce using rule 16 (cuerpoF -> when .)
+    VFLOAT          reduce using rule 16 (cuerpoF -> when .)
+    IF              reduce using rule 16 (cuerpoF -> when .)
+    FOR             reduce using rule 16 (cuerpoF -> when .)
+    WHILE           reduce using rule 16 (cuerpoF -> when .)
+    WHEN            reduce using rule 16 (cuerpoF -> when .)
+    VAL             reduce using rule 16 (cuerpoF -> when .)
+    VAR             reduce using rule 16 (cuerpoF -> when .)
+    $end            reduce using rule 16 (cuerpoF -> when .)
+    RETURN          reduce using rule 16 (cuerpoF -> when .)
+    RKEY            reduce using rule 16 (cuerpoF -> when .)
+
+
+state 21
+
+    (17) asignacion -> designacion . VARIABLE DOUBLEPOINTS tipo IGUAL valor
+    (54) inData -> designacion . VARIABLE IGUAL READLINE LPAREN RPAREN
+    (24) listAsignacion -> designacion . VARIABLE DOUBLEPOINTS LIST diamondType
+    (25) listAsignacion -> designacion . VARIABLE
+    (47) mutListAsignacion -> designacion . VARIABLE DOUBLEPOINTS MUTABLELIST diamondType
+    (48) mutListAsignacion -> designacion . VARIABLE
+    (51) pairAsignation -> designacion . LPAREN VARIABLE COMA VARIABLE RPAREN
+
+    VARIABLE        shift and go to state 37
+    LPAREN          shift and go to state 38
+
+
+state 22
+
+    (61) impresion -> PRINTLN . LPAREN valor RPAREN
+
+    LPAREN          shift and go to state 39
+
+
+state 23
+
+    (55) compareType -> VINT . IGUAL VINT
+    (57) compareGreaterthan -> VINT . MAYOR VINT
+    (59) compareSmallerthan -> VINT . MINOR VINT
+
+    IGUAL           shift and go to state 40
+    MAYOR           shift and go to state 41
+    MINOR           shift and go to state 42
+
+
+state 24
+
+    (56) compareType -> VFLOAT . IGUAL VFLOAT
+    (58) compareGreaterthan -> VFLOAT . MAYOR VFLOAT
+    (60) compareSmallerthan -> VFLOAT . MINOR VFLOAT
+
+    IGUAL           shift and go to state 43
+    MAYOR           shift and go to state 44
+    MINOR           shift and go to state 45
+
+
+state 25
+
+    (32) list -> listAsignacion . IGUAL listOf
+
+    IGUAL           shift and go to state 46
+
+
+state 26
+
+    (50) mutableList -> mutListAsignacion . IGUAL mutableListOf
+
+    IGUAL           shift and go to state 47
+
+
+state 27
+
+    (53) pair -> pairAsignation . IGUAL pairBody
+
+    IGUAL           shift and go to state 48
+
+
+state 28
+
+    (65) if -> IF . LPAREN condicion RPAREN LKEY cuerpoF RKEY
+    (66) if -> IF . LPAREN condicion RPAREN LKEY cuerpoF RKEY else
+    (67) if -> IF . LPAREN condicion RPAREN LKEY cuerpoF RKEY elseif else
+
+    LPAREN          shift and go to state 49
+
+
+state 29
+
+    (74) for -> FOR . LPAREN condicionFor RPAREN LKEY cuerpoF RKEY
+
+    LPAREN          shift and go to state 50
+
+
+state 30
+
+    (75) while -> WHILE . LPAREN condicion RPAREN LKEY cuerpoF RKEY
+
+    LPAREN          shift and go to state 51
+
+
+state 31
+
+    (76) when -> WHEN . LPAREN VARIABLE RPAREN LKEY cuerpoF RKEY
+
+    LPAREN          shift and go to state 52
+
+
+state 32
+
+    (18) designacion -> VAL .
+
+    VARIABLE        reduce using rule 18 (designacion -> VAL .)
+    LPAREN          reduce using rule 18 (designacion -> VAL .)
+
+
+state 33
+
+    (19) designacion -> VAR .
+
+    VARIABLE        reduce using rule 19 (designacion -> VAR .)
+    LPAREN          reduce using rule 19 (designacion -> VAR .)
+
+
+state 34
+
+    (77) implementa_funcion -> FUN VARIABLE . LPAREN listaparametros RPAREN DOUBLEPOINTS tipo LKEY instrucciones retorno RKEY
+    (78) implementa_funcion -> FUN VARIABLE . LPAREN RPAREN DOUBLEPOINTS tipo LKEY instrucciones retorno RKEY
+    (79) implementa_funcion -> FUN VARIABLE . LPAREN RPAREN DOUBLEPOINTS VOID LKEY instrucciones RKEY
+    (80) implementa_funcion -> FUN VARIABLE . LPAREN listaparametros RPAREN DOUBLEPOINTS VOID LKEY instrucciones RKEY
+
+    LPAREN          shift and go to state 53
+
+
+state 35
+
+    (87) asigna -> VARIABLE IGUAL . asignado
+    (88) asignado -> . valor
+    (89) asignado -> . VARIABLE
+    (90) asignado -> . compareType
+    (91) asignado -> . compareGreaterthan
+    (92) asignado -> . compareSmallerthan
+    (93) asignado -> . add
+    (94) asignado -> . subtract
+    (95) asignado -> . multiply
+    (96) asignado -> . divide
+    (29) valor -> . VINT
+    (30) valor -> . VFLOAT
+    (31) valor -> . STRING
+    (55) compareType -> . VINT IGUAL VINT
+    (56) compareType -> . VFLOAT IGUAL VFLOAT
+    (57) compareGreaterthan -> . VINT MAYOR VINT
+    (58) compareGreaterthan -> . VFLOAT MAYOR VFLOAT
+    (59) compareSmallerthan -> . VINT MINOR VINT
+    (60) compareSmallerthan -> . VFLOAT MINOR VFLOAT
+    (33) add -> . VINT PLUS VINT
+    (34) add -> . VINT PLUS VFLOAT
+    (35) add -> . VFLOAT PLUS VFLOAT
+    (36) subtract -> . VINT MINUS VINT
+    (37) subtract -> . VINT MINUS VFLOAT
+    (38) subtract -> . VFLOAT MINUS VFLOAT
+    (39) multiply -> . VINT TIMES VINT
+    (40) multiply -> . VFLOAT TIMES VFLOAT
+    (41) multiply -> . VFLOAT TIMES VINT
+    (42) multiply -> . VINT TIMES VFLOAT
+    (43) divide -> . VINT DIVIDE VINT
+    (44) divide -> . VFLOAT DIVIDE VFLOAT
+    (45) divide -> . VFLOAT DIVIDE VINT
+    (46) divide -> . VINT DIVIDE VFLOAT
+
+    VARIABLE        shift and go to state 54
+    VINT            shift and go to state 64
+    VFLOAT          shift and go to state 65
+    STRING          shift and go to state 66
+
+    asignado                       shift and go to state 55
+    valor                          shift and go to state 56
+    compareType                    shift and go to state 57
+    compareGreaterthan             shift and go to state 58
+    compareSmallerthan             shift and go to state 59
+    add                            shift and go to state 60
+    subtract                       shift and go to state 61
+    multiply                       shift and go to state 62
+    divide                         shift and go to state 63
+
+state 36
+
+    (86) instrucciones -> cuerpoF instrucciones .
+
+    $end            reduce using rule 86 (instrucciones -> cuerpoF instrucciones .)
+    RETURN          reduce using rule 86 (instrucciones -> cuerpoF instrucciones .)
+    RKEY            reduce using rule 86 (instrucciones -> cuerpoF instrucciones .)
+
+
+state 37
+
+    (17) asignacion -> designacion VARIABLE . DOUBLEPOINTS tipo IGUAL valor
+    (54) inData -> designacion VARIABLE . IGUAL READLINE LPAREN RPAREN
+    (24) listAsignacion -> designacion VARIABLE . DOUBLEPOINTS LIST diamondType
+    (25) listAsignacion -> designacion VARIABLE .
+    (47) mutListAsignacion -> designacion VARIABLE . DOUBLEPOINTS MUTABLELIST diamondType
+    (48) mutListAsignacion -> designacion VARIABLE .
+
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+    DOUBLEPOINTS    shift and go to state 67
+    IGUAL           shift and go to state 68
+
+  ! IGUAL           [ reduce using rule 25 (listAsignacion -> designacion VARIABLE .) ]
+  ! IGUAL           [ reduce using rule 48 (mutListAsignacion -> designacion VARIABLE .) ]
+
+
+state 38
+
+    (51) pairAsignation -> designacion LPAREN . VARIABLE COMA VARIABLE RPAREN
+
+    VARIABLE        shift and go to state 69
+
+
+state 39
+
+    (61) impresion -> PRINTLN LPAREN . valor RPAREN
+    (29) valor -> . VINT
+    (30) valor -> . VFLOAT
+    (31) valor -> . STRING
+
+    VINT            shift and go to state 71
+    VFLOAT          shift and go to state 72
+    STRING          shift and go to state 66
+
+    valor                          shift and go to state 70
+
+state 40
+
+    (55) compareType -> VINT IGUAL . VINT
+
+    VINT            shift and go to state 73
+
+
+state 41
+
+    (57) compareGreaterthan -> VINT MAYOR . VINT
+
+    VINT            shift and go to state 74
+
+
+state 42
+
+    (59) compareSmallerthan -> VINT MINOR . VINT
+
+    VINT            shift and go to state 75
+
+
+state 43
+
+    (56) compareType -> VFLOAT IGUAL . VFLOAT
+
+    VFLOAT          shift and go to state 76
+
+
+state 44
+
+    (58) compareGreaterthan -> VFLOAT MAYOR . VFLOAT
+
+    VFLOAT          shift and go to state 77
+
+
+state 45
+
+    (60) compareSmallerthan -> VFLOAT MINOR . VFLOAT
+
+    VFLOAT          shift and go to state 78
+
+
+state 46
+
+    (32) list -> listAsignacion IGUAL . listOf
+    (26) listOf -> . LISTOF LPAREN elementos RPAREN
+
+    LISTOF          shift and go to state 80
+
+    listOf                         shift and go to state 79
+
+state 47
+
+    (50) mutableList -> mutListAsignacion IGUAL . mutableListOf
+    (49) mutableListOf -> . MUTABLELISTOF LPAREN elementos RPAREN
+
+    MUTABLELISTOF   shift and go to state 82
+
+    mutableListOf                  shift and go to state 81
+
+state 48
+
+    (53) pair -> pairAsignation IGUAL . pairBody
+    (52) pairBody -> . PAIR LPAREN valor COMA valor RPAREN
+
+    PAIR            shift and go to state 84
+
+    pairBody                       shift and go to state 83
+
+state 49
+
+    (65) if -> IF LPAREN . condicion RPAREN LKEY cuerpoF RKEY
+    (66) if -> IF LPAREN . condicion RPAREN LKEY cuerpoF RKEY else
+    (67) if -> IF LPAREN . condicion RPAREN LKEY cuerpoF RKEY elseif else
+    (62) condicion -> . compareType
+    (63) condicion -> . compareGreaterthan
+    (64) condicion -> . compareSmallerthan
+    (55) compareType -> . VINT IGUAL VINT
+    (56) compareType -> . VFLOAT IGUAL VFLOAT
+    (57) compareGreaterthan -> . VINT MAYOR VINT
+    (58) compareGreaterthan -> . VFLOAT MAYOR VFLOAT
+    (59) compareSmallerthan -> . VINT MINOR VINT
+    (60) compareSmallerthan -> . VFLOAT MINOR VFLOAT
+
+    VINT            shift and go to state 23
+    VFLOAT          shift and go to state 24
+
+    condicion                      shift and go to state 85
+    compareType                    shift and go to state 86
+    compareGreaterthan             shift and go to state 87
+    compareSmallerthan             shift and go to state 88
+
+state 50
+
+    (74) for -> FOR LPAREN . condicionFor RPAREN LKEY cuerpoF RKEY
+    (70) condicionFor -> . condicionRango
+    (71) condicionFor -> . condicionBloque
+    (72) condicionRango -> . VARIABLE IN VINT DOT DOT VINT
+    (73) condicionBloque -> . VARIABLE IN LISTOF
+
+    VARIABLE        shift and go to state 92
+
+    condicionFor                   shift and go to state 89
+    condicionRango                 shift and go to state 90
+    condicionBloque                shift and go to state 91
+
+state 51
+
+    (75) while -> WHILE LPAREN . condicion RPAREN LKEY cuerpoF RKEY
+    (62) condicion -> . compareType
+    (63) condicion -> . compareGreaterthan
+    (64) condicion -> . compareSmallerthan
+    (55) compareType -> . VINT IGUAL VINT
+    (56) compareType -> . VFLOAT IGUAL VFLOAT
+    (57) compareGreaterthan -> . VINT MAYOR VINT
+    (58) compareGreaterthan -> . VFLOAT MAYOR VFLOAT
+    (59) compareSmallerthan -> . VINT MINOR VINT
+    (60) compareSmallerthan -> . VFLOAT MINOR VFLOAT
+
+    VINT            shift and go to state 23
+    VFLOAT          shift and go to state 24
+
+    condicion                      shift and go to state 93
+    compareType                    shift and go to state 86
+    compareGreaterthan             shift and go to state 87
+    compareSmallerthan             shift and go to state 88
+
+state 52
+
+    (76) when -> WHEN LPAREN . VARIABLE RPAREN LKEY cuerpoF RKEY
+
+    VARIABLE        shift and go to state 94
+
+
+state 53
+
+    (77) implementa_funcion -> FUN VARIABLE LPAREN . listaparametros RPAREN DOUBLEPOINTS tipo LKEY instrucciones retorno RKEY
+    (78) implementa_funcion -> FUN VARIABLE LPAREN . RPAREN DOUBLEPOINTS tipo LKEY instrucciones retorno RKEY
+    (79) implementa_funcion -> FUN VARIABLE LPAREN . RPAREN DOUBLEPOINTS VOID LKEY instrucciones RKEY
+    (80) implementa_funcion -> FUN VARIABLE LPAREN . listaparametros RPAREN DOUBLEPOINTS VOID LKEY instrucciones RKEY
+    (81) listaparametros -> . parametro
+    (82) listaparametros -> . parametro COMA listaparametros
+    (83) parametro -> . VARIABLE DOUBLEPOINTS tipo
+
+    RPAREN          shift and go to state 97
+    VARIABLE        shift and go to state 95
+
+    listaparametros                shift and go to state 96
+    parametro                      shift and go to state 98
+
+state 54
+
+    (89) asignado -> VARIABLE .
+
+    PRINTLN         reduce using rule 89 (asignado -> VARIABLE .)
+    VARIABLE        reduce using rule 89 (asignado -> VARIABLE .)
+    VINT            reduce using rule 89 (asignado -> VARIABLE .)
+    VFLOAT          reduce using rule 89 (asignado -> VARIABLE .)
+    IF              reduce using rule 89 (asignado -> VARIABLE .)
+    FOR             reduce using rule 89 (asignado -> VARIABLE .)
+    WHILE           reduce using rule 89 (asignado -> VARIABLE .)
+    WHEN            reduce using rule 89 (asignado -> VARIABLE .)
+    VAL             reduce using rule 89 (asignado -> VARIABLE .)
+    VAR             reduce using rule 89 (asignado -> VARIABLE .)
+    $end            reduce using rule 89 (asignado -> VARIABLE .)
+    RETURN          reduce using rule 89 (asignado -> VARIABLE .)
+    RKEY            reduce using rule 89 (asignado -> VARIABLE .)
+
+
+state 55
+
+    (87) asigna -> VARIABLE IGUAL asignado .
+
+    PRINTLN         reduce using rule 87 (asigna -> VARIABLE IGUAL asignado .)
+    VARIABLE        reduce using rule 87 (asigna -> VARIABLE IGUAL asignado .)
+    VINT            reduce using rule 87 (asigna -> VARIABLE IGUAL asignado .)
+    VFLOAT          reduce using rule 87 (asigna -> VARIABLE IGUAL asignado .)
+    IF              reduce using rule 87 (asigna -> VARIABLE IGUAL asignado .)
+    FOR             reduce using rule 87 (asigna -> VARIABLE IGUAL asignado .)
+    WHILE           reduce using rule 87 (asigna -> VARIABLE IGUAL asignado .)
+    WHEN            reduce using rule 87 (asigna -> VARIABLE IGUAL asignado .)
+    VAL             reduce using rule 87 (asigna -> VARIABLE IGUAL asignado .)
+    VAR             reduce using rule 87 (asigna -> VARIABLE IGUAL asignado .)
+    $end            reduce using rule 87 (asigna -> VARIABLE IGUAL asignado .)
+    RETURN          reduce using rule 87 (asigna -> VARIABLE IGUAL asignado .)
+    RKEY            reduce using rule 87 (asigna -> VARIABLE IGUAL asignado .)
+
+
+state 56
+
+    (88) asignado -> valor .
+
+    PRINTLN         reduce using rule 88 (asignado -> valor .)
+    VARIABLE        reduce using rule 88 (asignado -> valor .)
+    VINT            reduce using rule 88 (asignado -> valor .)
+    VFLOAT          reduce using rule 88 (asignado -> valor .)
+    IF              reduce using rule 88 (asignado -> valor .)
+    FOR             reduce using rule 88 (asignado -> valor .)
+    WHILE           reduce using rule 88 (asignado -> valor .)
+    WHEN            reduce using rule 88 (asignado -> valor .)
+    VAL             reduce using rule 88 (asignado -> valor .)
+    VAR             reduce using rule 88 (asignado -> valor .)
+    $end            reduce using rule 88 (asignado -> valor .)
+    RETURN          reduce using rule 88 (asignado -> valor .)
+    RKEY            reduce using rule 88 (asignado -> valor .)
+
+
+state 57
+
+    (90) asignado -> compareType .
+
+    PRINTLN         reduce using rule 90 (asignado -> compareType .)
+    VARIABLE        reduce using rule 90 (asignado -> compareType .)
+    VINT            reduce using rule 90 (asignado -> compareType .)
+    VFLOAT          reduce using rule 90 (asignado -> compareType .)
+    IF              reduce using rule 90 (asignado -> compareType .)
+    FOR             reduce using rule 90 (asignado -> compareType .)
+    WHILE           reduce using rule 90 (asignado -> compareType .)
+    WHEN            reduce using rule 90 (asignado -> compareType .)
+    VAL             reduce using rule 90 (asignado -> compareType .)
+    VAR             reduce using rule 90 (asignado -> compareType .)
+    $end            reduce using rule 90 (asignado -> compareType .)
+    RETURN          reduce using rule 90 (asignado -> compareType .)
+    RKEY            reduce using rule 90 (asignado -> compareType .)
+
+
+state 58
+
+    (91) asignado -> compareGreaterthan .
+
+    PRINTLN         reduce using rule 91 (asignado -> compareGreaterthan .)
+    VARIABLE        reduce using rule 91 (asignado -> compareGreaterthan .)
+    VINT            reduce using rule 91 (asignado -> compareGreaterthan .)
+    VFLOAT          reduce using rule 91 (asignado -> compareGreaterthan .)
+    IF              reduce using rule 91 (asignado -> compareGreaterthan .)
+    FOR             reduce using rule 91 (asignado -> compareGreaterthan .)
+    WHILE           reduce using rule 91 (asignado -> compareGreaterthan .)
+    WHEN            reduce using rule 91 (asignado -> compareGreaterthan .)
+    VAL             reduce using rule 91 (asignado -> compareGreaterthan .)
+    VAR             reduce using rule 91 (asignado -> compareGreaterthan .)
+    $end            reduce using rule 91 (asignado -> compareGreaterthan .)
+    RETURN          reduce using rule 91 (asignado -> compareGreaterthan .)
+    RKEY            reduce using rule 91 (asignado -> compareGreaterthan .)
+
+
+state 59
+
+    (92) asignado -> compareSmallerthan .
+
+    PRINTLN         reduce using rule 92 (asignado -> compareSmallerthan .)
+    VARIABLE        reduce using rule 92 (asignado -> compareSmallerthan .)
+    VINT            reduce using rule 92 (asignado -> compareSmallerthan .)
+    VFLOAT          reduce using rule 92 (asignado -> compareSmallerthan .)
+    IF              reduce using rule 92 (asignado -> compareSmallerthan .)
+    FOR             reduce using rule 92 (asignado -> compareSmallerthan .)
+    WHILE           reduce using rule 92 (asignado -> compareSmallerthan .)
+    WHEN            reduce using rule 92 (asignado -> compareSmallerthan .)
+    VAL             reduce using rule 92 (asignado -> compareSmallerthan .)
+    VAR             reduce using rule 92 (asignado -> compareSmallerthan .)
+    $end            reduce using rule 92 (asignado -> compareSmallerthan .)
+    RETURN          reduce using rule 92 (asignado -> compareSmallerthan .)
+    RKEY            reduce using rule 92 (asignado -> compareSmallerthan .)
+
+
+state 60
+
+    (93) asignado -> add .
+
+    PRINTLN         reduce using rule 93 (asignado -> add .)
+    VARIABLE        reduce using rule 93 (asignado -> add .)
+    VINT            reduce using rule 93 (asignado -> add .)
+    VFLOAT          reduce using rule 93 (asignado -> add .)
+    IF              reduce using rule 93 (asignado -> add .)
+    FOR             reduce using rule 93 (asignado -> add .)
+    WHILE           reduce using rule 93 (asignado -> add .)
+    WHEN            reduce using rule 93 (asignado -> add .)
+    VAL             reduce using rule 93 (asignado -> add .)
+    VAR             reduce using rule 93 (asignado -> add .)
+    $end            reduce using rule 93 (asignado -> add .)
+    RETURN          reduce using rule 93 (asignado -> add .)
+    RKEY            reduce using rule 93 (asignado -> add .)
+
+
+state 61
+
+    (94) asignado -> subtract .
+
+    PRINTLN         reduce using rule 94 (asignado -> subtract .)
+    VARIABLE        reduce using rule 94 (asignado -> subtract .)
+    VINT            reduce using rule 94 (asignado -> subtract .)
+    VFLOAT          reduce using rule 94 (asignado -> subtract .)
+    IF              reduce using rule 94 (asignado -> subtract .)
+    FOR             reduce using rule 94 (asignado -> subtract .)
+    WHILE           reduce using rule 94 (asignado -> subtract .)
+    WHEN            reduce using rule 94 (asignado -> subtract .)
+    VAL             reduce using rule 94 (asignado -> subtract .)
+    VAR             reduce using rule 94 (asignado -> subtract .)
+    $end            reduce using rule 94 (asignado -> subtract .)
+    RETURN          reduce using rule 94 (asignado -> subtract .)
+    RKEY            reduce using rule 94 (asignado -> subtract .)
+
+
+state 62
+
+    (95) asignado -> multiply .
+
+    PRINTLN         reduce using rule 95 (asignado -> multiply .)
+    VARIABLE        reduce using rule 95 (asignado -> multiply .)
+    VINT            reduce using rule 95 (asignado -> multiply .)
+    VFLOAT          reduce using rule 95 (asignado -> multiply .)
+    IF              reduce using rule 95 (asignado -> multiply .)
+    FOR             reduce using rule 95 (asignado -> multiply .)
+    WHILE           reduce using rule 95 (asignado -> multiply .)
+    WHEN            reduce using rule 95 (asignado -> multiply .)
+    VAL             reduce using rule 95 (asignado -> multiply .)
+    VAR             reduce using rule 95 (asignado -> multiply .)
+    $end            reduce using rule 95 (asignado -> multiply .)
+    RETURN          reduce using rule 95 (asignado -> multiply .)
+    RKEY            reduce using rule 95 (asignado -> multiply .)
+
+
+state 63
+
+    (96) asignado -> divide .
+
+    PRINTLN         reduce using rule 96 (asignado -> divide .)
+    VARIABLE        reduce using rule 96 (asignado -> divide .)
+    VINT            reduce using rule 96 (asignado -> divide .)
+    VFLOAT          reduce using rule 96 (asignado -> divide .)
+    IF              reduce using rule 96 (asignado -> divide .)
+    FOR             reduce using rule 96 (asignado -> divide .)
+    WHILE           reduce using rule 96 (asignado -> divide .)
+    WHEN            reduce using rule 96 (asignado -> divide .)
+    VAL             reduce using rule 96 (asignado -> divide .)
+    VAR             reduce using rule 96 (asignado -> divide .)
+    $end            reduce using rule 96 (asignado -> divide .)
+    RETURN          reduce using rule 96 (asignado -> divide .)
+    RKEY            reduce using rule 96 (asignado -> divide .)
+
+
+state 64
+
+    (29) valor -> VINT .
+    (55) compareType -> VINT . IGUAL VINT
+    (57) compareGreaterthan -> VINT . MAYOR VINT
+    (59) compareSmallerthan -> VINT . MINOR VINT
+    (33) add -> VINT . PLUS VINT
+    (34) add -> VINT . PLUS VFLOAT
+    (36) subtract -> VINT . MINUS VINT
+    (37) subtract -> VINT . MINUS VFLOAT
+    (39) multiply -> VINT . TIMES VINT
+    (42) multiply -> VINT . TIMES VFLOAT
+    (43) divide -> VINT . DIVIDE VINT
+    (46) divide -> VINT . DIVIDE VFLOAT
+
+    PRINTLN         reduce using rule 29 (valor -> VINT .)
+    VARIABLE        reduce using rule 29 (valor -> VINT .)
+    VINT            reduce using rule 29 (valor -> VINT .)
+    VFLOAT          reduce using rule 29 (valor -> VINT .)
+    IF              reduce using rule 29 (valor -> VINT .)
+    FOR             reduce using rule 29 (valor -> VINT .)
+    WHILE           reduce using rule 29 (valor -> VINT .)
+    WHEN            reduce using rule 29 (valor -> VINT .)
+    VAL             reduce using rule 29 (valor -> VINT .)
+    VAR             reduce using rule 29 (valor -> VINT .)
+    $end            reduce using rule 29 (valor -> VINT .)
+    RETURN          reduce using rule 29 (valor -> VINT .)
+    RKEY            reduce using rule 29 (valor -> VINT .)
+    IGUAL           shift and go to state 40
+    MAYOR           shift and go to state 41
+    MINOR           shift and go to state 42
+    PLUS            shift and go to state 99
+    MINUS           shift and go to state 100
+    TIMES           shift and go to state 101
+    DIVIDE          shift and go to state 102
+
+
+state 65
+
+    (30) valor -> VFLOAT .
+    (56) compareType -> VFLOAT . IGUAL VFLOAT
+    (58) compareGreaterthan -> VFLOAT . MAYOR VFLOAT
+    (60) compareSmallerthan -> VFLOAT . MINOR VFLOAT
+    (35) add -> VFLOAT . PLUS VFLOAT
+    (38) subtract -> VFLOAT . MINUS VFLOAT
+    (40) multiply -> VFLOAT . TIMES VFLOAT
+    (41) multiply -> VFLOAT . TIMES VINT
+    (44) divide -> VFLOAT . DIVIDE VFLOAT
+    (45) divide -> VFLOAT . DIVIDE VINT
+
+    PRINTLN         reduce using rule 30 (valor -> VFLOAT .)
+    VARIABLE        reduce using rule 30 (valor -> VFLOAT .)
+    VINT            reduce using rule 30 (valor -> VFLOAT .)
+    VFLOAT          reduce using rule 30 (valor -> VFLOAT .)
+    IF              reduce using rule 30 (valor -> VFLOAT .)
+    FOR             reduce using rule 30 (valor -> VFLOAT .)
+    WHILE           reduce using rule 30 (valor -> VFLOAT .)
+    WHEN            reduce using rule 30 (valor -> VFLOAT .)
+    VAL             reduce using rule 30 (valor -> VFLOAT .)
+    VAR             reduce using rule 30 (valor -> VFLOAT .)
+    $end            reduce using rule 30 (valor -> VFLOAT .)
+    RETURN          reduce using rule 30 (valor -> VFLOAT .)
+    RKEY            reduce using rule 30 (valor -> VFLOAT .)
+    IGUAL           shift and go to state 43
+    MAYOR           shift and go to state 44
+    MINOR           shift and go to state 45
+    PLUS            shift and go to state 103
+    MINUS           shift and go to state 104
+    TIMES           shift and go to state 105
+    DIVIDE          shift and go to state 106
+
+
+state 66
+
+    (31) valor -> STRING .
+
+    PRINTLN         reduce using rule 31 (valor -> STRING .)
+    VARIABLE        reduce using rule 31 (valor -> STRING .)
+    VINT            reduce using rule 31 (valor -> STRING .)
+    VFLOAT          reduce using rule 31 (valor -> STRING .)
+    IF              reduce using rule 31 (valor -> STRING .)
+    FOR             reduce using rule 31 (valor -> STRING .)
+    WHILE           reduce using rule 31 (valor -> STRING .)
+    WHEN            reduce using rule 31 (valor -> STRING .)
+    VAL             reduce using rule 31 (valor -> STRING .)
+    VAR             reduce using rule 31 (valor -> STRING .)
+    $end            reduce using rule 31 (valor -> STRING .)
+    RETURN          reduce using rule 31 (valor -> STRING .)
+    RKEY            reduce using rule 31 (valor -> STRING .)
+    RPAREN          reduce using rule 31 (valor -> STRING .)
+    COMA            reduce using rule 31 (valor -> STRING .)
+
+
+state 67
+
+    (17) asignacion -> designacion VARIABLE DOUBLEPOINTS . tipo IGUAL valor
+    (24) listAsignacion -> designacion VARIABLE DOUBLEPOINTS . LIST diamondType
+    (47) mutListAsignacion -> designacion VARIABLE DOUBLEPOINTS . MUTABLELIST diamondType
+    (20) tipo -> . TINT
+    (21) tipo -> . TFLOAT
+    (22) tipo -> . STRING
+
+    LIST            shift and go to state 108
+    MUTABLELIST     shift and go to state 109
+    TINT            shift and go to state 110
+    TFLOAT          shift and go to state 111
+    STRING          shift and go to state 112
+
+    tipo                           shift and go to state 107
+
+state 68
+
+    (54) inData -> designacion VARIABLE IGUAL . READLINE LPAREN RPAREN
+
+    READLINE        shift and go to state 113
+
+
+state 69
+
+    (51) pairAsignation -> designacion LPAREN VARIABLE . COMA VARIABLE RPAREN
+
+    COMA            shift and go to state 114
+
+
+state 70
+
+    (61) impresion -> PRINTLN LPAREN valor . RPAREN
+
+    RPAREN          shift and go to state 115
+
+
+state 71
+
+    (29) valor -> VINT .
+
+    RPAREN          reduce using rule 29 (valor -> VINT .)
+    COMA            reduce using rule 29 (valor -> VINT .)
+    PRINTLN         reduce using rule 29 (valor -> VINT .)
+    VARIABLE        reduce using rule 29 (valor -> VINT .)
+    VINT            reduce using rule 29 (valor -> VINT .)
+    VFLOAT          reduce using rule 29 (valor -> VINT .)
+    IF              reduce using rule 29 (valor -> VINT .)
+    FOR             reduce using rule 29 (valor -> VINT .)
+    WHILE           reduce using rule 29 (valor -> VINT .)
+    WHEN            reduce using rule 29 (valor -> VINT .)
+    VAL             reduce using rule 29 (valor -> VINT .)
+    VAR             reduce using rule 29 (valor -> VINT .)
+    $end            reduce using rule 29 (valor -> VINT .)
+    RETURN          reduce using rule 29 (valor -> VINT .)
+    RKEY            reduce using rule 29 (valor -> VINT .)
+
+
+state 72
+
+    (30) valor -> VFLOAT .
+
+    RPAREN          reduce using rule 30 (valor -> VFLOAT .)
+    COMA            reduce using rule 30 (valor -> VFLOAT .)
+    PRINTLN         reduce using rule 30 (valor -> VFLOAT .)
+    VARIABLE        reduce using rule 30 (valor -> VFLOAT .)
+    VINT            reduce using rule 30 (valor -> VFLOAT .)
+    VFLOAT          reduce using rule 30 (valor -> VFLOAT .)
+    IF              reduce using rule 30 (valor -> VFLOAT .)
+    FOR             reduce using rule 30 (valor -> VFLOAT .)
+    WHILE           reduce using rule 30 (valor -> VFLOAT .)
+    WHEN            reduce using rule 30 (valor -> VFLOAT .)
+    VAL             reduce using rule 30 (valor -> VFLOAT .)
+    VAR             reduce using rule 30 (valor -> VFLOAT .)
+    $end            reduce using rule 30 (valor -> VFLOAT .)
+    RETURN          reduce using rule 30 (valor -> VFLOAT .)
+    RKEY            reduce using rule 30 (valor -> VFLOAT .)
+
+
+state 73
+
+    (55) compareType -> VINT IGUAL VINT .
+
+    PRINTLN         reduce using rule 55 (compareType -> VINT IGUAL VINT .)
+    VARIABLE        reduce using rule 55 (compareType -> VINT IGUAL VINT .)
+    VINT            reduce using rule 55 (compareType -> VINT IGUAL VINT .)
+    VFLOAT          reduce using rule 55 (compareType -> VINT IGUAL VINT .)
+    IF              reduce using rule 55 (compareType -> VINT IGUAL VINT .)
+    FOR             reduce using rule 55 (compareType -> VINT IGUAL VINT .)
+    WHILE           reduce using rule 55 (compareType -> VINT IGUAL VINT .)
+    WHEN            reduce using rule 55 (compareType -> VINT IGUAL VINT .)
+    VAL             reduce using rule 55 (compareType -> VINT IGUAL VINT .)
+    VAR             reduce using rule 55 (compareType -> VINT IGUAL VINT .)
+    $end            reduce using rule 55 (compareType -> VINT IGUAL VINT .)
+    RETURN          reduce using rule 55 (compareType -> VINT IGUAL VINT .)
+    RKEY            reduce using rule 55 (compareType -> VINT IGUAL VINT .)
+    RPAREN          reduce using rule 55 (compareType -> VINT IGUAL VINT .)
+
+
+state 74
+
+    (57) compareGreaterthan -> VINT MAYOR VINT .
+
+    PRINTLN         reduce using rule 57 (compareGreaterthan -> VINT MAYOR VINT .)
+    VARIABLE        reduce using rule 57 (compareGreaterthan -> VINT MAYOR VINT .)
+    VINT            reduce using rule 57 (compareGreaterthan -> VINT MAYOR VINT .)
+    VFLOAT          reduce using rule 57 (compareGreaterthan -> VINT MAYOR VINT .)
+    IF              reduce using rule 57 (compareGreaterthan -> VINT MAYOR VINT .)
+    FOR             reduce using rule 57 (compareGreaterthan -> VINT MAYOR VINT .)
+    WHILE           reduce using rule 57 (compareGreaterthan -> VINT MAYOR VINT .)
+    WHEN            reduce using rule 57 (compareGreaterthan -> VINT MAYOR VINT .)
+    VAL             reduce using rule 57 (compareGreaterthan -> VINT MAYOR VINT .)
+    VAR             reduce using rule 57 (compareGreaterthan -> VINT MAYOR VINT .)
+    $end            reduce using rule 57 (compareGreaterthan -> VINT MAYOR VINT .)
+    RETURN          reduce using rule 57 (compareGreaterthan -> VINT MAYOR VINT .)
+    RKEY            reduce using rule 57 (compareGreaterthan -> VINT MAYOR VINT .)
+    RPAREN          reduce using rule 57 (compareGreaterthan -> VINT MAYOR VINT .)
+
+
+state 75
+
+    (59) compareSmallerthan -> VINT MINOR VINT .
+
+    PRINTLN         reduce using rule 59 (compareSmallerthan -> VINT MINOR VINT .)
+    VARIABLE        reduce using rule 59 (compareSmallerthan -> VINT MINOR VINT .)
+    VINT            reduce using rule 59 (compareSmallerthan -> VINT MINOR VINT .)
+    VFLOAT          reduce using rule 59 (compareSmallerthan -> VINT MINOR VINT .)
+    IF              reduce using rule 59 (compareSmallerthan -> VINT MINOR VINT .)
+    FOR             reduce using rule 59 (compareSmallerthan -> VINT MINOR VINT .)
+    WHILE           reduce using rule 59 (compareSmallerthan -> VINT MINOR VINT .)
+    WHEN            reduce using rule 59 (compareSmallerthan -> VINT MINOR VINT .)
+    VAL             reduce using rule 59 (compareSmallerthan -> VINT MINOR VINT .)
+    VAR             reduce using rule 59 (compareSmallerthan -> VINT MINOR VINT .)
+    $end            reduce using rule 59 (compareSmallerthan -> VINT MINOR VINT .)
+    RETURN          reduce using rule 59 (compareSmallerthan -> VINT MINOR VINT .)
+    RKEY            reduce using rule 59 (compareSmallerthan -> VINT MINOR VINT .)
+    RPAREN          reduce using rule 59 (compareSmallerthan -> VINT MINOR VINT .)
+
+
+state 76
+
+    (56) compareType -> VFLOAT IGUAL VFLOAT .
+
+    PRINTLN         reduce using rule 56 (compareType -> VFLOAT IGUAL VFLOAT .)
+    VARIABLE        reduce using rule 56 (compareType -> VFLOAT IGUAL VFLOAT .)
+    VINT            reduce using rule 56 (compareType -> VFLOAT IGUAL VFLOAT .)
+    VFLOAT          reduce using rule 56 (compareType -> VFLOAT IGUAL VFLOAT .)
+    IF              reduce using rule 56 (compareType -> VFLOAT IGUAL VFLOAT .)
+    FOR             reduce using rule 56 (compareType -> VFLOAT IGUAL VFLOAT .)
+    WHILE           reduce using rule 56 (compareType -> VFLOAT IGUAL VFLOAT .)
+    WHEN            reduce using rule 56 (compareType -> VFLOAT IGUAL VFLOAT .)
+    VAL             reduce using rule 56 (compareType -> VFLOAT IGUAL VFLOAT .)
+    VAR             reduce using rule 56 (compareType -> VFLOAT IGUAL VFLOAT .)
+    $end            reduce using rule 56 (compareType -> VFLOAT IGUAL VFLOAT .)
+    RETURN          reduce using rule 56 (compareType -> VFLOAT IGUAL VFLOAT .)
+    RKEY            reduce using rule 56 (compareType -> VFLOAT IGUAL VFLOAT .)
+    RPAREN          reduce using rule 56 (compareType -> VFLOAT IGUAL VFLOAT .)
+
+
+state 77
+
+    (58) compareGreaterthan -> VFLOAT MAYOR VFLOAT .
+
+    PRINTLN         reduce using rule 58 (compareGreaterthan -> VFLOAT MAYOR VFLOAT .)
+    VARIABLE        reduce using rule 58 (compareGreaterthan -> VFLOAT MAYOR VFLOAT .)
+    VINT            reduce using rule 58 (compareGreaterthan -> VFLOAT MAYOR VFLOAT .)
+    VFLOAT          reduce using rule 58 (compareGreaterthan -> VFLOAT MAYOR VFLOAT .)
+    IF              reduce using rule 58 (compareGreaterthan -> VFLOAT MAYOR VFLOAT .)
+    FOR             reduce using rule 58 (compareGreaterthan -> VFLOAT MAYOR VFLOAT .)
+    WHILE           reduce using rule 58 (compareGreaterthan -> VFLOAT MAYOR VFLOAT .)
+    WHEN            reduce using rule 58 (compareGreaterthan -> VFLOAT MAYOR VFLOAT .)
+    VAL             reduce using rule 58 (compareGreaterthan -> VFLOAT MAYOR VFLOAT .)
+    VAR             reduce using rule 58 (compareGreaterthan -> VFLOAT MAYOR VFLOAT .)
+    $end            reduce using rule 58 (compareGreaterthan -> VFLOAT MAYOR VFLOAT .)
+    RETURN          reduce using rule 58 (compareGreaterthan -> VFLOAT MAYOR VFLOAT .)
+    RKEY            reduce using rule 58 (compareGreaterthan -> VFLOAT MAYOR VFLOAT .)
+    RPAREN          reduce using rule 58 (compareGreaterthan -> VFLOAT MAYOR VFLOAT .)
+
+
+state 78
+
+    (60) compareSmallerthan -> VFLOAT MINOR VFLOAT .
+
+    PRINTLN         reduce using rule 60 (compareSmallerthan -> VFLOAT MINOR VFLOAT .)
+    VARIABLE        reduce using rule 60 (compareSmallerthan -> VFLOAT MINOR VFLOAT .)
+    VINT            reduce using rule 60 (compareSmallerthan -> VFLOAT MINOR VFLOAT .)
+    VFLOAT          reduce using rule 60 (compareSmallerthan -> VFLOAT MINOR VFLOAT .)
+    IF              reduce using rule 60 (compareSmallerthan -> VFLOAT MINOR VFLOAT .)
+    FOR             reduce using rule 60 (compareSmallerthan -> VFLOAT MINOR VFLOAT .)
+    WHILE           reduce using rule 60 (compareSmallerthan -> VFLOAT MINOR VFLOAT .)
+    WHEN            reduce using rule 60 (compareSmallerthan -> VFLOAT MINOR VFLOAT .)
+    VAL             reduce using rule 60 (compareSmallerthan -> VFLOAT MINOR VFLOAT .)
+    VAR             reduce using rule 60 (compareSmallerthan -> VFLOAT MINOR VFLOAT .)
+    $end            reduce using rule 60 (compareSmallerthan -> VFLOAT MINOR VFLOAT .)
+    RETURN          reduce using rule 60 (compareSmallerthan -> VFLOAT MINOR VFLOAT .)
+    RKEY            reduce using rule 60 (compareSmallerthan -> VFLOAT MINOR VFLOAT .)
+    RPAREN          reduce using rule 60 (compareSmallerthan -> VFLOAT MINOR VFLOAT .)
+
+
+state 79
+
+    (32) list -> listAsignacion IGUAL listOf .
+
+    PRINTLN         reduce using rule 32 (list -> listAsignacion IGUAL listOf .)
+    VARIABLE        reduce using rule 32 (list -> listAsignacion IGUAL listOf .)
+    VINT            reduce using rule 32 (list -> listAsignacion IGUAL listOf .)
+    VFLOAT          reduce using rule 32 (list -> listAsignacion IGUAL listOf .)
+    IF              reduce using rule 32 (list -> listAsignacion IGUAL listOf .)
+    FOR             reduce using rule 32 (list -> listAsignacion IGUAL listOf .)
+    WHILE           reduce using rule 32 (list -> listAsignacion IGUAL listOf .)
+    WHEN            reduce using rule 32 (list -> listAsignacion IGUAL listOf .)
+    VAL             reduce using rule 32 (list -> listAsignacion IGUAL listOf .)
+    VAR             reduce using rule 32 (list -> listAsignacion IGUAL listOf .)
+    $end            reduce using rule 32 (list -> listAsignacion IGUAL listOf .)
+    RETURN          reduce using rule 32 (list -> listAsignacion IGUAL listOf .)
+    RKEY            reduce using rule 32 (list -> listAsignacion IGUAL listOf .)
+
+
+state 80
+
+    (26) listOf -> LISTOF . LPAREN elementos RPAREN
+
+    LPAREN          shift and go to state 116
+
+
+state 81
+
+    (50) mutableList -> mutListAsignacion IGUAL mutableListOf .
+
+    PRINTLN         reduce using rule 50 (mutableList -> mutListAsignacion IGUAL mutableListOf .)
+    VARIABLE        reduce using rule 50 (mutableList -> mutListAsignacion IGUAL mutableListOf .)
+    VINT            reduce using rule 50 (mutableList -> mutListAsignacion IGUAL mutableListOf .)
+    VFLOAT          reduce using rule 50 (mutableList -> mutListAsignacion IGUAL mutableListOf .)
+    IF              reduce using rule 50 (mutableList -> mutListAsignacion IGUAL mutableListOf .)
+    FOR             reduce using rule 50 (mutableList -> mutListAsignacion IGUAL mutableListOf .)
+    WHILE           reduce using rule 50 (mutableList -> mutListAsignacion IGUAL mutableListOf .)
+    WHEN            reduce using rule 50 (mutableList -> mutListAsignacion IGUAL mutableListOf .)
+    VAL             reduce using rule 50 (mutableList -> mutListAsignacion IGUAL mutableListOf .)
+    VAR             reduce using rule 50 (mutableList -> mutListAsignacion IGUAL mutableListOf .)
+    $end            reduce using rule 50 (mutableList -> mutListAsignacion IGUAL mutableListOf .)
+    RETURN          reduce using rule 50 (mutableList -> mutListAsignacion IGUAL mutableListOf .)
+    RKEY            reduce using rule 50 (mutableList -> mutListAsignacion IGUAL mutableListOf .)
+
+
+state 82
+
+    (49) mutableListOf -> MUTABLELISTOF . LPAREN elementos RPAREN
+
+    LPAREN          shift and go to state 117
+
+
+state 83
+
+    (53) pair -> pairAsignation IGUAL pairBody .
+
+    PRINTLN         reduce using rule 53 (pair -> pairAsignation IGUAL pairBody .)
+    VARIABLE        reduce using rule 53 (pair -> pairAsignation IGUAL pairBody .)
+    VINT            reduce using rule 53 (pair -> pairAsignation IGUAL pairBody .)
+    VFLOAT          reduce using rule 53 (pair -> pairAsignation IGUAL pairBody .)
+    IF              reduce using rule 53 (pair -> pairAsignation IGUAL pairBody .)
+    FOR             reduce using rule 53 (pair -> pairAsignation IGUAL pairBody .)
+    WHILE           reduce using rule 53 (pair -> pairAsignation IGUAL pairBody .)
+    WHEN            reduce using rule 53 (pair -> pairAsignation IGUAL pairBody .)
+    VAL             reduce using rule 53 (pair -> pairAsignation IGUAL pairBody .)
+    VAR             reduce using rule 53 (pair -> pairAsignation IGUAL pairBody .)
+    $end            reduce using rule 53 (pair -> pairAsignation IGUAL pairBody .)
+    RETURN          reduce using rule 53 (pair -> pairAsignation IGUAL pairBody .)
+    RKEY            reduce using rule 53 (pair -> pairAsignation IGUAL pairBody .)
+
+
+state 84
+
+    (52) pairBody -> PAIR . LPAREN valor COMA valor RPAREN
+
+    LPAREN          shift and go to state 118
+
+
+state 85
+
+    (65) if -> IF LPAREN condicion . RPAREN LKEY cuerpoF RKEY
+    (66) if -> IF LPAREN condicion . RPAREN LKEY cuerpoF RKEY else
+    (67) if -> IF LPAREN condicion . RPAREN LKEY cuerpoF RKEY elseif else
+
+    RPAREN          shift and go to state 119
+
+
+state 86
+
+    (62) condicion -> compareType .
+
+    RPAREN          reduce using rule 62 (condicion -> compareType .)
+
+
+state 87
+
+    (63) condicion -> compareGreaterthan .
+
+    RPAREN          reduce using rule 63 (condicion -> compareGreaterthan .)
+
+
+state 88
+
+    (64) condicion -> compareSmallerthan .
+
+    RPAREN          reduce using rule 64 (condicion -> compareSmallerthan .)
+
+
+state 89
+
+    (74) for -> FOR LPAREN condicionFor . RPAREN LKEY cuerpoF RKEY
+
+    RPAREN          shift and go to state 120
+
+
+state 90
+
+    (70) condicionFor -> condicionRango .
+
+    RPAREN          reduce using rule 70 (condicionFor -> condicionRango .)
+
+
+state 91
+
+    (71) condicionFor -> condicionBloque .
+
+    RPAREN          reduce using rule 71 (condicionFor -> condicionBloque .)
+
+
+state 92
+
+    (72) condicionRango -> VARIABLE . IN VINT DOT DOT VINT
+    (73) condicionBloque -> VARIABLE . IN LISTOF
+
+    IN              shift and go to state 121
+
+
+state 93
+
+    (75) while -> WHILE LPAREN condicion . RPAREN LKEY cuerpoF RKEY
+
+    RPAREN          shift and go to state 122
+
+
+state 94
+
+    (76) when -> WHEN LPAREN VARIABLE . RPAREN LKEY cuerpoF RKEY
+
+    RPAREN          shift and go to state 123
+
+
+state 95
+
+    (83) parametro -> VARIABLE . DOUBLEPOINTS tipo
+
+    DOUBLEPOINTS    shift and go to state 124
+
+
+state 96
+
+    (77) implementa_funcion -> FUN VARIABLE LPAREN listaparametros . RPAREN DOUBLEPOINTS tipo LKEY instrucciones retorno RKEY
+    (80) implementa_funcion -> FUN VARIABLE LPAREN listaparametros . RPAREN DOUBLEPOINTS VOID LKEY instrucciones RKEY
+
+    RPAREN          shift and go to state 125
+
+
+state 97
+
+    (78) implementa_funcion -> FUN VARIABLE LPAREN RPAREN . DOUBLEPOINTS tipo LKEY instrucciones retorno RKEY
+    (79) implementa_funcion -> FUN VARIABLE LPAREN RPAREN . DOUBLEPOINTS VOID LKEY instrucciones RKEY
+
+    DOUBLEPOINTS    shift and go to state 126
+
+
+state 98
+
+    (81) listaparametros -> parametro .
+    (82) listaparametros -> parametro . COMA listaparametros
+
+    RPAREN          reduce using rule 81 (listaparametros -> parametro .)
+    COMA            shift and go to state 127
+
+
+state 99
+
+    (33) add -> VINT PLUS . VINT
+    (34) add -> VINT PLUS . VFLOAT
+
+    VINT            shift and go to state 128
+    VFLOAT          shift and go to state 129
+
+
+state 100
+
+    (36) subtract -> VINT MINUS . VINT
+    (37) subtract -> VINT MINUS . VFLOAT
+
+    VINT            shift and go to state 130
+    VFLOAT          shift and go to state 131
+
+
+state 101
+
+    (39) multiply -> VINT TIMES . VINT
+    (42) multiply -> VINT TIMES . VFLOAT
+
+    VINT            shift and go to state 132
+    VFLOAT          shift and go to state 133
+
+
+state 102
+
+    (43) divide -> VINT DIVIDE . VINT
+    (46) divide -> VINT DIVIDE . VFLOAT
+
+    VINT            shift and go to state 134
+    VFLOAT          shift and go to state 135
+
+
+state 103
+
+    (35) add -> VFLOAT PLUS . VFLOAT
+
+    VFLOAT          shift and go to state 136
+
+
+state 104
+
+    (38) subtract -> VFLOAT MINUS . VFLOAT
+
+    VFLOAT          shift and go to state 137
+
+
+state 105
+
+    (40) multiply -> VFLOAT TIMES . VFLOAT
+    (41) multiply -> VFLOAT TIMES . VINT
+
+    VFLOAT          shift and go to state 138
+    VINT            shift and go to state 139
+
+
+state 106
+
+    (44) divide -> VFLOAT DIVIDE . VFLOAT
+    (45) divide -> VFLOAT DIVIDE . VINT
+
+    VFLOAT          shift and go to state 140
+    VINT            shift and go to state 141
+
+
+state 107
+
+    (17) asignacion -> designacion VARIABLE DOUBLEPOINTS tipo . IGUAL valor
+
+    IGUAL           shift and go to state 142
+
+
+state 108
+
+    (24) listAsignacion -> designacion VARIABLE DOUBLEPOINTS LIST . diamondType
+    (23) diamondType -> . MINOR tipo MAYOR
+
+    MINOR           shift and go to state 144
+
+    diamondType                    shift and go to state 143
+
+state 109
+
+    (47) mutListAsignacion -> designacion VARIABLE DOUBLEPOINTS MUTABLELIST . diamondType
+    (23) diamondType -> . MINOR tipo MAYOR
+
+    MINOR           shift and go to state 144
+
+    diamondType                    shift and go to state 145
+
+state 110
+
+    (20) tipo -> TINT .
+
+    IGUAL           reduce using rule 20 (tipo -> TINT .)
+    COMA            reduce using rule 20 (tipo -> TINT .)
+    RPAREN          reduce using rule 20 (tipo -> TINT .)
+    LKEY            reduce using rule 20 (tipo -> TINT .)
+    MAYOR           reduce using rule 20 (tipo -> TINT .)
+
+
+state 111
+
+    (21) tipo -> TFLOAT .
+
+    IGUAL           reduce using rule 21 (tipo -> TFLOAT .)
+    COMA            reduce using rule 21 (tipo -> TFLOAT .)
+    RPAREN          reduce using rule 21 (tipo -> TFLOAT .)
+    LKEY            reduce using rule 21 (tipo -> TFLOAT .)
+    MAYOR           reduce using rule 21 (tipo -> TFLOAT .)
+
+
+state 112
+
+    (22) tipo -> STRING .
+
+    IGUAL           reduce using rule 22 (tipo -> STRING .)
+    COMA            reduce using rule 22 (tipo -> STRING .)
+    RPAREN          reduce using rule 22 (tipo -> STRING .)
+    LKEY            reduce using rule 22 (tipo -> STRING .)
+    MAYOR           reduce using rule 22 (tipo -> STRING .)
+
+
+state 113
+
+    (54) inData -> designacion VARIABLE IGUAL READLINE . LPAREN RPAREN
+
+    LPAREN          shift and go to state 146
+
+
+state 114
+
+    (51) pairAsignation -> designacion LPAREN VARIABLE COMA . VARIABLE RPAREN
+
+    VARIABLE        shift and go to state 147
+
+
+state 115
+
+    (61) impresion -> PRINTLN LPAREN valor RPAREN .
+
+    PRINTLN         reduce using rule 61 (impresion -> PRINTLN LPAREN valor RPAREN .)
+    VARIABLE        reduce using rule 61 (impresion -> PRINTLN LPAREN valor RPAREN .)
+    VINT            reduce using rule 61 (impresion -> PRINTLN LPAREN valor RPAREN .)
+    VFLOAT          reduce using rule 61 (impresion -> PRINTLN LPAREN valor RPAREN .)
+    IF              reduce using rule 61 (impresion -> PRINTLN LPAREN valor RPAREN .)
+    FOR             reduce using rule 61 (impresion -> PRINTLN LPAREN valor RPAREN .)
+    WHILE           reduce using rule 61 (impresion -> PRINTLN LPAREN valor RPAREN .)
+    WHEN            reduce using rule 61 (impresion -> PRINTLN LPAREN valor RPAREN .)
+    VAL             reduce using rule 61 (impresion -> PRINTLN LPAREN valor RPAREN .)
+    VAR             reduce using rule 61 (impresion -> PRINTLN LPAREN valor RPAREN .)
+    $end            reduce using rule 61 (impresion -> PRINTLN LPAREN valor RPAREN .)
+    RETURN          reduce using rule 61 (impresion -> PRINTLN LPAREN valor RPAREN .)
+    RKEY            reduce using rule 61 (impresion -> PRINTLN LPAREN valor RPAREN .)
+
+
+state 116
+
+    (26) listOf -> LISTOF LPAREN . elementos RPAREN
+    (27) elementos -> . elementos COMA valor
+    (28) elementos -> . valor
+    (29) valor -> . VINT
+    (30) valor -> . VFLOAT
+    (31) valor -> . STRING
+
+    VINT            shift and go to state 71
+    VFLOAT          shift and go to state 72
+    STRING          shift and go to state 66
+
+    elementos                      shift and go to state 148
+    valor                          shift and go to state 149
+
+state 117
+
+    (49) mutableListOf -> MUTABLELISTOF LPAREN . elementos RPAREN
+    (27) elementos -> . elementos COMA valor
+    (28) elementos -> . valor
+    (29) valor -> . VINT
+    (30) valor -> . VFLOAT
+    (31) valor -> . STRING
+
+    VINT            shift and go to state 71
+    VFLOAT          shift and go to state 72
+    STRING          shift and go to state 66
+
+    elementos                      shift and go to state 150
+    valor                          shift and go to state 149
+
+state 118
+
+    (52) pairBody -> PAIR LPAREN . valor COMA valor RPAREN
+    (29) valor -> . VINT
+    (30) valor -> . VFLOAT
+    (31) valor -> . STRING
+
+    VINT            shift and go to state 71
+    VFLOAT          shift and go to state 72
+    STRING          shift and go to state 66
+
+    valor                          shift and go to state 151
+
+state 119
+
+    (65) if -> IF LPAREN condicion RPAREN . LKEY cuerpoF RKEY
+    (66) if -> IF LPAREN condicion RPAREN . LKEY cuerpoF RKEY else
+    (67) if -> IF LPAREN condicion RPAREN . LKEY cuerpoF RKEY elseif else
+
+    LKEY            shift and go to state 152
+
+
+state 120
+
+    (74) for -> FOR LPAREN condicionFor RPAREN . LKEY cuerpoF RKEY
+
+    LKEY            shift and go to state 153
+
+
+state 121
+
+    (72) condicionRango -> VARIABLE IN . VINT DOT DOT VINT
+    (73) condicionBloque -> VARIABLE IN . LISTOF
+
+    VINT            shift and go to state 154
+    LISTOF          shift and go to state 155
+
+
+state 122
+
+    (75) while -> WHILE LPAREN condicion RPAREN . LKEY cuerpoF RKEY
+
+    LKEY            shift and go to state 156
+
+
+state 123
+
+    (76) when -> WHEN LPAREN VARIABLE RPAREN . LKEY cuerpoF RKEY
+
+    LKEY            shift and go to state 157
+
+
+state 124
+
+    (83) parametro -> VARIABLE DOUBLEPOINTS . tipo
+    (20) tipo -> . TINT
+    (21) tipo -> . TFLOAT
+    (22) tipo -> . STRING
+
+    TINT            shift and go to state 110
+    TFLOAT          shift and go to state 111
+    STRING          shift and go to state 112
+
+    tipo                           shift and go to state 158
+
+state 125
+
+    (77) implementa_funcion -> FUN VARIABLE LPAREN listaparametros RPAREN . DOUBLEPOINTS tipo LKEY instrucciones retorno RKEY
+    (80) implementa_funcion -> FUN VARIABLE LPAREN listaparametros RPAREN . DOUBLEPOINTS VOID LKEY instrucciones RKEY
+
+    DOUBLEPOINTS    shift and go to state 159
+
+
+state 126
+
+    (78) implementa_funcion -> FUN VARIABLE LPAREN RPAREN DOUBLEPOINTS . tipo LKEY instrucciones retorno RKEY
+    (79) implementa_funcion -> FUN VARIABLE LPAREN RPAREN DOUBLEPOINTS . VOID LKEY instrucciones RKEY
+    (20) tipo -> . TINT
+    (21) tipo -> . TFLOAT
+    (22) tipo -> . STRING
+
+    VOID            shift and go to state 161
+    TINT            shift and go to state 110
+    TFLOAT          shift and go to state 111
+    STRING          shift and go to state 112
+
+    tipo                           shift and go to state 160
+
+state 127
+
+    (82) listaparametros -> parametro COMA . listaparametros
+    (81) listaparametros -> . parametro
+    (82) listaparametros -> . parametro COMA listaparametros
+    (83) parametro -> . VARIABLE DOUBLEPOINTS tipo
+
+    VARIABLE        shift and go to state 95
+
+    parametro                      shift and go to state 98
+    listaparametros                shift and go to state 162
+
+state 128
+
+    (33) add -> VINT PLUS VINT .
+
+    PRINTLN         reduce using rule 33 (add -> VINT PLUS VINT .)
+    VARIABLE        reduce using rule 33 (add -> VINT PLUS VINT .)
+    VINT            reduce using rule 33 (add -> VINT PLUS VINT .)
+    VFLOAT          reduce using rule 33 (add -> VINT PLUS VINT .)
+    IF              reduce using rule 33 (add -> VINT PLUS VINT .)
+    FOR             reduce using rule 33 (add -> VINT PLUS VINT .)
+    WHILE           reduce using rule 33 (add -> VINT PLUS VINT .)
+    WHEN            reduce using rule 33 (add -> VINT PLUS VINT .)
+    VAL             reduce using rule 33 (add -> VINT PLUS VINT .)
+    VAR             reduce using rule 33 (add -> VINT PLUS VINT .)
+    $end            reduce using rule 33 (add -> VINT PLUS VINT .)
+    RETURN          reduce using rule 33 (add -> VINT PLUS VINT .)
+    RKEY            reduce using rule 33 (add -> VINT PLUS VINT .)
+
+
+state 129
+
+    (34) add -> VINT PLUS VFLOAT .
+
+    PRINTLN         reduce using rule 34 (add -> VINT PLUS VFLOAT .)
+    VARIABLE        reduce using rule 34 (add -> VINT PLUS VFLOAT .)
+    VINT            reduce using rule 34 (add -> VINT PLUS VFLOAT .)
+    VFLOAT          reduce using rule 34 (add -> VINT PLUS VFLOAT .)
+    IF              reduce using rule 34 (add -> VINT PLUS VFLOAT .)
+    FOR             reduce using rule 34 (add -> VINT PLUS VFLOAT .)
+    WHILE           reduce using rule 34 (add -> VINT PLUS VFLOAT .)
+    WHEN            reduce using rule 34 (add -> VINT PLUS VFLOAT .)
+    VAL             reduce using rule 34 (add -> VINT PLUS VFLOAT .)
+    VAR             reduce using rule 34 (add -> VINT PLUS VFLOAT .)
+    $end            reduce using rule 34 (add -> VINT PLUS VFLOAT .)
+    RETURN          reduce using rule 34 (add -> VINT PLUS VFLOAT .)
+    RKEY            reduce using rule 34 (add -> VINT PLUS VFLOAT .)
+
+
+state 130
+
+    (36) subtract -> VINT MINUS VINT .
+
+    PRINTLN         reduce using rule 36 (subtract -> VINT MINUS VINT .)
+    VARIABLE        reduce using rule 36 (subtract -> VINT MINUS VINT .)
+    VINT            reduce using rule 36 (subtract -> VINT MINUS VINT .)
+    VFLOAT          reduce using rule 36 (subtract -> VINT MINUS VINT .)
+    IF              reduce using rule 36 (subtract -> VINT MINUS VINT .)
+    FOR             reduce using rule 36 (subtract -> VINT MINUS VINT .)
+    WHILE           reduce using rule 36 (subtract -> VINT MINUS VINT .)
+    WHEN            reduce using rule 36 (subtract -> VINT MINUS VINT .)
+    VAL             reduce using rule 36 (subtract -> VINT MINUS VINT .)
+    VAR             reduce using rule 36 (subtract -> VINT MINUS VINT .)
+    $end            reduce using rule 36 (subtract -> VINT MINUS VINT .)
+    RETURN          reduce using rule 36 (subtract -> VINT MINUS VINT .)
+    RKEY            reduce using rule 36 (subtract -> VINT MINUS VINT .)
+
+
+state 131
+
+    (37) subtract -> VINT MINUS VFLOAT .
+
+    PRINTLN         reduce using rule 37 (subtract -> VINT MINUS VFLOAT .)
+    VARIABLE        reduce using rule 37 (subtract -> VINT MINUS VFLOAT .)
+    VINT            reduce using rule 37 (subtract -> VINT MINUS VFLOAT .)
+    VFLOAT          reduce using rule 37 (subtract -> VINT MINUS VFLOAT .)
+    IF              reduce using rule 37 (subtract -> VINT MINUS VFLOAT .)
+    FOR             reduce using rule 37 (subtract -> VINT MINUS VFLOAT .)
+    WHILE           reduce using rule 37 (subtract -> VINT MINUS VFLOAT .)
+    WHEN            reduce using rule 37 (subtract -> VINT MINUS VFLOAT .)
+    VAL             reduce using rule 37 (subtract -> VINT MINUS VFLOAT .)
+    VAR             reduce using rule 37 (subtract -> VINT MINUS VFLOAT .)
+    $end            reduce using rule 37 (subtract -> VINT MINUS VFLOAT .)
+    RETURN          reduce using rule 37 (subtract -> VINT MINUS VFLOAT .)
+    RKEY            reduce using rule 37 (subtract -> VINT MINUS VFLOAT .)
+
+
+state 132
+
+    (39) multiply -> VINT TIMES VINT .
+
+    PRINTLN         reduce using rule 39 (multiply -> VINT TIMES VINT .)
+    VARIABLE        reduce using rule 39 (multiply -> VINT TIMES VINT .)
+    VINT            reduce using rule 39 (multiply -> VINT TIMES VINT .)
+    VFLOAT          reduce using rule 39 (multiply -> VINT TIMES VINT .)
+    IF              reduce using rule 39 (multiply -> VINT TIMES VINT .)
+    FOR             reduce using rule 39 (multiply -> VINT TIMES VINT .)
+    WHILE           reduce using rule 39 (multiply -> VINT TIMES VINT .)
+    WHEN            reduce using rule 39 (multiply -> VINT TIMES VINT .)
+    VAL             reduce using rule 39 (multiply -> VINT TIMES VINT .)
+    VAR             reduce using rule 39 (multiply -> VINT TIMES VINT .)
+    $end            reduce using rule 39 (multiply -> VINT TIMES VINT .)
+    RETURN          reduce using rule 39 (multiply -> VINT TIMES VINT .)
+    RKEY            reduce using rule 39 (multiply -> VINT TIMES VINT .)
+
+
+state 133
+
+    (42) multiply -> VINT TIMES VFLOAT .
+
+    PRINTLN         reduce using rule 42 (multiply -> VINT TIMES VFLOAT .)
+    VARIABLE        reduce using rule 42 (multiply -> VINT TIMES VFLOAT .)
+    VINT            reduce using rule 42 (multiply -> VINT TIMES VFLOAT .)
+    VFLOAT          reduce using rule 42 (multiply -> VINT TIMES VFLOAT .)
+    IF              reduce using rule 42 (multiply -> VINT TIMES VFLOAT .)
+    FOR             reduce using rule 42 (multiply -> VINT TIMES VFLOAT .)
+    WHILE           reduce using rule 42 (multiply -> VINT TIMES VFLOAT .)
+    WHEN            reduce using rule 42 (multiply -> VINT TIMES VFLOAT .)
+    VAL             reduce using rule 42 (multiply -> VINT TIMES VFLOAT .)
+    VAR             reduce using rule 42 (multiply -> VINT TIMES VFLOAT .)
+    $end            reduce using rule 42 (multiply -> VINT TIMES VFLOAT .)
+    RETURN          reduce using rule 42 (multiply -> VINT TIMES VFLOAT .)
+    RKEY            reduce using rule 42 (multiply -> VINT TIMES VFLOAT .)
+
+
+state 134
+
+    (43) divide -> VINT DIVIDE VINT .
+
+    PRINTLN         reduce using rule 43 (divide -> VINT DIVIDE VINT .)
+    VARIABLE        reduce using rule 43 (divide -> VINT DIVIDE VINT .)
+    VINT            reduce using rule 43 (divide -> VINT DIVIDE VINT .)
+    VFLOAT          reduce using rule 43 (divide -> VINT DIVIDE VINT .)
+    IF              reduce using rule 43 (divide -> VINT DIVIDE VINT .)
+    FOR             reduce using rule 43 (divide -> VINT DIVIDE VINT .)
+    WHILE           reduce using rule 43 (divide -> VINT DIVIDE VINT .)
+    WHEN            reduce using rule 43 (divide -> VINT DIVIDE VINT .)
+    VAL             reduce using rule 43 (divide -> VINT DIVIDE VINT .)
+    VAR             reduce using rule 43 (divide -> VINT DIVIDE VINT .)
+    $end            reduce using rule 43 (divide -> VINT DIVIDE VINT .)
+    RETURN          reduce using rule 43 (divide -> VINT DIVIDE VINT .)
+    RKEY            reduce using rule 43 (divide -> VINT DIVIDE VINT .)
+
+
+state 135
+
+    (46) divide -> VINT DIVIDE VFLOAT .
+
+    PRINTLN         reduce using rule 46 (divide -> VINT DIVIDE VFLOAT .)
+    VARIABLE        reduce using rule 46 (divide -> VINT DIVIDE VFLOAT .)
+    VINT            reduce using rule 46 (divide -> VINT DIVIDE VFLOAT .)
+    VFLOAT          reduce using rule 46 (divide -> VINT DIVIDE VFLOAT .)
+    IF              reduce using rule 46 (divide -> VINT DIVIDE VFLOAT .)
+    FOR             reduce using rule 46 (divide -> VINT DIVIDE VFLOAT .)
+    WHILE           reduce using rule 46 (divide -> VINT DIVIDE VFLOAT .)
+    WHEN            reduce using rule 46 (divide -> VINT DIVIDE VFLOAT .)
+    VAL             reduce using rule 46 (divide -> VINT DIVIDE VFLOAT .)
+    VAR             reduce using rule 46 (divide -> VINT DIVIDE VFLOAT .)
+    $end            reduce using rule 46 (divide -> VINT DIVIDE VFLOAT .)
+    RETURN          reduce using rule 46 (divide -> VINT DIVIDE VFLOAT .)
+    RKEY            reduce using rule 46 (divide -> VINT DIVIDE VFLOAT .)
+
+
+state 136
+
+    (35) add -> VFLOAT PLUS VFLOAT .
+
+    PRINTLN         reduce using rule 35 (add -> VFLOAT PLUS VFLOAT .)
+    VARIABLE        reduce using rule 35 (add -> VFLOAT PLUS VFLOAT .)
+    VINT            reduce using rule 35 (add -> VFLOAT PLUS VFLOAT .)
+    VFLOAT          reduce using rule 35 (add -> VFLOAT PLUS VFLOAT .)
+    IF              reduce using rule 35 (add -> VFLOAT PLUS VFLOAT .)
+    FOR             reduce using rule 35 (add -> VFLOAT PLUS VFLOAT .)
+    WHILE           reduce using rule 35 (add -> VFLOAT PLUS VFLOAT .)
+    WHEN            reduce using rule 35 (add -> VFLOAT PLUS VFLOAT .)
+    VAL             reduce using rule 35 (add -> VFLOAT PLUS VFLOAT .)
+    VAR             reduce using rule 35 (add -> VFLOAT PLUS VFLOAT .)
+    $end            reduce using rule 35 (add -> VFLOAT PLUS VFLOAT .)
+    RETURN          reduce using rule 35 (add -> VFLOAT PLUS VFLOAT .)
+    RKEY            reduce using rule 35 (add -> VFLOAT PLUS VFLOAT .)
+
+
+state 137
+
+    (38) subtract -> VFLOAT MINUS VFLOAT .
+
+    PRINTLN         reduce using rule 38 (subtract -> VFLOAT MINUS VFLOAT .)
+    VARIABLE        reduce using rule 38 (subtract -> VFLOAT MINUS VFLOAT .)
+    VINT            reduce using rule 38 (subtract -> VFLOAT MINUS VFLOAT .)
+    VFLOAT          reduce using rule 38 (subtract -> VFLOAT MINUS VFLOAT .)
+    IF              reduce using rule 38 (subtract -> VFLOAT MINUS VFLOAT .)
+    FOR             reduce using rule 38 (subtract -> VFLOAT MINUS VFLOAT .)
+    WHILE           reduce using rule 38 (subtract -> VFLOAT MINUS VFLOAT .)
+    WHEN            reduce using rule 38 (subtract -> VFLOAT MINUS VFLOAT .)
+    VAL             reduce using rule 38 (subtract -> VFLOAT MINUS VFLOAT .)
+    VAR             reduce using rule 38 (subtract -> VFLOAT MINUS VFLOAT .)
+    $end            reduce using rule 38 (subtract -> VFLOAT MINUS VFLOAT .)
+    RETURN          reduce using rule 38 (subtract -> VFLOAT MINUS VFLOAT .)
+    RKEY            reduce using rule 38 (subtract -> VFLOAT MINUS VFLOAT .)
+
+
+state 138
+
+    (40) multiply -> VFLOAT TIMES VFLOAT .
+
+    PRINTLN         reduce using rule 40 (multiply -> VFLOAT TIMES VFLOAT .)
+    VARIABLE        reduce using rule 40 (multiply -> VFLOAT TIMES VFLOAT .)
+    VINT            reduce using rule 40 (multiply -> VFLOAT TIMES VFLOAT .)
+    VFLOAT          reduce using rule 40 (multiply -> VFLOAT TIMES VFLOAT .)
+    IF              reduce using rule 40 (multiply -> VFLOAT TIMES VFLOAT .)
+    FOR             reduce using rule 40 (multiply -> VFLOAT TIMES VFLOAT .)
+    WHILE           reduce using rule 40 (multiply -> VFLOAT TIMES VFLOAT .)
+    WHEN            reduce using rule 40 (multiply -> VFLOAT TIMES VFLOAT .)
+    VAL             reduce using rule 40 (multiply -> VFLOAT TIMES VFLOAT .)
+    VAR             reduce using rule 40 (multiply -> VFLOAT TIMES VFLOAT .)
+    $end            reduce using rule 40 (multiply -> VFLOAT TIMES VFLOAT .)
+    RETURN          reduce using rule 40 (multiply -> VFLOAT TIMES VFLOAT .)
+    RKEY            reduce using rule 40 (multiply -> VFLOAT TIMES VFLOAT .)
+
+
+state 139
+
+    (41) multiply -> VFLOAT TIMES VINT .
+
+    PRINTLN         reduce using rule 41 (multiply -> VFLOAT TIMES VINT .)
+    VARIABLE        reduce using rule 41 (multiply -> VFLOAT TIMES VINT .)
+    VINT            reduce using rule 41 (multiply -> VFLOAT TIMES VINT .)
+    VFLOAT          reduce using rule 41 (multiply -> VFLOAT TIMES VINT .)
+    IF              reduce using rule 41 (multiply -> VFLOAT TIMES VINT .)
+    FOR             reduce using rule 41 (multiply -> VFLOAT TIMES VINT .)
+    WHILE           reduce using rule 41 (multiply -> VFLOAT TIMES VINT .)
+    WHEN            reduce using rule 41 (multiply -> VFLOAT TIMES VINT .)
+    VAL             reduce using rule 41 (multiply -> VFLOAT TIMES VINT .)
+    VAR             reduce using rule 41 (multiply -> VFLOAT TIMES VINT .)
+    $end            reduce using rule 41 (multiply -> VFLOAT TIMES VINT .)
+    RETURN          reduce using rule 41 (multiply -> VFLOAT TIMES VINT .)
+    RKEY            reduce using rule 41 (multiply -> VFLOAT TIMES VINT .)
+
+
+state 140
+
+    (44) divide -> VFLOAT DIVIDE VFLOAT .
+
+    PRINTLN         reduce using rule 44 (divide -> VFLOAT DIVIDE VFLOAT .)
+    VARIABLE        reduce using rule 44 (divide -> VFLOAT DIVIDE VFLOAT .)
+    VINT            reduce using rule 44 (divide -> VFLOAT DIVIDE VFLOAT .)
+    VFLOAT          reduce using rule 44 (divide -> VFLOAT DIVIDE VFLOAT .)
+    IF              reduce using rule 44 (divide -> VFLOAT DIVIDE VFLOAT .)
+    FOR             reduce using rule 44 (divide -> VFLOAT DIVIDE VFLOAT .)
+    WHILE           reduce using rule 44 (divide -> VFLOAT DIVIDE VFLOAT .)
+    WHEN            reduce using rule 44 (divide -> VFLOAT DIVIDE VFLOAT .)
+    VAL             reduce using rule 44 (divide -> VFLOAT DIVIDE VFLOAT .)
+    VAR             reduce using rule 44 (divide -> VFLOAT DIVIDE VFLOAT .)
+    $end            reduce using rule 44 (divide -> VFLOAT DIVIDE VFLOAT .)
+    RETURN          reduce using rule 44 (divide -> VFLOAT DIVIDE VFLOAT .)
+    RKEY            reduce using rule 44 (divide -> VFLOAT DIVIDE VFLOAT .)
+
+
+state 141
+
+    (45) divide -> VFLOAT DIVIDE VINT .
+
+    PRINTLN         reduce using rule 45 (divide -> VFLOAT DIVIDE VINT .)
+    VARIABLE        reduce using rule 45 (divide -> VFLOAT DIVIDE VINT .)
+    VINT            reduce using rule 45 (divide -> VFLOAT DIVIDE VINT .)
+    VFLOAT          reduce using rule 45 (divide -> VFLOAT DIVIDE VINT .)
+    IF              reduce using rule 45 (divide -> VFLOAT DIVIDE VINT .)
+    FOR             reduce using rule 45 (divide -> VFLOAT DIVIDE VINT .)
+    WHILE           reduce using rule 45 (divide -> VFLOAT DIVIDE VINT .)
+    WHEN            reduce using rule 45 (divide -> VFLOAT DIVIDE VINT .)
+    VAL             reduce using rule 45 (divide -> VFLOAT DIVIDE VINT .)
+    VAR             reduce using rule 45 (divide -> VFLOAT DIVIDE VINT .)
+    $end            reduce using rule 45 (divide -> VFLOAT DIVIDE VINT .)
+    RETURN          reduce using rule 45 (divide -> VFLOAT DIVIDE VINT .)
+    RKEY            reduce using rule 45 (divide -> VFLOAT DIVIDE VINT .)
+
+
+state 142
+
+    (17) asignacion -> designacion VARIABLE DOUBLEPOINTS tipo IGUAL . valor
+    (29) valor -> . VINT
+    (30) valor -> . VFLOAT
+    (31) valor -> . STRING
+
+    VINT            shift and go to state 71
+    VFLOAT          shift and go to state 72
+    STRING          shift and go to state 66
+
+    valor                          shift and go to state 163
+
+state 143
+
+    (24) listAsignacion -> designacion VARIABLE DOUBLEPOINTS LIST diamondType .
+
+    IGUAL           reduce using rule 24 (listAsignacion -> designacion VARIABLE DOUBLEPOINTS LIST diamondType .)
+
+
+state 144
+
+    (23) diamondType -> MINOR . tipo MAYOR
+    (20) tipo -> . TINT
+    (21) tipo -> . TFLOAT
+    (22) tipo -> . STRING
+
+    TINT            shift and go to state 110
+    TFLOAT          shift and go to state 111
+    STRING          shift and go to state 112
+
+    tipo                           shift and go to state 164
+
+state 145
+
+    (47) mutListAsignacion -> designacion VARIABLE DOUBLEPOINTS MUTABLELIST diamondType .
+
+    IGUAL           reduce using rule 47 (mutListAsignacion -> designacion VARIABLE DOUBLEPOINTS MUTABLELIST diamondType .)
+
+
+state 146
+
+    (54) inData -> designacion VARIABLE IGUAL READLINE LPAREN . RPAREN
+
+    RPAREN          shift and go to state 165
+
+
+state 147
+
+    (51) pairAsignation -> designacion LPAREN VARIABLE COMA VARIABLE . RPAREN
+
+    RPAREN          shift and go to state 166
+
+
+state 148
+
+    (26) listOf -> LISTOF LPAREN elementos . RPAREN
+    (27) elementos -> elementos . COMA valor
+
+    RPAREN          shift and go to state 167
+    COMA            shift and go to state 168
+
+
+state 149
+
+    (28) elementos -> valor .
+
+    RPAREN          reduce using rule 28 (elementos -> valor .)
+    COMA            reduce using rule 28 (elementos -> valor .)
+
+
+state 150
+
+    (49) mutableListOf -> MUTABLELISTOF LPAREN elementos . RPAREN
+    (27) elementos -> elementos . COMA valor
+
+    RPAREN          shift and go to state 169
+    COMA            shift and go to state 168
+
+
+state 151
+
+    (52) pairBody -> PAIR LPAREN valor . COMA valor RPAREN
+
+    COMA            shift and go to state 170
+
+
+state 152
+
+    (65) if -> IF LPAREN condicion RPAREN LKEY . cuerpoF RKEY
+    (66) if -> IF LPAREN condicion RPAREN LKEY . cuerpoF RKEY else
+    (67) if -> IF LPAREN condicion RPAREN LKEY . cuerpoF RKEY elseif else
+    (3) cuerpoF -> . asignacion
+    (4) cuerpoF -> . impresion
+    (5) cuerpoF -> . asigna
+    (6) cuerpoF -> . compareType
+    (7) cuerpoF -> . compareGreaterthan
+    (8) cuerpoF -> . compareSmallerthan
+    (9) cuerpoF -> . list
+    (10) cuerpoF -> . mutableList
+    (11) cuerpoF -> . pair
+    (12) cuerpoF -> . inData
+    (13) cuerpoF -> . if
+    (14) cuerpoF -> . for
+    (15) cuerpoF -> . while
+    (16) cuerpoF -> . when
+    (17) asignacion -> . designacion VARIABLE DOUBLEPOINTS tipo IGUAL valor
+    (61) impresion -> . PRINTLN LPAREN valor RPAREN
+    (87) asigna -> . VARIABLE IGUAL asignado
+    (55) compareType -> . VINT IGUAL VINT
+    (56) compareType -> . VFLOAT IGUAL VFLOAT
+    (57) compareGreaterthan -> . VINT MAYOR VINT
+    (58) compareGreaterthan -> . VFLOAT MAYOR VFLOAT
+    (59) compareSmallerthan -> . VINT MINOR VINT
+    (60) compareSmallerthan -> . VFLOAT MINOR VFLOAT
+    (32) list -> . listAsignacion IGUAL listOf
+    (50) mutableList -> . mutListAsignacion IGUAL mutableListOf
+    (53) pair -> . pairAsignation IGUAL pairBody
+    (54) inData -> . designacion VARIABLE IGUAL READLINE LPAREN RPAREN
+    (65) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY
+    (66) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY else
+    (67) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY elseif else
+    (74) for -> . FOR LPAREN condicionFor RPAREN LKEY cuerpoF RKEY
+    (75) while -> . WHILE LPAREN condicion RPAREN LKEY cuerpoF RKEY
+    (76) when -> . WHEN LPAREN VARIABLE RPAREN LKEY cuerpoF RKEY
+    (18) designacion -> . VAL
+    (19) designacion -> . VAR
+    (24) listAsignacion -> . designacion VARIABLE DOUBLEPOINTS LIST diamondType
+    (25) listAsignacion -> . designacion VARIABLE
+    (47) mutListAsignacion -> . designacion VARIABLE DOUBLEPOINTS MUTABLELIST diamondType
+    (48) mutListAsignacion -> . designacion VARIABLE
+    (51) pairAsignation -> . designacion LPAREN VARIABLE COMA VARIABLE RPAREN
+
+    PRINTLN         shift and go to state 22
+    VARIABLE        shift and go to state 5
+    VINT            shift and go to state 23
+    VFLOAT          shift and go to state 24
+    IF              shift and go to state 28
+    FOR             shift and go to state 29
+    WHILE           shift and go to state 30
+    WHEN            shift and go to state 31
+    VAL             shift and go to state 32
+    VAR             shift and go to state 33
+
+    cuerpoF                        shift and go to state 171
+    asignacion                     shift and go to state 7
+    impresion                      shift and go to state 8
+    asigna                         shift and go to state 9
+    compareType                    shift and go to state 10
+    compareGreaterthan             shift and go to state 11
+    compareSmallerthan             shift and go to state 12
+    list                           shift and go to state 13
+    mutableList                    shift and go to state 14
+    pair                           shift and go to state 15
+    inData                         shift and go to state 16
+    if                             shift and go to state 17
+    for                            shift and go to state 18
+    while                          shift and go to state 19
+    when                           shift and go to state 20
+    designacion                    shift and go to state 21
+    listAsignacion                 shift and go to state 25
+    mutListAsignacion              shift and go to state 26
+    pairAsignation                 shift and go to state 27
+
+state 153
+
+    (74) for -> FOR LPAREN condicionFor RPAREN LKEY . cuerpoF RKEY
+    (3) cuerpoF -> . asignacion
+    (4) cuerpoF -> . impresion
+    (5) cuerpoF -> . asigna
+    (6) cuerpoF -> . compareType
+    (7) cuerpoF -> . compareGreaterthan
+    (8) cuerpoF -> . compareSmallerthan
+    (9) cuerpoF -> . list
+    (10) cuerpoF -> . mutableList
+    (11) cuerpoF -> . pair
+    (12) cuerpoF -> . inData
+    (13) cuerpoF -> . if
+    (14) cuerpoF -> . for
+    (15) cuerpoF -> . while
+    (16) cuerpoF -> . when
+    (17) asignacion -> . designacion VARIABLE DOUBLEPOINTS tipo IGUAL valor
+    (61) impresion -> . PRINTLN LPAREN valor RPAREN
+    (87) asigna -> . VARIABLE IGUAL asignado
+    (55) compareType -> . VINT IGUAL VINT
+    (56) compareType -> . VFLOAT IGUAL VFLOAT
+    (57) compareGreaterthan -> . VINT MAYOR VINT
+    (58) compareGreaterthan -> . VFLOAT MAYOR VFLOAT
+    (59) compareSmallerthan -> . VINT MINOR VINT
+    (60) compareSmallerthan -> . VFLOAT MINOR VFLOAT
+    (32) list -> . listAsignacion IGUAL listOf
+    (50) mutableList -> . mutListAsignacion IGUAL mutableListOf
+    (53) pair -> . pairAsignation IGUAL pairBody
+    (54) inData -> . designacion VARIABLE IGUAL READLINE LPAREN RPAREN
+    (65) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY
+    (66) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY else
+    (67) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY elseif else
+    (74) for -> . FOR LPAREN condicionFor RPAREN LKEY cuerpoF RKEY
+    (75) while -> . WHILE LPAREN condicion RPAREN LKEY cuerpoF RKEY
+    (76) when -> . WHEN LPAREN VARIABLE RPAREN LKEY cuerpoF RKEY
+    (18) designacion -> . VAL
+    (19) designacion -> . VAR
+    (24) listAsignacion -> . designacion VARIABLE DOUBLEPOINTS LIST diamondType
+    (25) listAsignacion -> . designacion VARIABLE
+    (47) mutListAsignacion -> . designacion VARIABLE DOUBLEPOINTS MUTABLELIST diamondType
+    (48) mutListAsignacion -> . designacion VARIABLE
+    (51) pairAsignation -> . designacion LPAREN VARIABLE COMA VARIABLE RPAREN
+
+    PRINTLN         shift and go to state 22
+    VARIABLE        shift and go to state 5
+    VINT            shift and go to state 23
+    VFLOAT          shift and go to state 24
+    IF              shift and go to state 28
+    FOR             shift and go to state 29
+    WHILE           shift and go to state 30
+    WHEN            shift and go to state 31
+    VAL             shift and go to state 32
+    VAR             shift and go to state 33
+
+    cuerpoF                        shift and go to state 172
+    asignacion                     shift and go to state 7
+    impresion                      shift and go to state 8
+    asigna                         shift and go to state 9
+    compareType                    shift and go to state 10
+    compareGreaterthan             shift and go to state 11
+    compareSmallerthan             shift and go to state 12
+    list                           shift and go to state 13
+    mutableList                    shift and go to state 14
+    pair                           shift and go to state 15
+    inData                         shift and go to state 16
+    if                             shift and go to state 17
+    for                            shift and go to state 18
+    while                          shift and go to state 19
+    when                           shift and go to state 20
+    designacion                    shift and go to state 21
+    listAsignacion                 shift and go to state 25
+    mutListAsignacion              shift and go to state 26
+    pairAsignation                 shift and go to state 27
+
+state 154
+
+    (72) condicionRango -> VARIABLE IN VINT . DOT DOT VINT
+
+    DOT             shift and go to state 173
+
+
+state 155
+
+    (73) condicionBloque -> VARIABLE IN LISTOF .
+
+    RPAREN          reduce using rule 73 (condicionBloque -> VARIABLE IN LISTOF .)
+
+
+state 156
+
+    (75) while -> WHILE LPAREN condicion RPAREN LKEY . cuerpoF RKEY
+    (3) cuerpoF -> . asignacion
+    (4) cuerpoF -> . impresion
+    (5) cuerpoF -> . asigna
+    (6) cuerpoF -> . compareType
+    (7) cuerpoF -> . compareGreaterthan
+    (8) cuerpoF -> . compareSmallerthan
+    (9) cuerpoF -> . list
+    (10) cuerpoF -> . mutableList
+    (11) cuerpoF -> . pair
+    (12) cuerpoF -> . inData
+    (13) cuerpoF -> . if
+    (14) cuerpoF -> . for
+    (15) cuerpoF -> . while
+    (16) cuerpoF -> . when
+    (17) asignacion -> . designacion VARIABLE DOUBLEPOINTS tipo IGUAL valor
+    (61) impresion -> . PRINTLN LPAREN valor RPAREN
+    (87) asigna -> . VARIABLE IGUAL asignado
+    (55) compareType -> . VINT IGUAL VINT
+    (56) compareType -> . VFLOAT IGUAL VFLOAT
+    (57) compareGreaterthan -> . VINT MAYOR VINT
+    (58) compareGreaterthan -> . VFLOAT MAYOR VFLOAT
+    (59) compareSmallerthan -> . VINT MINOR VINT
+    (60) compareSmallerthan -> . VFLOAT MINOR VFLOAT
+    (32) list -> . listAsignacion IGUAL listOf
+    (50) mutableList -> . mutListAsignacion IGUAL mutableListOf
+    (53) pair -> . pairAsignation IGUAL pairBody
+    (54) inData -> . designacion VARIABLE IGUAL READLINE LPAREN RPAREN
+    (65) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY
+    (66) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY else
+    (67) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY elseif else
+    (74) for -> . FOR LPAREN condicionFor RPAREN LKEY cuerpoF RKEY
+    (75) while -> . WHILE LPAREN condicion RPAREN LKEY cuerpoF RKEY
+    (76) when -> . WHEN LPAREN VARIABLE RPAREN LKEY cuerpoF RKEY
+    (18) designacion -> . VAL
+    (19) designacion -> . VAR
+    (24) listAsignacion -> . designacion VARIABLE DOUBLEPOINTS LIST diamondType
+    (25) listAsignacion -> . designacion VARIABLE
+    (47) mutListAsignacion -> . designacion VARIABLE DOUBLEPOINTS MUTABLELIST diamondType
+    (48) mutListAsignacion -> . designacion VARIABLE
+    (51) pairAsignation -> . designacion LPAREN VARIABLE COMA VARIABLE RPAREN
+
+    PRINTLN         shift and go to state 22
+    VARIABLE        shift and go to state 5
+    VINT            shift and go to state 23
+    VFLOAT          shift and go to state 24
+    IF              shift and go to state 28
+    FOR             shift and go to state 29
+    WHILE           shift and go to state 30
+    WHEN            shift and go to state 31
+    VAL             shift and go to state 32
+    VAR             shift and go to state 33
+
+    cuerpoF                        shift and go to state 174
+    asignacion                     shift and go to state 7
+    impresion                      shift and go to state 8
+    asigna                         shift and go to state 9
+    compareType                    shift and go to state 10
+    compareGreaterthan             shift and go to state 11
+    compareSmallerthan             shift and go to state 12
+    list                           shift and go to state 13
+    mutableList                    shift and go to state 14
+    pair                           shift and go to state 15
+    inData                         shift and go to state 16
+    if                             shift and go to state 17
+    for                            shift and go to state 18
+    while                          shift and go to state 19
+    when                           shift and go to state 20
+    designacion                    shift and go to state 21
+    listAsignacion                 shift and go to state 25
+    mutListAsignacion              shift and go to state 26
+    pairAsignation                 shift and go to state 27
+
+state 157
+
+    (76) when -> WHEN LPAREN VARIABLE RPAREN LKEY . cuerpoF RKEY
+    (3) cuerpoF -> . asignacion
+    (4) cuerpoF -> . impresion
+    (5) cuerpoF -> . asigna
+    (6) cuerpoF -> . compareType
+    (7) cuerpoF -> . compareGreaterthan
+    (8) cuerpoF -> . compareSmallerthan
+    (9) cuerpoF -> . list
+    (10) cuerpoF -> . mutableList
+    (11) cuerpoF -> . pair
+    (12) cuerpoF -> . inData
+    (13) cuerpoF -> . if
+    (14) cuerpoF -> . for
+    (15) cuerpoF -> . while
+    (16) cuerpoF -> . when
+    (17) asignacion -> . designacion VARIABLE DOUBLEPOINTS tipo IGUAL valor
+    (61) impresion -> . PRINTLN LPAREN valor RPAREN
+    (87) asigna -> . VARIABLE IGUAL asignado
+    (55) compareType -> . VINT IGUAL VINT
+    (56) compareType -> . VFLOAT IGUAL VFLOAT
+    (57) compareGreaterthan -> . VINT MAYOR VINT
+    (58) compareGreaterthan -> . VFLOAT MAYOR VFLOAT
+    (59) compareSmallerthan -> . VINT MINOR VINT
+    (60) compareSmallerthan -> . VFLOAT MINOR VFLOAT
+    (32) list -> . listAsignacion IGUAL listOf
+    (50) mutableList -> . mutListAsignacion IGUAL mutableListOf
+    (53) pair -> . pairAsignation IGUAL pairBody
+    (54) inData -> . designacion VARIABLE IGUAL READLINE LPAREN RPAREN
+    (65) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY
+    (66) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY else
+    (67) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY elseif else
+    (74) for -> . FOR LPAREN condicionFor RPAREN LKEY cuerpoF RKEY
+    (75) while -> . WHILE LPAREN condicion RPAREN LKEY cuerpoF RKEY
+    (76) when -> . WHEN LPAREN VARIABLE RPAREN LKEY cuerpoF RKEY
+    (18) designacion -> . VAL
+    (19) designacion -> . VAR
+    (24) listAsignacion -> . designacion VARIABLE DOUBLEPOINTS LIST diamondType
+    (25) listAsignacion -> . designacion VARIABLE
+    (47) mutListAsignacion -> . designacion VARIABLE DOUBLEPOINTS MUTABLELIST diamondType
+    (48) mutListAsignacion -> . designacion VARIABLE
+    (51) pairAsignation -> . designacion LPAREN VARIABLE COMA VARIABLE RPAREN
+
+    PRINTLN         shift and go to state 22
+    VARIABLE        shift and go to state 5
+    VINT            shift and go to state 23
+    VFLOAT          shift and go to state 24
+    IF              shift and go to state 28
+    FOR             shift and go to state 29
+    WHILE           shift and go to state 30
+    WHEN            shift and go to state 31
+    VAL             shift and go to state 32
+    VAR             shift and go to state 33
+
+    cuerpoF                        shift and go to state 175
+    asignacion                     shift and go to state 7
+    impresion                      shift and go to state 8
+    asigna                         shift and go to state 9
+    compareType                    shift and go to state 10
+    compareGreaterthan             shift and go to state 11
+    compareSmallerthan             shift and go to state 12
+    list                           shift and go to state 13
+    mutableList                    shift and go to state 14
+    pair                           shift and go to state 15
+    inData                         shift and go to state 16
+    if                             shift and go to state 17
+    for                            shift and go to state 18
+    while                          shift and go to state 19
+    when                           shift and go to state 20
+    designacion                    shift and go to state 21
+    listAsignacion                 shift and go to state 25
+    mutListAsignacion              shift and go to state 26
+    pairAsignation                 shift and go to state 27
+
+state 158
+
+    (83) parametro -> VARIABLE DOUBLEPOINTS tipo .
+
+    COMA            reduce using rule 83 (parametro -> VARIABLE DOUBLEPOINTS tipo .)
+    RPAREN          reduce using rule 83 (parametro -> VARIABLE DOUBLEPOINTS tipo .)
+
+
+state 159
+
+    (77) implementa_funcion -> FUN VARIABLE LPAREN listaparametros RPAREN DOUBLEPOINTS . tipo LKEY instrucciones retorno RKEY
+    (80) implementa_funcion -> FUN VARIABLE LPAREN listaparametros RPAREN DOUBLEPOINTS . VOID LKEY instrucciones RKEY
+    (20) tipo -> . TINT
+    (21) tipo -> . TFLOAT
+    (22) tipo -> . STRING
+
+    VOID            shift and go to state 177
+    TINT            shift and go to state 110
+    TFLOAT          shift and go to state 111
+    STRING          shift and go to state 112
+
+    tipo                           shift and go to state 176
+
+state 160
+
+    (78) implementa_funcion -> FUN VARIABLE LPAREN RPAREN DOUBLEPOINTS tipo . LKEY instrucciones retorno RKEY
+
+    LKEY            shift and go to state 178
+
+
+state 161
+
+    (79) implementa_funcion -> FUN VARIABLE LPAREN RPAREN DOUBLEPOINTS VOID . LKEY instrucciones RKEY
+
+    LKEY            shift and go to state 179
+
+
+state 162
+
+    (82) listaparametros -> parametro COMA listaparametros .
+
+    RPAREN          reduce using rule 82 (listaparametros -> parametro COMA listaparametros .)
+
+
+state 163
+
+    (17) asignacion -> designacion VARIABLE DOUBLEPOINTS tipo IGUAL valor .
+
+    PRINTLN         reduce using rule 17 (asignacion -> designacion VARIABLE DOUBLEPOINTS tipo IGUAL valor .)
+    VARIABLE        reduce using rule 17 (asignacion -> designacion VARIABLE DOUBLEPOINTS tipo IGUAL valor .)
+    VINT            reduce using rule 17 (asignacion -> designacion VARIABLE DOUBLEPOINTS tipo IGUAL valor .)
+    VFLOAT          reduce using rule 17 (asignacion -> designacion VARIABLE DOUBLEPOINTS tipo IGUAL valor .)
+    IF              reduce using rule 17 (asignacion -> designacion VARIABLE DOUBLEPOINTS tipo IGUAL valor .)
+    FOR             reduce using rule 17 (asignacion -> designacion VARIABLE DOUBLEPOINTS tipo IGUAL valor .)
+    WHILE           reduce using rule 17 (asignacion -> designacion VARIABLE DOUBLEPOINTS tipo IGUAL valor .)
+    WHEN            reduce using rule 17 (asignacion -> designacion VARIABLE DOUBLEPOINTS tipo IGUAL valor .)
+    VAL             reduce using rule 17 (asignacion -> designacion VARIABLE DOUBLEPOINTS tipo IGUAL valor .)
+    VAR             reduce using rule 17 (asignacion -> designacion VARIABLE DOUBLEPOINTS tipo IGUAL valor .)
+    $end            reduce using rule 17 (asignacion -> designacion VARIABLE DOUBLEPOINTS tipo IGUAL valor .)
+    RETURN          reduce using rule 17 (asignacion -> designacion VARIABLE DOUBLEPOINTS tipo IGUAL valor .)
+    RKEY            reduce using rule 17 (asignacion -> designacion VARIABLE DOUBLEPOINTS tipo IGUAL valor .)
+
+
+state 164
+
+    (23) diamondType -> MINOR tipo . MAYOR
+
+    MAYOR           shift and go to state 180
+
+
+state 165
+
+    (54) inData -> designacion VARIABLE IGUAL READLINE LPAREN RPAREN .
+
+    PRINTLN         reduce using rule 54 (inData -> designacion VARIABLE IGUAL READLINE LPAREN RPAREN .)
+    VARIABLE        reduce using rule 54 (inData -> designacion VARIABLE IGUAL READLINE LPAREN RPAREN .)
+    VINT            reduce using rule 54 (inData -> designacion VARIABLE IGUAL READLINE LPAREN RPAREN .)
+    VFLOAT          reduce using rule 54 (inData -> designacion VARIABLE IGUAL READLINE LPAREN RPAREN .)
+    IF              reduce using rule 54 (inData -> designacion VARIABLE IGUAL READLINE LPAREN RPAREN .)
+    FOR             reduce using rule 54 (inData -> designacion VARIABLE IGUAL READLINE LPAREN RPAREN .)
+    WHILE           reduce using rule 54 (inData -> designacion VARIABLE IGUAL READLINE LPAREN RPAREN .)
+    WHEN            reduce using rule 54 (inData -> designacion VARIABLE IGUAL READLINE LPAREN RPAREN .)
+    VAL             reduce using rule 54 (inData -> designacion VARIABLE IGUAL READLINE LPAREN RPAREN .)
+    VAR             reduce using rule 54 (inData -> designacion VARIABLE IGUAL READLINE LPAREN RPAREN .)
+    $end            reduce using rule 54 (inData -> designacion VARIABLE IGUAL READLINE LPAREN RPAREN .)
+    RETURN          reduce using rule 54 (inData -> designacion VARIABLE IGUAL READLINE LPAREN RPAREN .)
+    RKEY            reduce using rule 54 (inData -> designacion VARIABLE IGUAL READLINE LPAREN RPAREN .)
+
+
+state 166
+
+    (51) pairAsignation -> designacion LPAREN VARIABLE COMA VARIABLE RPAREN .
+
+    IGUAL           reduce using rule 51 (pairAsignation -> designacion LPAREN VARIABLE COMA VARIABLE RPAREN .)
+
+
+state 167
+
+    (26) listOf -> LISTOF LPAREN elementos RPAREN .
+
+    PRINTLN         reduce using rule 26 (listOf -> LISTOF LPAREN elementos RPAREN .)
+    VARIABLE        reduce using rule 26 (listOf -> LISTOF LPAREN elementos RPAREN .)
+    VINT            reduce using rule 26 (listOf -> LISTOF LPAREN elementos RPAREN .)
+    VFLOAT          reduce using rule 26 (listOf -> LISTOF LPAREN elementos RPAREN .)
+    IF              reduce using rule 26 (listOf -> LISTOF LPAREN elementos RPAREN .)
+    FOR             reduce using rule 26 (listOf -> LISTOF LPAREN elementos RPAREN .)
+    WHILE           reduce using rule 26 (listOf -> LISTOF LPAREN elementos RPAREN .)
+    WHEN            reduce using rule 26 (listOf -> LISTOF LPAREN elementos RPAREN .)
+    VAL             reduce using rule 26 (listOf -> LISTOF LPAREN elementos RPAREN .)
+    VAR             reduce using rule 26 (listOf -> LISTOF LPAREN elementos RPAREN .)
+    $end            reduce using rule 26 (listOf -> LISTOF LPAREN elementos RPAREN .)
+    RETURN          reduce using rule 26 (listOf -> LISTOF LPAREN elementos RPAREN .)
+    RKEY            reduce using rule 26 (listOf -> LISTOF LPAREN elementos RPAREN .)
+
+
+state 168
+
+    (27) elementos -> elementos COMA . valor
+    (29) valor -> . VINT
+    (30) valor -> . VFLOAT
+    (31) valor -> . STRING
+
+    VINT            shift and go to state 71
+    VFLOAT          shift and go to state 72
+    STRING          shift and go to state 66
+
+    valor                          shift and go to state 181
+
+state 169
+
+    (49) mutableListOf -> MUTABLELISTOF LPAREN elementos RPAREN .
+
+    PRINTLN         reduce using rule 49 (mutableListOf -> MUTABLELISTOF LPAREN elementos RPAREN .)
+    VARIABLE        reduce using rule 49 (mutableListOf -> MUTABLELISTOF LPAREN elementos RPAREN .)
+    VINT            reduce using rule 49 (mutableListOf -> MUTABLELISTOF LPAREN elementos RPAREN .)
+    VFLOAT          reduce using rule 49 (mutableListOf -> MUTABLELISTOF LPAREN elementos RPAREN .)
+    IF              reduce using rule 49 (mutableListOf -> MUTABLELISTOF LPAREN elementos RPAREN .)
+    FOR             reduce using rule 49 (mutableListOf -> MUTABLELISTOF LPAREN elementos RPAREN .)
+    WHILE           reduce using rule 49 (mutableListOf -> MUTABLELISTOF LPAREN elementos RPAREN .)
+    WHEN            reduce using rule 49 (mutableListOf -> MUTABLELISTOF LPAREN elementos RPAREN .)
+    VAL             reduce using rule 49 (mutableListOf -> MUTABLELISTOF LPAREN elementos RPAREN .)
+    VAR             reduce using rule 49 (mutableListOf -> MUTABLELISTOF LPAREN elementos RPAREN .)
+    $end            reduce using rule 49 (mutableListOf -> MUTABLELISTOF LPAREN elementos RPAREN .)
+    RETURN          reduce using rule 49 (mutableListOf -> MUTABLELISTOF LPAREN elementos RPAREN .)
+    RKEY            reduce using rule 49 (mutableListOf -> MUTABLELISTOF LPAREN elementos RPAREN .)
+
+
+state 170
+
+    (52) pairBody -> PAIR LPAREN valor COMA . valor RPAREN
+    (29) valor -> . VINT
+    (30) valor -> . VFLOAT
+    (31) valor -> . STRING
+
+    VINT            shift and go to state 71
+    VFLOAT          shift and go to state 72
+    STRING          shift and go to state 66
+
+    valor                          shift and go to state 182
+
+state 171
+
+    (65) if -> IF LPAREN condicion RPAREN LKEY cuerpoF . RKEY
+    (66) if -> IF LPAREN condicion RPAREN LKEY cuerpoF . RKEY else
+    (67) if -> IF LPAREN condicion RPAREN LKEY cuerpoF . RKEY elseif else
+
+    RKEY            shift and go to state 183
+
+
+state 172
+
+    (74) for -> FOR LPAREN condicionFor RPAREN LKEY cuerpoF . RKEY
+
+    RKEY            shift and go to state 184
+
+
+state 173
+
+    (72) condicionRango -> VARIABLE IN VINT DOT . DOT VINT
+
+    DOT             shift and go to state 185
+
+
+state 174
+
+    (75) while -> WHILE LPAREN condicion RPAREN LKEY cuerpoF . RKEY
+
+    RKEY            shift and go to state 186
+
+
+state 175
+
+    (76) when -> WHEN LPAREN VARIABLE RPAREN LKEY cuerpoF . RKEY
+
+    RKEY            shift and go to state 187
+
+
+state 176
+
+    (77) implementa_funcion -> FUN VARIABLE LPAREN listaparametros RPAREN DOUBLEPOINTS tipo . LKEY instrucciones retorno RKEY
+
+    LKEY            shift and go to state 188
+
+
+state 177
+
+    (80) implementa_funcion -> FUN VARIABLE LPAREN listaparametros RPAREN DOUBLEPOINTS VOID . LKEY instrucciones RKEY
+
+    LKEY            shift and go to state 189
+
+
+state 178
+
+    (78) implementa_funcion -> FUN VARIABLE LPAREN RPAREN DOUBLEPOINTS tipo LKEY . instrucciones retorno RKEY
+    (85) instrucciones -> . cuerpoF
+    (86) instrucciones -> . cuerpoF instrucciones
+    (3) cuerpoF -> . asignacion
+    (4) cuerpoF -> . impresion
+    (5) cuerpoF -> . asigna
+    (6) cuerpoF -> . compareType
+    (7) cuerpoF -> . compareGreaterthan
+    (8) cuerpoF -> . compareSmallerthan
+    (9) cuerpoF -> . list
+    (10) cuerpoF -> . mutableList
+    (11) cuerpoF -> . pair
+    (12) cuerpoF -> . inData
+    (13) cuerpoF -> . if
+    (14) cuerpoF -> . for
+    (15) cuerpoF -> . while
+    (16) cuerpoF -> . when
+    (17) asignacion -> . designacion VARIABLE DOUBLEPOINTS tipo IGUAL valor
+    (61) impresion -> . PRINTLN LPAREN valor RPAREN
+    (87) asigna -> . VARIABLE IGUAL asignado
+    (55) compareType -> . VINT IGUAL VINT
+    (56) compareType -> . VFLOAT IGUAL VFLOAT
+    (57) compareGreaterthan -> . VINT MAYOR VINT
+    (58) compareGreaterthan -> . VFLOAT MAYOR VFLOAT
+    (59) compareSmallerthan -> . VINT MINOR VINT
+    (60) compareSmallerthan -> . VFLOAT MINOR VFLOAT
+    (32) list -> . listAsignacion IGUAL listOf
+    (50) mutableList -> . mutListAsignacion IGUAL mutableListOf
+    (53) pair -> . pairAsignation IGUAL pairBody
+    (54) inData -> . designacion VARIABLE IGUAL READLINE LPAREN RPAREN
+    (65) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY
+    (66) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY else
+    (67) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY elseif else
+    (74) for -> . FOR LPAREN condicionFor RPAREN LKEY cuerpoF RKEY
+    (75) while -> . WHILE LPAREN condicion RPAREN LKEY cuerpoF RKEY
+    (76) when -> . WHEN LPAREN VARIABLE RPAREN LKEY cuerpoF RKEY
+    (18) designacion -> . VAL
+    (19) designacion -> . VAR
+    (24) listAsignacion -> . designacion VARIABLE DOUBLEPOINTS LIST diamondType
+    (25) listAsignacion -> . designacion VARIABLE
+    (47) mutListAsignacion -> . designacion VARIABLE DOUBLEPOINTS MUTABLELIST diamondType
+    (48) mutListAsignacion -> . designacion VARIABLE
+    (51) pairAsignation -> . designacion LPAREN VARIABLE COMA VARIABLE RPAREN
+
+    PRINTLN         shift and go to state 22
+    VARIABLE        shift and go to state 5
+    VINT            shift and go to state 23
+    VFLOAT          shift and go to state 24
+    IF              shift and go to state 28
+    FOR             shift and go to state 29
+    WHILE           shift and go to state 30
+    WHEN            shift and go to state 31
+    VAL             shift and go to state 32
+    VAR             shift and go to state 33
+
+    instrucciones                  shift and go to state 190
+    cuerpoF                        shift and go to state 6
+    asignacion                     shift and go to state 7
+    impresion                      shift and go to state 8
+    asigna                         shift and go to state 9
+    compareType                    shift and go to state 10
+    compareGreaterthan             shift and go to state 11
+    compareSmallerthan             shift and go to state 12
+    list                           shift and go to state 13
+    mutableList                    shift and go to state 14
+    pair                           shift and go to state 15
+    inData                         shift and go to state 16
+    if                             shift and go to state 17
+    for                            shift and go to state 18
+    while                          shift and go to state 19
+    when                           shift and go to state 20
+    designacion                    shift and go to state 21
+    listAsignacion                 shift and go to state 25
+    mutListAsignacion              shift and go to state 26
+    pairAsignation                 shift and go to state 27
+
+state 179
+
+    (79) implementa_funcion -> FUN VARIABLE LPAREN RPAREN DOUBLEPOINTS VOID LKEY . instrucciones RKEY
+    (85) instrucciones -> . cuerpoF
+    (86) instrucciones -> . cuerpoF instrucciones
+    (3) cuerpoF -> . asignacion
+    (4) cuerpoF -> . impresion
+    (5) cuerpoF -> . asigna
+    (6) cuerpoF -> . compareType
+    (7) cuerpoF -> . compareGreaterthan
+    (8) cuerpoF -> . compareSmallerthan
+    (9) cuerpoF -> . list
+    (10) cuerpoF -> . mutableList
+    (11) cuerpoF -> . pair
+    (12) cuerpoF -> . inData
+    (13) cuerpoF -> . if
+    (14) cuerpoF -> . for
+    (15) cuerpoF -> . while
+    (16) cuerpoF -> . when
+    (17) asignacion -> . designacion VARIABLE DOUBLEPOINTS tipo IGUAL valor
+    (61) impresion -> . PRINTLN LPAREN valor RPAREN
+    (87) asigna -> . VARIABLE IGUAL asignado
+    (55) compareType -> . VINT IGUAL VINT
+    (56) compareType -> . VFLOAT IGUAL VFLOAT
+    (57) compareGreaterthan -> . VINT MAYOR VINT
+    (58) compareGreaterthan -> . VFLOAT MAYOR VFLOAT
+    (59) compareSmallerthan -> . VINT MINOR VINT
+    (60) compareSmallerthan -> . VFLOAT MINOR VFLOAT
+    (32) list -> . listAsignacion IGUAL listOf
+    (50) mutableList -> . mutListAsignacion IGUAL mutableListOf
+    (53) pair -> . pairAsignation IGUAL pairBody
+    (54) inData -> . designacion VARIABLE IGUAL READLINE LPAREN RPAREN
+    (65) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY
+    (66) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY else
+    (67) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY elseif else
+    (74) for -> . FOR LPAREN condicionFor RPAREN LKEY cuerpoF RKEY
+    (75) while -> . WHILE LPAREN condicion RPAREN LKEY cuerpoF RKEY
+    (76) when -> . WHEN LPAREN VARIABLE RPAREN LKEY cuerpoF RKEY
+    (18) designacion -> . VAL
+    (19) designacion -> . VAR
+    (24) listAsignacion -> . designacion VARIABLE DOUBLEPOINTS LIST diamondType
+    (25) listAsignacion -> . designacion VARIABLE
+    (47) mutListAsignacion -> . designacion VARIABLE DOUBLEPOINTS MUTABLELIST diamondType
+    (48) mutListAsignacion -> . designacion VARIABLE
+    (51) pairAsignation -> . designacion LPAREN VARIABLE COMA VARIABLE RPAREN
+
+    PRINTLN         shift and go to state 22
+    VARIABLE        shift and go to state 5
+    VINT            shift and go to state 23
+    VFLOAT          shift and go to state 24
+    IF              shift and go to state 28
+    FOR             shift and go to state 29
+    WHILE           shift and go to state 30
+    WHEN            shift and go to state 31
+    VAL             shift and go to state 32
+    VAR             shift and go to state 33
+
+    instrucciones                  shift and go to state 191
+    cuerpoF                        shift and go to state 6
+    asignacion                     shift and go to state 7
+    impresion                      shift and go to state 8
+    asigna                         shift and go to state 9
+    compareType                    shift and go to state 10
+    compareGreaterthan             shift and go to state 11
+    compareSmallerthan             shift and go to state 12
+    list                           shift and go to state 13
+    mutableList                    shift and go to state 14
+    pair                           shift and go to state 15
+    inData                         shift and go to state 16
+    if                             shift and go to state 17
+    for                            shift and go to state 18
+    while                          shift and go to state 19
+    when                           shift and go to state 20
+    designacion                    shift and go to state 21
+    listAsignacion                 shift and go to state 25
+    mutListAsignacion              shift and go to state 26
+    pairAsignation                 shift and go to state 27
+
+state 180
+
+    (23) diamondType -> MINOR tipo MAYOR .
+
+    IGUAL           reduce using rule 23 (diamondType -> MINOR tipo MAYOR .)
+
+
+state 181
+
+    (27) elementos -> elementos COMA valor .
+
+    RPAREN          reduce using rule 27 (elementos -> elementos COMA valor .)
+    COMA            reduce using rule 27 (elementos -> elementos COMA valor .)
+
+
+state 182
+
+    (52) pairBody -> PAIR LPAREN valor COMA valor . RPAREN
+
+    RPAREN          shift and go to state 192
+
+
+state 183
+
+    (65) if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY .
+    (66) if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY . else
+    (67) if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY . elseif else
+    (69) else -> . LKEY cuerpoF RKEY
+    (68) elseif -> . ELSE IF LPAREN condicion RPAREN LKEY cuerpoF RKEY
+
+    PRINTLN         reduce using rule 65 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY .)
+    VARIABLE        reduce using rule 65 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY .)
+    VINT            reduce using rule 65 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY .)
+    VFLOAT          reduce using rule 65 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY .)
+    IF              reduce using rule 65 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY .)
+    FOR             reduce using rule 65 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY .)
+    WHILE           reduce using rule 65 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY .)
+    WHEN            reduce using rule 65 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY .)
+    VAL             reduce using rule 65 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY .)
+    VAR             reduce using rule 65 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY .)
+    $end            reduce using rule 65 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY .)
+    RETURN          reduce using rule 65 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY .)
+    RKEY            reduce using rule 65 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY .)
+    LKEY            shift and go to state 193
+    ELSE            shift and go to state 196
+
+    else                           shift and go to state 194
+    elseif                         shift and go to state 195
+
+state 184
+
+    (74) for -> FOR LPAREN condicionFor RPAREN LKEY cuerpoF RKEY .
+
+    PRINTLN         reduce using rule 74 (for -> FOR LPAREN condicionFor RPAREN LKEY cuerpoF RKEY .)
+    VARIABLE        reduce using rule 74 (for -> FOR LPAREN condicionFor RPAREN LKEY cuerpoF RKEY .)
+    VINT            reduce using rule 74 (for -> FOR LPAREN condicionFor RPAREN LKEY cuerpoF RKEY .)
+    VFLOAT          reduce using rule 74 (for -> FOR LPAREN condicionFor RPAREN LKEY cuerpoF RKEY .)
+    IF              reduce using rule 74 (for -> FOR LPAREN condicionFor RPAREN LKEY cuerpoF RKEY .)
+    FOR             reduce using rule 74 (for -> FOR LPAREN condicionFor RPAREN LKEY cuerpoF RKEY .)
+    WHILE           reduce using rule 74 (for -> FOR LPAREN condicionFor RPAREN LKEY cuerpoF RKEY .)
+    WHEN            reduce using rule 74 (for -> FOR LPAREN condicionFor RPAREN LKEY cuerpoF RKEY .)
+    VAL             reduce using rule 74 (for -> FOR LPAREN condicionFor RPAREN LKEY cuerpoF RKEY .)
+    VAR             reduce using rule 74 (for -> FOR LPAREN condicionFor RPAREN LKEY cuerpoF RKEY .)
+    $end            reduce using rule 74 (for -> FOR LPAREN condicionFor RPAREN LKEY cuerpoF RKEY .)
+    RETURN          reduce using rule 74 (for -> FOR LPAREN condicionFor RPAREN LKEY cuerpoF RKEY .)
+    RKEY            reduce using rule 74 (for -> FOR LPAREN condicionFor RPAREN LKEY cuerpoF RKEY .)
+
+
+state 185
+
+    (72) condicionRango -> VARIABLE IN VINT DOT DOT . VINT
+
+    VINT            shift and go to state 197
+
+
+state 186
+
+    (75) while -> WHILE LPAREN condicion RPAREN LKEY cuerpoF RKEY .
+
+    PRINTLN         reduce using rule 75 (while -> WHILE LPAREN condicion RPAREN LKEY cuerpoF RKEY .)
+    VARIABLE        reduce using rule 75 (while -> WHILE LPAREN condicion RPAREN LKEY cuerpoF RKEY .)
+    VINT            reduce using rule 75 (while -> WHILE LPAREN condicion RPAREN LKEY cuerpoF RKEY .)
+    VFLOAT          reduce using rule 75 (while -> WHILE LPAREN condicion RPAREN LKEY cuerpoF RKEY .)
+    IF              reduce using rule 75 (while -> WHILE LPAREN condicion RPAREN LKEY cuerpoF RKEY .)
+    FOR             reduce using rule 75 (while -> WHILE LPAREN condicion RPAREN LKEY cuerpoF RKEY .)
+    WHILE           reduce using rule 75 (while -> WHILE LPAREN condicion RPAREN LKEY cuerpoF RKEY .)
+    WHEN            reduce using rule 75 (while -> WHILE LPAREN condicion RPAREN LKEY cuerpoF RKEY .)
+    VAL             reduce using rule 75 (while -> WHILE LPAREN condicion RPAREN LKEY cuerpoF RKEY .)
+    VAR             reduce using rule 75 (while -> WHILE LPAREN condicion RPAREN LKEY cuerpoF RKEY .)
+    $end            reduce using rule 75 (while -> WHILE LPAREN condicion RPAREN LKEY cuerpoF RKEY .)
+    RETURN          reduce using rule 75 (while -> WHILE LPAREN condicion RPAREN LKEY cuerpoF RKEY .)
+    RKEY            reduce using rule 75 (while -> WHILE LPAREN condicion RPAREN LKEY cuerpoF RKEY .)
+
+
+state 187
+
+    (76) when -> WHEN LPAREN VARIABLE RPAREN LKEY cuerpoF RKEY .
+
+    PRINTLN         reduce using rule 76 (when -> WHEN LPAREN VARIABLE RPAREN LKEY cuerpoF RKEY .)
+    VARIABLE        reduce using rule 76 (when -> WHEN LPAREN VARIABLE RPAREN LKEY cuerpoF RKEY .)
+    VINT            reduce using rule 76 (when -> WHEN LPAREN VARIABLE RPAREN LKEY cuerpoF RKEY .)
+    VFLOAT          reduce using rule 76 (when -> WHEN LPAREN VARIABLE RPAREN LKEY cuerpoF RKEY .)
+    IF              reduce using rule 76 (when -> WHEN LPAREN VARIABLE RPAREN LKEY cuerpoF RKEY .)
+    FOR             reduce using rule 76 (when -> WHEN LPAREN VARIABLE RPAREN LKEY cuerpoF RKEY .)
+    WHILE           reduce using rule 76 (when -> WHEN LPAREN VARIABLE RPAREN LKEY cuerpoF RKEY .)
+    WHEN            reduce using rule 76 (when -> WHEN LPAREN VARIABLE RPAREN LKEY cuerpoF RKEY .)
+    VAL             reduce using rule 76 (when -> WHEN LPAREN VARIABLE RPAREN LKEY cuerpoF RKEY .)
+    VAR             reduce using rule 76 (when -> WHEN LPAREN VARIABLE RPAREN LKEY cuerpoF RKEY .)
+    $end            reduce using rule 76 (when -> WHEN LPAREN VARIABLE RPAREN LKEY cuerpoF RKEY .)
+    RETURN          reduce using rule 76 (when -> WHEN LPAREN VARIABLE RPAREN LKEY cuerpoF RKEY .)
+    RKEY            reduce using rule 76 (when -> WHEN LPAREN VARIABLE RPAREN LKEY cuerpoF RKEY .)
+
+
+state 188
+
+    (77) implementa_funcion -> FUN VARIABLE LPAREN listaparametros RPAREN DOUBLEPOINTS tipo LKEY . instrucciones retorno RKEY
+    (85) instrucciones -> . cuerpoF
+    (86) instrucciones -> . cuerpoF instrucciones
+    (3) cuerpoF -> . asignacion
+    (4) cuerpoF -> . impresion
+    (5) cuerpoF -> . asigna
+    (6) cuerpoF -> . compareType
+    (7) cuerpoF -> . compareGreaterthan
+    (8) cuerpoF -> . compareSmallerthan
+    (9) cuerpoF -> . list
+    (10) cuerpoF -> . mutableList
+    (11) cuerpoF -> . pair
+    (12) cuerpoF -> . inData
+    (13) cuerpoF -> . if
+    (14) cuerpoF -> . for
+    (15) cuerpoF -> . while
+    (16) cuerpoF -> . when
+    (17) asignacion -> . designacion VARIABLE DOUBLEPOINTS tipo IGUAL valor
+    (61) impresion -> . PRINTLN LPAREN valor RPAREN
+    (87) asigna -> . VARIABLE IGUAL asignado
+    (55) compareType -> . VINT IGUAL VINT
+    (56) compareType -> . VFLOAT IGUAL VFLOAT
+    (57) compareGreaterthan -> . VINT MAYOR VINT
+    (58) compareGreaterthan -> . VFLOAT MAYOR VFLOAT
+    (59) compareSmallerthan -> . VINT MINOR VINT
+    (60) compareSmallerthan -> . VFLOAT MINOR VFLOAT
+    (32) list -> . listAsignacion IGUAL listOf
+    (50) mutableList -> . mutListAsignacion IGUAL mutableListOf
+    (53) pair -> . pairAsignation IGUAL pairBody
+    (54) inData -> . designacion VARIABLE IGUAL READLINE LPAREN RPAREN
+    (65) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY
+    (66) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY else
+    (67) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY elseif else
+    (74) for -> . FOR LPAREN condicionFor RPAREN LKEY cuerpoF RKEY
+    (75) while -> . WHILE LPAREN condicion RPAREN LKEY cuerpoF RKEY
+    (76) when -> . WHEN LPAREN VARIABLE RPAREN LKEY cuerpoF RKEY
+    (18) designacion -> . VAL
+    (19) designacion -> . VAR
+    (24) listAsignacion -> . designacion VARIABLE DOUBLEPOINTS LIST diamondType
+    (25) listAsignacion -> . designacion VARIABLE
+    (47) mutListAsignacion -> . designacion VARIABLE DOUBLEPOINTS MUTABLELIST diamondType
+    (48) mutListAsignacion -> . designacion VARIABLE
+    (51) pairAsignation -> . designacion LPAREN VARIABLE COMA VARIABLE RPAREN
+
+    PRINTLN         shift and go to state 22
+    VARIABLE        shift and go to state 5
+    VINT            shift and go to state 23
+    VFLOAT          shift and go to state 24
+    IF              shift and go to state 28
+    FOR             shift and go to state 29
+    WHILE           shift and go to state 30
+    WHEN            shift and go to state 31
+    VAL             shift and go to state 32
+    VAR             shift and go to state 33
+
+    instrucciones                  shift and go to state 198
+    cuerpoF                        shift and go to state 6
+    asignacion                     shift and go to state 7
+    impresion                      shift and go to state 8
+    asigna                         shift and go to state 9
+    compareType                    shift and go to state 10
+    compareGreaterthan             shift and go to state 11
+    compareSmallerthan             shift and go to state 12
+    list                           shift and go to state 13
+    mutableList                    shift and go to state 14
+    pair                           shift and go to state 15
+    inData                         shift and go to state 16
+    if                             shift and go to state 17
+    for                            shift and go to state 18
+    while                          shift and go to state 19
+    when                           shift and go to state 20
+    designacion                    shift and go to state 21
+    listAsignacion                 shift and go to state 25
+    mutListAsignacion              shift and go to state 26
+    pairAsignation                 shift and go to state 27
+
+state 189
+
+    (80) implementa_funcion -> FUN VARIABLE LPAREN listaparametros RPAREN DOUBLEPOINTS VOID LKEY . instrucciones RKEY
+    (85) instrucciones -> . cuerpoF
+    (86) instrucciones -> . cuerpoF instrucciones
+    (3) cuerpoF -> . asignacion
+    (4) cuerpoF -> . impresion
+    (5) cuerpoF -> . asigna
+    (6) cuerpoF -> . compareType
+    (7) cuerpoF -> . compareGreaterthan
+    (8) cuerpoF -> . compareSmallerthan
+    (9) cuerpoF -> . list
+    (10) cuerpoF -> . mutableList
+    (11) cuerpoF -> . pair
+    (12) cuerpoF -> . inData
+    (13) cuerpoF -> . if
+    (14) cuerpoF -> . for
+    (15) cuerpoF -> . while
+    (16) cuerpoF -> . when
+    (17) asignacion -> . designacion VARIABLE DOUBLEPOINTS tipo IGUAL valor
+    (61) impresion -> . PRINTLN LPAREN valor RPAREN
+    (87) asigna -> . VARIABLE IGUAL asignado
+    (55) compareType -> . VINT IGUAL VINT
+    (56) compareType -> . VFLOAT IGUAL VFLOAT
+    (57) compareGreaterthan -> . VINT MAYOR VINT
+    (58) compareGreaterthan -> . VFLOAT MAYOR VFLOAT
+    (59) compareSmallerthan -> . VINT MINOR VINT
+    (60) compareSmallerthan -> . VFLOAT MINOR VFLOAT
+    (32) list -> . listAsignacion IGUAL listOf
+    (50) mutableList -> . mutListAsignacion IGUAL mutableListOf
+    (53) pair -> . pairAsignation IGUAL pairBody
+    (54) inData -> . designacion VARIABLE IGUAL READLINE LPAREN RPAREN
+    (65) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY
+    (66) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY else
+    (67) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY elseif else
+    (74) for -> . FOR LPAREN condicionFor RPAREN LKEY cuerpoF RKEY
+    (75) while -> . WHILE LPAREN condicion RPAREN LKEY cuerpoF RKEY
+    (76) when -> . WHEN LPAREN VARIABLE RPAREN LKEY cuerpoF RKEY
+    (18) designacion -> . VAL
+    (19) designacion -> . VAR
+    (24) listAsignacion -> . designacion VARIABLE DOUBLEPOINTS LIST diamondType
+    (25) listAsignacion -> . designacion VARIABLE
+    (47) mutListAsignacion -> . designacion VARIABLE DOUBLEPOINTS MUTABLELIST diamondType
+    (48) mutListAsignacion -> . designacion VARIABLE
+    (51) pairAsignation -> . designacion LPAREN VARIABLE COMA VARIABLE RPAREN
+
+    PRINTLN         shift and go to state 22
+    VARIABLE        shift and go to state 5
+    VINT            shift and go to state 23
+    VFLOAT          shift and go to state 24
+    IF              shift and go to state 28
+    FOR             shift and go to state 29
+    WHILE           shift and go to state 30
+    WHEN            shift and go to state 31
+    VAL             shift and go to state 32
+    VAR             shift and go to state 33
+
+    instrucciones                  shift and go to state 199
+    cuerpoF                        shift and go to state 6
+    asignacion                     shift and go to state 7
+    impresion                      shift and go to state 8
+    asigna                         shift and go to state 9
+    compareType                    shift and go to state 10
+    compareGreaterthan             shift and go to state 11
+    compareSmallerthan             shift and go to state 12
+    list                           shift and go to state 13
+    mutableList                    shift and go to state 14
+    pair                           shift and go to state 15
+    inData                         shift and go to state 16
+    if                             shift and go to state 17
+    for                            shift and go to state 18
+    while                          shift and go to state 19
+    when                           shift and go to state 20
+    designacion                    shift and go to state 21
+    listAsignacion                 shift and go to state 25
+    mutListAsignacion              shift and go to state 26
+    pairAsignation                 shift and go to state 27
+
+state 190
+
+    (78) implementa_funcion -> FUN VARIABLE LPAREN RPAREN DOUBLEPOINTS tipo LKEY instrucciones . retorno RKEY
+    (84) retorno -> . RETURN asignado
+
+    RETURN          shift and go to state 201
+
+    retorno                        shift and go to state 200
+
+state 191
+
+    (79) implementa_funcion -> FUN VARIABLE LPAREN RPAREN DOUBLEPOINTS VOID LKEY instrucciones . RKEY
+
+    RKEY            shift and go to state 202
+
+
+state 192
+
+    (52) pairBody -> PAIR LPAREN valor COMA valor RPAREN .
+
+    PRINTLN         reduce using rule 52 (pairBody -> PAIR LPAREN valor COMA valor RPAREN .)
+    VARIABLE        reduce using rule 52 (pairBody -> PAIR LPAREN valor COMA valor RPAREN .)
+    VINT            reduce using rule 52 (pairBody -> PAIR LPAREN valor COMA valor RPAREN .)
+    VFLOAT          reduce using rule 52 (pairBody -> PAIR LPAREN valor COMA valor RPAREN .)
+    IF              reduce using rule 52 (pairBody -> PAIR LPAREN valor COMA valor RPAREN .)
+    FOR             reduce using rule 52 (pairBody -> PAIR LPAREN valor COMA valor RPAREN .)
+    WHILE           reduce using rule 52 (pairBody -> PAIR LPAREN valor COMA valor RPAREN .)
+    WHEN            reduce using rule 52 (pairBody -> PAIR LPAREN valor COMA valor RPAREN .)
+    VAL             reduce using rule 52 (pairBody -> PAIR LPAREN valor COMA valor RPAREN .)
+    VAR             reduce using rule 52 (pairBody -> PAIR LPAREN valor COMA valor RPAREN .)
+    $end            reduce using rule 52 (pairBody -> PAIR LPAREN valor COMA valor RPAREN .)
+    RETURN          reduce using rule 52 (pairBody -> PAIR LPAREN valor COMA valor RPAREN .)
+    RKEY            reduce using rule 52 (pairBody -> PAIR LPAREN valor COMA valor RPAREN .)
+
+
+state 193
+
+    (69) else -> LKEY . cuerpoF RKEY
+    (3) cuerpoF -> . asignacion
+    (4) cuerpoF -> . impresion
+    (5) cuerpoF -> . asigna
+    (6) cuerpoF -> . compareType
+    (7) cuerpoF -> . compareGreaterthan
+    (8) cuerpoF -> . compareSmallerthan
+    (9) cuerpoF -> . list
+    (10) cuerpoF -> . mutableList
+    (11) cuerpoF -> . pair
+    (12) cuerpoF -> . inData
+    (13) cuerpoF -> . if
+    (14) cuerpoF -> . for
+    (15) cuerpoF -> . while
+    (16) cuerpoF -> . when
+    (17) asignacion -> . designacion VARIABLE DOUBLEPOINTS tipo IGUAL valor
+    (61) impresion -> . PRINTLN LPAREN valor RPAREN
+    (87) asigna -> . VARIABLE IGUAL asignado
+    (55) compareType -> . VINT IGUAL VINT
+    (56) compareType -> . VFLOAT IGUAL VFLOAT
+    (57) compareGreaterthan -> . VINT MAYOR VINT
+    (58) compareGreaterthan -> . VFLOAT MAYOR VFLOAT
+    (59) compareSmallerthan -> . VINT MINOR VINT
+    (60) compareSmallerthan -> . VFLOAT MINOR VFLOAT
+    (32) list -> . listAsignacion IGUAL listOf
+    (50) mutableList -> . mutListAsignacion IGUAL mutableListOf
+    (53) pair -> . pairAsignation IGUAL pairBody
+    (54) inData -> . designacion VARIABLE IGUAL READLINE LPAREN RPAREN
+    (65) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY
+    (66) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY else
+    (67) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY elseif else
+    (74) for -> . FOR LPAREN condicionFor RPAREN LKEY cuerpoF RKEY
+    (75) while -> . WHILE LPAREN condicion RPAREN LKEY cuerpoF RKEY
+    (76) when -> . WHEN LPAREN VARIABLE RPAREN LKEY cuerpoF RKEY
+    (18) designacion -> . VAL
+    (19) designacion -> . VAR
+    (24) listAsignacion -> . designacion VARIABLE DOUBLEPOINTS LIST diamondType
+    (25) listAsignacion -> . designacion VARIABLE
+    (47) mutListAsignacion -> . designacion VARIABLE DOUBLEPOINTS MUTABLELIST diamondType
+    (48) mutListAsignacion -> . designacion VARIABLE
+    (51) pairAsignation -> . designacion LPAREN VARIABLE COMA VARIABLE RPAREN
+
+    PRINTLN         shift and go to state 22
+    VARIABLE        shift and go to state 5
+    VINT            shift and go to state 23
+    VFLOAT          shift and go to state 24
+    IF              shift and go to state 28
+    FOR             shift and go to state 29
+    WHILE           shift and go to state 30
+    WHEN            shift and go to state 31
+    VAL             shift and go to state 32
+    VAR             shift and go to state 33
+
+    cuerpoF                        shift and go to state 203
+    asignacion                     shift and go to state 7
+    impresion                      shift and go to state 8
+    asigna                         shift and go to state 9
+    compareType                    shift and go to state 10
+    compareGreaterthan             shift and go to state 11
+    compareSmallerthan             shift and go to state 12
+    list                           shift and go to state 13
+    mutableList                    shift and go to state 14
+    pair                           shift and go to state 15
+    inData                         shift and go to state 16
+    if                             shift and go to state 17
+    for                            shift and go to state 18
+    while                          shift and go to state 19
+    when                           shift and go to state 20
+    designacion                    shift and go to state 21
+    listAsignacion                 shift and go to state 25
+    mutListAsignacion              shift and go to state 26
+    pairAsignation                 shift and go to state 27
+
+state 194
+
+    (66) if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY else .
+
+    PRINTLN         reduce using rule 66 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY else .)
+    VARIABLE        reduce using rule 66 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY else .)
+    VINT            reduce using rule 66 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY else .)
+    VFLOAT          reduce using rule 66 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY else .)
+    IF              reduce using rule 66 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY else .)
+    FOR             reduce using rule 66 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY else .)
+    WHILE           reduce using rule 66 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY else .)
+    WHEN            reduce using rule 66 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY else .)
+    VAL             reduce using rule 66 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY else .)
+    VAR             reduce using rule 66 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY else .)
+    $end            reduce using rule 66 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY else .)
+    RETURN          reduce using rule 66 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY else .)
+    RKEY            reduce using rule 66 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY else .)
+
+
+state 195
+
+    (67) if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY elseif . else
+    (69) else -> . LKEY cuerpoF RKEY
+
+    LKEY            shift and go to state 193
+
+    else                           shift and go to state 204
+
+state 196
+
+    (68) elseif -> ELSE . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY
+
+    IF              shift and go to state 205
+
+
+state 197
+
+    (72) condicionRango -> VARIABLE IN VINT DOT DOT VINT .
+
+    RPAREN          reduce using rule 72 (condicionRango -> VARIABLE IN VINT DOT DOT VINT .)
+
+
+state 198
+
+    (77) implementa_funcion -> FUN VARIABLE LPAREN listaparametros RPAREN DOUBLEPOINTS tipo LKEY instrucciones . retorno RKEY
+    (84) retorno -> . RETURN asignado
+
+    RETURN          shift and go to state 201
+
+    retorno                        shift and go to state 206
+
+state 199
+
+    (80) implementa_funcion -> FUN VARIABLE LPAREN listaparametros RPAREN DOUBLEPOINTS VOID LKEY instrucciones . RKEY
+
+    RKEY            shift and go to state 207
+
+
+state 200
+
+    (78) implementa_funcion -> FUN VARIABLE LPAREN RPAREN DOUBLEPOINTS tipo LKEY instrucciones retorno . RKEY
+
+    RKEY            shift and go to state 208
+
+
+state 201
+
+    (84) retorno -> RETURN . asignado
+    (88) asignado -> . valor
+    (89) asignado -> . VARIABLE
+    (90) asignado -> . compareType
+    (91) asignado -> . compareGreaterthan
+    (92) asignado -> . compareSmallerthan
+    (93) asignado -> . add
+    (94) asignado -> . subtract
+    (95) asignado -> . multiply
+    (96) asignado -> . divide
+    (29) valor -> . VINT
+    (30) valor -> . VFLOAT
+    (31) valor -> . STRING
+    (55) compareType -> . VINT IGUAL VINT
+    (56) compareType -> . VFLOAT IGUAL VFLOAT
+    (57) compareGreaterthan -> . VINT MAYOR VINT
+    (58) compareGreaterthan -> . VFLOAT MAYOR VFLOAT
+    (59) compareSmallerthan -> . VINT MINOR VINT
+    (60) compareSmallerthan -> . VFLOAT MINOR VFLOAT
+    (33) add -> . VINT PLUS VINT
+    (34) add -> . VINT PLUS VFLOAT
+    (35) add -> . VFLOAT PLUS VFLOAT
+    (36) subtract -> . VINT MINUS VINT
+    (37) subtract -> . VINT MINUS VFLOAT
+    (38) subtract -> . VFLOAT MINUS VFLOAT
+    (39) multiply -> . VINT TIMES VINT
+    (40) multiply -> . VFLOAT TIMES VFLOAT
+    (41) multiply -> . VFLOAT TIMES VINT
+    (42) multiply -> . VINT TIMES VFLOAT
+    (43) divide -> . VINT DIVIDE VINT
+    (44) divide -> . VFLOAT DIVIDE VFLOAT
+    (45) divide -> . VFLOAT DIVIDE VINT
+    (46) divide -> . VINT DIVIDE VFLOAT
+
+    VARIABLE        shift and go to state 54
+    VINT            shift and go to state 64
+    VFLOAT          shift and go to state 65
+    STRING          shift and go to state 66
+
+    asignado                       shift and go to state 209
+    valor                          shift and go to state 56
+    compareType                    shift and go to state 57
+    compareGreaterthan             shift and go to state 58
+    compareSmallerthan             shift and go to state 59
+    add                            shift and go to state 60
+    subtract                       shift and go to state 61
+    multiply                       shift and go to state 62
+    divide                         shift and go to state 63
+
+state 202
+
+    (79) implementa_funcion -> FUN VARIABLE LPAREN RPAREN DOUBLEPOINTS VOID LKEY instrucciones RKEY .
+
+    $end            reduce using rule 79 (implementa_funcion -> FUN VARIABLE LPAREN RPAREN DOUBLEPOINTS VOID LKEY instrucciones RKEY .)
+
+
+state 203
+
+    (69) else -> LKEY cuerpoF . RKEY
+
+    RKEY            shift and go to state 210
+
+
+state 204
+
+    (67) if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY elseif else .
+
+    PRINTLN         reduce using rule 67 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY elseif else .)
+    VARIABLE        reduce using rule 67 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY elseif else .)
+    VINT            reduce using rule 67 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY elseif else .)
+    VFLOAT          reduce using rule 67 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY elseif else .)
+    IF              reduce using rule 67 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY elseif else .)
+    FOR             reduce using rule 67 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY elseif else .)
+    WHILE           reduce using rule 67 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY elseif else .)
+    WHEN            reduce using rule 67 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY elseif else .)
+    VAL             reduce using rule 67 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY elseif else .)
+    VAR             reduce using rule 67 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY elseif else .)
+    $end            reduce using rule 67 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY elseif else .)
+    RETURN          reduce using rule 67 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY elseif else .)
+    RKEY            reduce using rule 67 (if -> IF LPAREN condicion RPAREN LKEY cuerpoF RKEY elseif else .)
+
+
+state 205
+
+    (68) elseif -> ELSE IF . LPAREN condicion RPAREN LKEY cuerpoF RKEY
+
+    LPAREN          shift and go to state 211
+
+
+state 206
+
+    (77) implementa_funcion -> FUN VARIABLE LPAREN listaparametros RPAREN DOUBLEPOINTS tipo LKEY instrucciones retorno . RKEY
+
+    RKEY            shift and go to state 212
+
+
+state 207
+
+    (80) implementa_funcion -> FUN VARIABLE LPAREN listaparametros RPAREN DOUBLEPOINTS VOID LKEY instrucciones RKEY .
+
+    $end            reduce using rule 80 (implementa_funcion -> FUN VARIABLE LPAREN listaparametros RPAREN DOUBLEPOINTS VOID LKEY instrucciones RKEY .)
+
+
+state 208
+
+    (78) implementa_funcion -> FUN VARIABLE LPAREN RPAREN DOUBLEPOINTS tipo LKEY instrucciones retorno RKEY .
+
+    $end            reduce using rule 78 (implementa_funcion -> FUN VARIABLE LPAREN RPAREN DOUBLEPOINTS tipo LKEY instrucciones retorno RKEY .)
+
+
+state 209
+
+    (84) retorno -> RETURN asignado .
+
+    RKEY            reduce using rule 84 (retorno -> RETURN asignado .)
+
+
+state 210
+
+    (69) else -> LKEY cuerpoF RKEY .
+
+    PRINTLN         reduce using rule 69 (else -> LKEY cuerpoF RKEY .)
+    VARIABLE        reduce using rule 69 (else -> LKEY cuerpoF RKEY .)
+    VINT            reduce using rule 69 (else -> LKEY cuerpoF RKEY .)
+    VFLOAT          reduce using rule 69 (else -> LKEY cuerpoF RKEY .)
+    IF              reduce using rule 69 (else -> LKEY cuerpoF RKEY .)
+    FOR             reduce using rule 69 (else -> LKEY cuerpoF RKEY .)
+    WHILE           reduce using rule 69 (else -> LKEY cuerpoF RKEY .)
+    WHEN            reduce using rule 69 (else -> LKEY cuerpoF RKEY .)
+    VAL             reduce using rule 69 (else -> LKEY cuerpoF RKEY .)
+    VAR             reduce using rule 69 (else -> LKEY cuerpoF RKEY .)
+    $end            reduce using rule 69 (else -> LKEY cuerpoF RKEY .)
+    RETURN          reduce using rule 69 (else -> LKEY cuerpoF RKEY .)
+    RKEY            reduce using rule 69 (else -> LKEY cuerpoF RKEY .)
+
+
+state 211
+
+    (68) elseif -> ELSE IF LPAREN . condicion RPAREN LKEY cuerpoF RKEY
+    (62) condicion -> . compareType
+    (63) condicion -> . compareGreaterthan
+    (64) condicion -> . compareSmallerthan
+    (55) compareType -> . VINT IGUAL VINT
+    (56) compareType -> . VFLOAT IGUAL VFLOAT
+    (57) compareGreaterthan -> . VINT MAYOR VINT
+    (58) compareGreaterthan -> . VFLOAT MAYOR VFLOAT
+    (59) compareSmallerthan -> . VINT MINOR VINT
+    (60) compareSmallerthan -> . VFLOAT MINOR VFLOAT
+
+    VINT            shift and go to state 23
+    VFLOAT          shift and go to state 24
+
+    condicion                      shift and go to state 213
+    compareType                    shift and go to state 86
+    compareGreaterthan             shift and go to state 87
+    compareSmallerthan             shift and go to state 88
+
+state 212
+
+    (77) implementa_funcion -> FUN VARIABLE LPAREN listaparametros RPAREN DOUBLEPOINTS tipo LKEY instrucciones retorno RKEY .
+
+    $end            reduce using rule 77 (implementa_funcion -> FUN VARIABLE LPAREN listaparametros RPAREN DOUBLEPOINTS tipo LKEY instrucciones retorno RKEY .)
+
+
+state 213
+
+    (68) elseif -> ELSE IF LPAREN condicion . RPAREN LKEY cuerpoF RKEY
+
+    RPAREN          shift and go to state 214
+
+
+state 214
+
+    (68) elseif -> ELSE IF LPAREN condicion RPAREN . LKEY cuerpoF RKEY
+
+    LKEY            shift and go to state 215
+
+
+state 215
+
+    (68) elseif -> ELSE IF LPAREN condicion RPAREN LKEY . cuerpoF RKEY
+    (3) cuerpoF -> . asignacion
+    (4) cuerpoF -> . impresion
+    (5) cuerpoF -> . asigna
+    (6) cuerpoF -> . compareType
+    (7) cuerpoF -> . compareGreaterthan
+    (8) cuerpoF -> . compareSmallerthan
+    (9) cuerpoF -> . list
+    (10) cuerpoF -> . mutableList
+    (11) cuerpoF -> . pair
+    (12) cuerpoF -> . inData
+    (13) cuerpoF -> . if
+    (14) cuerpoF -> . for
+    (15) cuerpoF -> . while
+    (16) cuerpoF -> . when
+    (17) asignacion -> . designacion VARIABLE DOUBLEPOINTS tipo IGUAL valor
+    (61) impresion -> . PRINTLN LPAREN valor RPAREN
+    (87) asigna -> . VARIABLE IGUAL asignado
+    (55) compareType -> . VINT IGUAL VINT
+    (56) compareType -> . VFLOAT IGUAL VFLOAT
+    (57) compareGreaterthan -> . VINT MAYOR VINT
+    (58) compareGreaterthan -> . VFLOAT MAYOR VFLOAT
+    (59) compareSmallerthan -> . VINT MINOR VINT
+    (60) compareSmallerthan -> . VFLOAT MINOR VFLOAT
+    (32) list -> . listAsignacion IGUAL listOf
+    (50) mutableList -> . mutListAsignacion IGUAL mutableListOf
+    (53) pair -> . pairAsignation IGUAL pairBody
+    (54) inData -> . designacion VARIABLE IGUAL READLINE LPAREN RPAREN
+    (65) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY
+    (66) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY else
+    (67) if -> . IF LPAREN condicion RPAREN LKEY cuerpoF RKEY elseif else
+    (74) for -> . FOR LPAREN condicionFor RPAREN LKEY cuerpoF RKEY
+    (75) while -> . WHILE LPAREN condicion RPAREN LKEY cuerpoF RKEY
+    (76) when -> . WHEN LPAREN VARIABLE RPAREN LKEY cuerpoF RKEY
+    (18) designacion -> . VAL
+    (19) designacion -> . VAR
+    (24) listAsignacion -> . designacion VARIABLE DOUBLEPOINTS LIST diamondType
+    (25) listAsignacion -> . designacion VARIABLE
+    (47) mutListAsignacion -> . designacion VARIABLE DOUBLEPOINTS MUTABLELIST diamondType
+    (48) mutListAsignacion -> . designacion VARIABLE
+    (51) pairAsignation -> . designacion LPAREN VARIABLE COMA VARIABLE RPAREN
+
+    PRINTLN         shift and go to state 22
+    VARIABLE        shift and go to state 5
+    VINT            shift and go to state 23
+    VFLOAT          shift and go to state 24
+    IF              shift and go to state 28
+    FOR             shift and go to state 29
+    WHILE           shift and go to state 30
+    WHEN            shift and go to state 31
+    VAL             shift and go to state 32
+    VAR             shift and go to state 33
+
+    cuerpoF                        shift and go to state 216
+    asignacion                     shift and go to state 7
+    impresion                      shift and go to state 8
+    asigna                         shift and go to state 9
+    compareType                    shift and go to state 10
+    compareGreaterthan             shift and go to state 11
+    compareSmallerthan             shift and go to state 12
+    list                           shift and go to state 13
+    mutableList                    shift and go to state 14
+    pair                           shift and go to state 15
+    inData                         shift and go to state 16
+    if                             shift and go to state 17
+    for                            shift and go to state 18
+    while                          shift and go to state 19
+    when                           shift and go to state 20
+    designacion                    shift and go to state 21
+    listAsignacion                 shift and go to state 25
+    mutListAsignacion              shift and go to state 26
+    pairAsignation                 shift and go to state 27
+
+state 216
+
+    (68) elseif -> ELSE IF LPAREN condicion RPAREN LKEY cuerpoF . RKEY
+
+    RKEY            shift and go to state 217
+
+
+state 217
+
+    (68) elseif -> ELSE IF LPAREN condicion RPAREN LKEY cuerpoF RKEY .
+
+    LKEY            reduce using rule 68 (elseif -> ELSE IF LPAREN condicion RPAREN LKEY cuerpoF RKEY .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for IGUAL in state 37 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 37 resolved as shift

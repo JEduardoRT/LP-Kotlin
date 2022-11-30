@@ -186,7 +186,7 @@ def p_condicionFor(p):
     '''
 
 def p_condicionRango(p):
-    'condicionBasica :  VARIABLE IN VINT DOT DOT VINT '
+    'condicionRango :  VARIABLE IN VINT DOT DOT VINT '
 
 def p_condicionBloque(p):
     'condicionBloque : VARIABLE IN LISTOF'

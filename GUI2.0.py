@@ -46,7 +46,7 @@ frame.pack()
 user_input_frame = tkinter.LabelFrame(frame, text="INPUT")
 user_input_frame.grid(row=0,column=0,padx=20,pady=20)
 
-text_input = tkinter.Text(user_input_frame, width=40,height=5,bg = "light cyan")
+text_input = tkinter.Text(user_input_frame, width=40,height=8,bg = "light cyan")
 text_input.grid(row=0,column=0,padx=10,pady=10)
 
 user_outputs_frame = tkinter.LabelFrame(frame, text="OUTPUT")
@@ -55,19 +55,19 @@ user_outputs_frame.grid(row=1,column=0,padx=20,pady=20)
 output_lexico_label = tkinter.Label(user_outputs_frame,text="LEXICO")
 output_lexico_label.grid(row=0,column=0)
 
-text_output_lexico = tkinter.Text(user_outputs_frame, width=40,height=5,bg = "light green")
+text_output_lexico = tkinter.Text(user_outputs_frame, width=40,height=9,bg = "light green")
 text_output_lexico.grid(row=1,column=0,padx=10,pady=10)
 
 output_sintactico_label = tkinter.Label(user_outputs_frame,text="SINTACTICO")
 output_sintactico_label.grid(row=0,column=1)
 
-text_output_sintactico = tkinter.Text(user_outputs_frame, width=40,height=5,bg = "light green")
+text_output_sintactico = tkinter.Text(user_outputs_frame, width=40,height=9,bg = "light green")
 text_output_sintactico.grid(row=1,column=1,padx=10,pady=10)
 
 output_sementico_label = tkinter.Label(user_outputs_frame,text="SEMANTICO")
 output_sementico_label.grid(row=0,column=2)
 
-text_output_semantico = tkinter.Text(user_outputs_frame, width=40,height=5,bg = "light green")
+text_output_semantico = tkinter.Text(user_outputs_frame, width=40,height=9,bg = "light green")
 text_output_semantico.grid(row=1,column=2,padx=10,pady=10)
 
 #crearemos los botones Ysrael Larco

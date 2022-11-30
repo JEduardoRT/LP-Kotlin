@@ -16,6 +16,10 @@ def p_cuerpoF(p):
   | mutableList
   | pair
   | inData
+  | if
+  | for
+  | while
+  | when 
   '''
 
 def p_asignacion(p):
@@ -158,16 +162,34 @@ def p_impresion(p):
   'impresion : PRINTLN LPAREN valor RPAREN'
 
 def p_condicion(p):
-    ''' condicion : p_compareType
+    ''' condicion : compareType
     | compareGreaterthan
     | compareSmallerthan
     '''
-def p_condicionFor(p):
-    ' condicionFor : TIPO VARIABLE IGUAL VARIABLE DOUBLEPOINTS MINOR IGUAL VARIABLE DOUBLEPOINTS VARIBALE PLUS PLUS '
 
 #ysrael larco faubla
 def p_if(p):
-    'if : IF LPAREN condicion RPAREN LKEY cuerpoF RKEY'
+    '''if : IF LPAREN condicion RPAREN LKEY cuerpoF RKEY
+    | IF LPAREN condicion RPAREN LKEY cuerpoF RKEY else
+    | IF LPAREN condicion RPAREN LKEY cuerpoF RKEY elseif else
+    '''
+
+def p_elseif(p):
+    'elseif : ELSE IF LPAREN condicion RPAREN LKEY cuerpoF RKEY'
+
+def p_else(p):
+    'else : LKEY cuerpoF RKEY'
+
+def p_condicionFor(p):
+    ''' condicionFor : condicionRango
+    | condicionBloque
+    '''
+
+def p_condicionRango(p):
+    'condicionBasica :  VARIABLE IN VINT DOT DOT VINT '
+
+def p_condicionBloque(p):
+    'condicionBloque : VARIABLE IN LISTOF'
 
 #ysrael larco faubla
 def p_for(p):

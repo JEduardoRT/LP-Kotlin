@@ -99,7 +99,8 @@ tokens = [
   'DOUBLEPOINTS',
   'DOT',
   'COMA',
-  'ADMIRATION'
+  'ADMIRATION',
+  'NOT'
 ] + list(reserved.values())
 
 #Jandry Rodriguez (final)
@@ -124,7 +125,7 @@ t_OR = r'\|\|'
 t_DOUBLEPOINTS = r':'
 t_DOT = r'\.'
 t_COMA = r','
-t_ADMIRATION = r'!'
+t_NOT = r'!'
 
 #Luis Donoso (inicio)
 
@@ -170,3 +171,5 @@ def t_error(t):
  
  # Build the lexer
 lexer = lex.lex()
+
+

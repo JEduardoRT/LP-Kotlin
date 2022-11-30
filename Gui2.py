@@ -78,6 +78,6 @@ buttonRun = tkinter.Button(button_interface_frame,text="RUN",width=10,height=2, 
 buttonRun.grid(row=0,column=0,padx=10,pady=10)
 buttonDebug = tkinter.Button(button_interface_frame,text="DEBUG",width=10,height=2)
 buttonDebug.grid(row=0,column=1,padx=10,pady=10)
-buttonClear = tkinter.Button(button_interface_frame,text="Clear",width=10,height=2,command=clear_input)
+buttonClear = tkinter.Button(button_interface_frame,text="CLEAR",width=10,height=2,command=clear_input)
 buttonClear.grid(row=0,column=2,padx=10,pady=10)
 window.mainloop()

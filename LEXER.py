@@ -98,7 +98,8 @@ tokens = [
   'VARIABLE',
   'DOUBLEPOINTS',
   'DOT',
-  'COMA'
+  'COMA',
+  'ADMIRATION'
 ] + list(reserved.values())
 
 #Jandry Rodriguez (final)
@@ -123,6 +124,7 @@ t_OR = r'\|\|'
 t_DOUBLEPOINTS = r':'
 t_DOT = r'\.'
 t_COMA = r','
+t_ADMIRATION = r'!'
 
 #Luis Donoso (inicio)
 

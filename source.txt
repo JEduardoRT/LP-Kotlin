@@ -5,8 +5,12 @@ while(x < 5){
 }
 
 #Jandry Rodriguez
-numero: Float = 5
-if(numero < 1){
-	println(numero*5)
-}else {
-	println(numero/5)
+fun numerofun(): void {
+	var numero: Float = 5
+	if(numero < 1 && numero < 0){
+		println(numero+2*5)
+		numero = 2
+	} else {
+		println(numero/5)
+	}
+}

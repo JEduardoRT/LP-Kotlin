@@ -78,32 +78,28 @@ def p_list(p):
 
 #ysrael larco faubla
 def p_add(p):
-  '''add : VINT PLUS VINT
-  | VINT PLUS VFLOAT
-  | VFLOAT PLUS VFLOAT
+  '''add : operado PLUS operado
   '''
 #ysrael larco faubla
 def p_subtract(p):
-  '''subtract : VINT MINUS VINT
-  | VINT MINUS VFLOAT
-  | VFLOAT MINUS VFLOAT
-  
+  '''subtract : operado MINUS operado
   '''
 #ysrael larco faubla
 def p_multiply(p):
-  '''multiply : VINT TIMES VINT
-  | VFLOAT TIMES VFLOAT
-  | VFLOAT TIMES VINT
-  | VINT TIMES VFLOAT
+  '''multiply : operado TIMES operado
   '''
   #ysrael larco faubla
 def p_divide(p):
-  '''divide : VINT DIVIDE VINT
-  | VFLOAT DIVIDE VFLOAT
-  | VFLOAT DIVIDE VINT
-  | VINT DIVIDE VFLOAT
+  '''divide : operado DIVIDE operado
   '''
 
+def p_operado(p):
+    '''operado : add
+    | subtract
+    | multiply
+    | divide
+    | dato
+    '''
 #Donoso Bravo Luis Alejandro
 
 def p_mutListAsignacion(p):
@@ -149,36 +145,51 @@ def p_compareType(p):
     '''
 #ysrael larco faubla
 def p_compareGreaterthan(p):
-    '''compareGreaterthan : VINT MAYOR VINT
-    | VFLOAT MAYOR VFLOAT
+    '''compareGreaterthan : dato MAYOR dato
   '''
  #ysrael larco faubla 
 def p_compareSmallerthan(p):
-    '''compareSmallerthan : VINT MINOR VINT
-    | VFLOAT MINOR VFLOAT
+    '''compareSmallerthan : dato MINOR dato
   '''
 #ysrael larco faubla
 def p_impresion(p):
-  'impresion : PRINTLN LPAREN valor RPAREN'
+  'impresion : PRINTLN LPAREN datoretornado RPAREN'
 
+def p_datoretornado(p):
+    '''datoretornado : operado
+    | booly
+    '''
 def p_condicion(p):
-    ''' condicion : compareType
+    ''' condicion : booly
+    '''
+
+def p_booly(p):
+    '''booly : compareType
     | compareGreaterthan
     | compareSmallerthan
-    '''
+    | logic
+    | TRUE
+    | FALSE'''
+
+def  p_logic(p):
+    'logic : booly logicoperador booly'
+
+def p_logicoperador(p):
+    '''logicoperador : AND
+    | OR'''
 
 #ysrael larco faubla
 def p_if(p):
-    '''if : IF LPAREN condicion RPAREN LKEY cuerpoF RKEY
-    | IF LPAREN condicion RPAREN LKEY cuerpoF RKEY else
-    | IF LPAREN condicion RPAREN LKEY cuerpoF RKEY elseif else
+    '''if : IF LPAREN condicion RPAREN LKEY instrucciones RKEY
+    | IF LPAREN condicion RPAREN LKEY instrucciones RKEY else
+    | IF LPAREN condicion RPAREN LKEY instrucciones RKEY elseif else
     '''
 
 def p_elseif(p):
-    'elseif : ELSE IF LPAREN condicion RPAREN LKEY cuerpoF RKEY'
+    'elseif : ELSE IF LPAREN condicion RPAREN LKEY instrucciones RKEY'
 
 def p_else(p):
-    'else : LKEY cuerpoF RKEY'
+    'else : ELSE LKEY instrucciones RKEY'
 
 def p_condicionFor(p):
     ''' condicionFor : condicionRango
@@ -186,7 +197,7 @@ def p_condicionFor(p):
     '''
 
 def p_condicionRango(p):
-    'condicionBasica :  VARIABLE IN VINT DOT DOT VINT '
+    'condicionRango :  VARIABLE IN VINT DOT DOT VINT '
 
 def p_condicionBloque(p):
     'condicionBloque : VARIABLE IN LISTOF'
@@ -237,6 +248,11 @@ def p_asignado(p):
 | subtract
 | multiply
 | divide'''
+
+def p_dato(p):
+    '''dato : valor
+    | VARIABLE
+    '''
 
 def p_error(p):
     if p:

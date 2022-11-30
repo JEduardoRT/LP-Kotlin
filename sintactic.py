@@ -142,7 +142,7 @@ def p_compareType(p):
     '''
 
 def p_compareNotEqual(p):
-    '''compareNotEqual : dato ADMIRATION IGUAL dato
+    '''compareNotEqual : dato NOT IGUAL dato
     '''
 
 def p_comparators(p):
@@ -179,7 +179,7 @@ def p_booly(p):
 
 def  p_logic(p):
     '''logic : booly logicoperador booly
-    | NOT logic
+    | NOT booly
     '''
 
 def p_logicoperador(p):
@@ -212,7 +212,7 @@ def p_condicionBloque(p):
 
 #ysrael larco faubla
 def p_for(p):
-    'for : FOR LPAREN condicionFor RPAREN LKEY intrucciones RKEY'
+    'for : FOR LPAREN condicionFor RPAREN LKEY instrucciones RKEY'
 
 #ysrael larco faubla
 def p_while(p):
@@ -286,18 +286,3 @@ def p_error(p):
 parser = yacc.yacc()
 
 
-def validaRegla(s):
-    result = parser.parse(s)
-    print(s)
-    print(result)
-
-
-try:
-    file = open("source.txt")
-    cadena=file.read()
-    file.close()
-    s = cadena
-except EOFError:
-    print("Error: Archivo vacio")
-if s: 
-    validaRegla(s)

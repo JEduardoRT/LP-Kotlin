@@ -7,18 +7,19 @@ from sintactic import parser as sx
 
 def analisis_lexico():
     try:
-        cadena=text.get(0)
+        cadena=text.get("1.0","end-1c")
         s = cadena
     except EOFError:
         print("Error: Archivo vacio")
     if s: 
-        result = lx.parse(s)
+        lx.input(s)
+        for tok in lx:
+            print(tok)    
         print(s)
-        print(result)
 
 def analisis_sintactico():
     try:
-        cadena=text.get(0)
+        cadena=text.get("1.0","end-1c")
         s = cadena
     except EOFError:
         print("Error: Archivo vacio")

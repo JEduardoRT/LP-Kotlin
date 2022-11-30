@@ -8,10 +8,8 @@ def p_documento(p):
 def p_cuerpoF(p):
   '''cuerpoF : asignacion
   | impresion
-  | asigna
-  | compareType
-  | compareGreaterthan
-  | compareSmallerthan
+  | asignadores
+  | comparators
   | list
   | mutableList
   | pair
@@ -140,8 +138,18 @@ def p_inData(p):
 
 #ysrael larco faubla
 def p_compareType(p):
-    '''compareType : VINT IGUAL VINT
-    | VFLOAT IGUAL VFLOAT
+    '''compareType : dato IGUAL IGUAL dato
+    '''
+
+def p_compareNotEqual(p):
+    '''compareNotEqual : dato ADMIRATION IGUAL dato
+    '''
+
+def p_comparators(p):
+    '''comparators : compareType
+    | compareGreaterthan
+    | compareSmallerthan
+    | compareNotEqual
     '''
 #ysrael larco faubla
 def p_compareGreaterthan(p):
@@ -164,15 +172,15 @@ def p_condicion(p):
     '''
 
 def p_booly(p):
-    '''booly : compareType
-    | compareGreaterthan
-    | compareSmallerthan
+    '''booly : comparators
     | logic
     | TRUE
     | FALSE'''
 
 def  p_logic(p):
-    'logic : booly logicoperador booly'
+    '''logic : booly logicoperador booly
+    | NOT logic
+    '''
 
 def p_logicoperador(p):
     '''logicoperador : AND
@@ -204,15 +212,15 @@ def p_condicionBloque(p):
 
 #ysrael larco faubla
 def p_for(p):
-    'for : FOR LPAREN condicionFor RPAREN LKEY cuerpoF RKEY'
+    'for : FOR LPAREN condicionFor RPAREN LKEY intrucciones RKEY'
 
 #ysrael larco faubla
 def p_while(p):
-    'while : WHILE LPAREN condicion RPAREN LKEY cuerpoF RKEY'
+    'while : WHILE LPAREN condicion RPAREN LKEY instrucciones RKEY'
 
 #ysrael larco faubla
 def p_when(p):
-    'when : WHEN LPAREN VARIABLE RPAREN LKEY cuerpoF RKEY'
+    'when : WHEN LPAREN VARIABLE RPAREN LKEY instrucciones RKEY'
 
 def p_implementa_funcion(p):
 
@@ -235,19 +243,31 @@ def p_instrucciones(p):
   '''instrucciones : cuerpoF
       | cuerpoF instrucciones'''
 
+def p_asignadores(p):
+    '''asignadores : asigna
+    | plusasigna
+    | minasigna
+    | multasigna
+    | divasigna'''
+
 def p_asigna(p):
   'asigna : VARIABLE IGUAL asignado'
 
+def p_plusasigna(p):
+    'plusasigna : VARIABLE PLUS IGUAL asignado'
+
+def p_minasigna(p):
+    'minasigna : VARIABLE MINUS IGUAL asignado'
+
+def p_multasigna(p):
+    'multasigna : VARIABLE TIMES IGUAL asignado'
+
+def p_divasigna(p):
+    'divasigna : VARIABLE DIVIDE IGUAL asignado'
+
 def p_asignado(p):
-  '''asignado : valor
-| VARIABLE
-| compareType
-| compareGreaterthan
-| compareSmallerthan
-| add
-| subtract
-| multiply
-| divide'''
+  '''asignado : comparators
+| operado'''
 
 def p_dato(p):
     '''dato : valor
